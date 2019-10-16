@@ -4,12 +4,13 @@
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
 #    By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
+#:::::::                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 18:01:52 by tprat        #+#   ##    ##    #+#        #
-#    Updated: 2019/10/14 12:36:36 by tprat       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/16 15:31:10 by tprat       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
+
 SRCS=  src/ft_atoi.c \
 src/ft_bzero.c \
 src/ft_calloc.c \
@@ -45,7 +46,19 @@ src/ft_substr.c \
 src/ft_tolower.c \
 src/ft_toupper.c
 
+BONUS= src/ft_lstadd_back.c \
+src/ft_lstadd_front.c \
+src/ft_lstclear.c \
+src/ft_lstdelone.c \
+src/ft_lstiter.c \
+src/ft_lstlast.c \
+src/ft_lstmap.c \
+src/ft_lstnew.c \
+src/ft_lstsize.c
+
 OBJS= ${SRCS:.c=.o}
+
+BOBJS= ${BONUS:.c=.o}
 
 NAME= libft.a
 
@@ -60,13 +73,16 @@ RM= rm -f
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}		:${OBJS}
-	ar rc  ${NAME} ${OBJS}
+${NAME}:${OBJS}
+	ar rc ${NAME} ${OBJS}
 
 all:${NAME}
 
+bonus:${OBJS} ${BOBJS}
+	ar rc ${NAME} ${OBJS} ${BOBJS}
+
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${BOBJS}
 
 fclean:clean
 	${RM} ${NAME}
