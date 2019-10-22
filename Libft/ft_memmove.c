@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 10:53:16 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 18:20:33 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 15:09:04 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 void	*ft_memmove(void *pdst, const void *psrc, size_t len)
 {
 	size_t	i;
+	char	tmp[len];
 	char	*dst;
 	char	*src;
 
@@ -24,7 +25,13 @@ void	*ft_memmove(void *pdst, const void *psrc, size_t len)
 	src = (char *)psrc;
 	while (i < len)
 	{
-		dst[i] = src[i];
+		tmp[i] = src[i];
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		dst[i] = tmp[i];
 		i++;
 	}
 	return (pdst);

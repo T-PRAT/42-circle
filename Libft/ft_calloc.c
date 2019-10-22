@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strjoin.c                                     .::    .:/ .      .::   */
+/*   ft_calloc.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/10 11:07:13 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 11:28:37 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 16:57:11 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/22 14:03:21 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_calloc(size_t count, size_t size)
 {
 	char	*str;
-	int		i;
-	int		j;
+	size_t	len;
 
-	i = 0;
-	j = 0;
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)))))
+	len = size * count;
+	if (!(str = malloc(len)))
 		return (0);
-	while (s1[i])
+	len--;
+	while (len > 0)
 	{
-		str[j] = s1[i];
-		i++;
-		j++;
+		str[len] = 0;
+		len--;
 	}
-	i = 0;
-	while (s2[i])
-	{
-		str[j] = s2[i];
-		i++;
-		j++;
-	}
-	str[j] = 0;
-	return (str);
+	str[0] = 0;
+	return ((void *)str);
 }

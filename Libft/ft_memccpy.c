@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strrchr.c                                     .::    .:/ .      .::   */
+/*   ft_memccpy.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/09 18:22:44 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 18:23:37 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 11:44:38 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/22 14:57:14 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+void	*ft_memccpy(void *pdst, const void *psrc, int c, size_t n)
 {
-	int		i;
-	char	*str2;
+	size_t	i;
+	char	*dst;
+	char	*src;
+	void	*ptr;
 
 	i = 0;
-	while (str[i])
-		i++;
-	i--;
-	str2 = (char *)str;
-	while (str[i] != c && str[i])
-		i--;
-	if (str[i] == 0)
+	dst = pdst;
+	src = (char *)psrc;
+	while (i < n)
 	{
-		if (c == 0)
-			return (str2 + i);
-		else
-			return (0);
+		if (src[i] == c)
+		{
+			ptr = &dst[i + 1];
+			return (ptr);
+		}
+		dst[i] = src[i];
+		i++;
 	}
-	else
-		return (str2 + i);
+	return (0);
 }

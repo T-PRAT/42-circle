@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strlcat.c                                     .::    .:/ .      .::   */
+/*   ft_strjoin.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/08 15:40:05 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 17:25:02 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/10 11:07:13 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/22 16:33:54 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
-	size_t j;
+	char	*str;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
-	while (dst[i])
-		i++;
-	if (i >= size)
+	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+		return (0);
+	while (s1[i])
 	{
-		while (src[j])
-			j++;
-		return (size + j);
-	}
-	while (src[j])
-	{
-		if (i < size)
-			dst[i] = src[j];
-		if (i == size)
-			dst[i - 1] = 0;
+		str[j] = s1[i];
 		i++;
 		j++;
 	}
-	return (i);
+	i = 0;
+	while (s2[i])
+	{
+		str[j] = s2[i];
+		i++;
+		j++;
+	}
+	str[j] = 0;
+	return (str);
 }
