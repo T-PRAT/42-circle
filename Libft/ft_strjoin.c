@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 11:07:13 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 16:33:54 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 21:29:30 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+	if ((!s1) || (!(s2)))
+		return (0);
 	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (0);
 	while (s1[i])

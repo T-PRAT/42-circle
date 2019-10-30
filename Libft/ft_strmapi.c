@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/12 12:00:59 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 12:08:25 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 21:31:06 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*s2;
 
 	i = 0;
+	if ((!s))
+		return (0);
 	while (s[i])
 		i++;
 	if (!(s2 = malloc(sizeof(char) * (i + 1))))

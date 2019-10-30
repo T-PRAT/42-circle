@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 11:58:39 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 11:56:54 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 21:30:45 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,6 +68,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	index = 0;
+	if ((!s))
+		return (0);
 	wrd_nbr = count_word(s, c);
 	if (!(strs = malloc(sizeof(char *) * (wrd_nbr + 1))))
 		return (0);
