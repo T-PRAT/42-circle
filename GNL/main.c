@@ -8,6 +8,7 @@ int main()
 	int fd;
 	char **line;
 
+	line = 0;
 	if (!(fd = open("file", O_RDONLY)))
 		printf("cant open file");
 	if (get_next_line(fd, line) == -1)
