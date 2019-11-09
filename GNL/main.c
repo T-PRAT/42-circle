@@ -3,15 +3,21 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-int main()
+int main(int ac, char **av)
 {
 	int fd;
-	char **line;
+	char *line;
+	int c;
 
-	line = 0;
-	if (!(fd = open("file", O_RDONLY)))
+	if (ac != 2)
+		printf("not enought arg");
+	fd = open(av[1], O_RDONLY);
+	printf("%d\n", fd);
+	if (fd == -1)
 		printf("cant open file");
-	if (get_next_line(fd, line) == -1)
+	c = get_next_line(fd, &line);
+	if (c == -1)
 		printf("error");
-	printf("%s\n", *line);
+	printf("%s\n", line);
+	close(fd);
 }
