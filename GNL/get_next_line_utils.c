@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 16:11:12 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/21 19:39:29 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 18:53:06 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *line, char *buf)
 {
 	char	*str;
 	int		i;
@@ -31,41 +31,25 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if ((!s1) || (!(s2)))
+	if (!(str = malloc(sizeof(char) * (ft_strlen(line) + ft_strlen(buf) + 1))))
 		return (0);
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
-		return (0);
-	while (s1[i])
+	while (line[i])
 	{
-		str[j] = s1[i];
+		str[j] = line[i];
 		i++;
 		j++;
 	}
 	i = 0;
-	while (s2[i])
+	while (buf[i])
 	{
-		str[j] = s2[i];
+		str[j] = buf[i];
 		i++;
 		j++;
 	}
 	str[j] = 0;
+	free((void *)line);
+	buf[0] = 0;
 	return (str);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*str;
-	size_t	len;
-
-	len = size * count;
-	if (!(str = malloc(len)))
-		return (0);
-	while (len > 0)
-	{
-		len--;
-		str[len] = 0;
-	}
-	return ((void *)str);
 }
 
 char	*ft_strdup(const char *src)
