@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 20:17:01 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 19:03:00 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -56,13 +56,14 @@ int		get_next_line(int fd, char **line)
 			*line = ft_strjoin(*line, buf);
 		else
 			rsize = read(fd, buf, BUFFER_SIZE);
-		if (!(ft_strchr(*line, '\n')))
+		if (ft_strchr(*line, '\n'))
 			rsize = -2;
 	}
 	take_rest(*line, buf);
-	if (rsize == -1)
-		return (-1);
-	if (rsize == -2)
+	write(1, buf, BUFFER_SIZE);
+	printf("rsize:%d\n", rsize);
+	if ((buf[0] && rsize == 0) || rsize == -2)
 		rsize = 1;
-	return (1);
+	printf("rsize:%d\n", rsize);
+	return (rsize);
 }

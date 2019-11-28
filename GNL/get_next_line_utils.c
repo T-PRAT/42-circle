@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 16:11:12 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 18:53:06 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 17:20:00 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *line, char *buf)
 		j++;
 	}
 	str[j] = 0;
-	free((void *)line);
+	free(line);
 	buf[0] = 0;
 	return (str);
 }
