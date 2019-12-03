@@ -20,7 +20,6 @@ int main(int ac, char **av)
 	while (c)
 	{
 		c = get_next_line(fd, &line);
-		//printf("gnlreturn : %d\n", c);
 		if (c == -1)
 		{
 			printf("error");
