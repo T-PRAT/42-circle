@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/03 19:55:18 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/04 18:54:08 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,15 +28,28 @@ int		take_rest(char *line, char *buf)
 	line[i] = 0;
 	i++;
 	while (line[i])
-	{
-		buf[j] = line[i];
-		i++;
-		j++;
-	}
+		buf[j++] = line[i++];
 	buf[j] = 0;
 	tmp = line;
 	line = ft_strdup(line);
 	free(tmp);
+	return (0);
+}
+
+int		choose_return(char *buf, int rsize, int fd)
+{
+	if ((buf[0] && rsize == 0) || rsize == BUFFER_SIZE)
+	{
+		if (buf[BUFFER_SIZE - 1] == '\n')
+		{
+			rsize = read(fd, buf, BUFFER_SIZE);
+			if (!rsize)
+				return(0);
+		}
+		return (1);
+	}
+	if (rsize == -1)
+		return (-1);
 	return (0);
 }
 
@@ -60,10 +73,5 @@ int		get_next_line(int fd, char **line)
 			break ;
 	}
 	take_rest(*line, buf);
-	//printf("buf:\"%s\" && rsize:%d\n", buf, rsize);
-	if ((buf[0] && rsize == 0) || rsize == BUFFER_SIZE)
-		return (1);
-	if (rsize == -1)
-		return (-1);
-	return (0);
+	return (choose_return(buf, rsize, fd));
 }
