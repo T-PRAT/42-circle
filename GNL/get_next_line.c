@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/04 18:54:08 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/10 19:53:21 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,16 +38,8 @@ int		take_rest(char *line, char *buf)
 
 int		choose_return(char *buf, int rsize, int fd)
 {
-	if ((buf[0] && rsize == 0) || rsize == BUFFER_SIZE)
-	{
-		if (buf[BUFFER_SIZE - 1] == '\n')
-		{
-			rsize = read(fd, buf, BUFFER_SIZE);
-			if (!rsize)
-				return(0);
-		}
+	if (buf[0] || rsize == BUFFER_SIZE)
 		return (1);
-	}
 	if (rsize == -1)
 		return (-1);
 	return (0);
@@ -69,6 +61,9 @@ int		get_next_line(int fd, char **line)
 			*line = ft_strjoin(*line, buf);
 		else
 			rsize = read(fd, buf, BUFFER_SIZE);
+		write(1, "buf:\"", 5);
+		write(1, buf, BUFFER_SIZE);
+		write(1, "\"\n", 2);
 		if (ft_strchr(*line, '\n'))
 			break ;
 	}
