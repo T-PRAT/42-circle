@@ -6,14 +6,14 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 16:11:12 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/04 18:54:07 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/15 07:09:03 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t i;
 
@@ -48,7 +48,6 @@ char	*ft_strjoin(char *line, char *buf)
 	}
 	str[j] = 0;
 	free(line);
-	buf[0] = 0;
 	return (str);
 }
 

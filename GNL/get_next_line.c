@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/10 19:53:21 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/15 07:04:37 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,13 +36,22 @@ int		take_rest(char *line, char *buf)
 	return (0);
 }
 
-int		choose_return(char *buf, int rsize, int fd)
+int		choose_return(char *buf, int rsize)
 {
 	if (buf[0] || rsize == BUFFER_SIZE)
 		return (1);
 	if (rsize == -1)
 		return (-1);
 	return (0);
+}
+
+void	clear_buf(char *buf)
+{
+	int i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+		buf[i++] = 0;
 }
 
 int		get_next_line(int fd, char **line)
@@ -58,15 +67,15 @@ int		get_next_line(int fd, char **line)
 	while (rsize > 0)
 	{
 		if (buf[0])
+		{
 			*line = ft_strjoin(*line, buf);
+			clear_buf(buf);
+		}
 		else
 			rsize = read(fd, buf, BUFFER_SIZE);
-		write(1, "buf:\"", 5);
-		write(1, buf, BUFFER_SIZE);
-		write(1, "\"\n", 2);
 		if (ft_strchr(*line, '\n'))
 			break ;
 	}
 	take_rest(*line, buf);
-	return (choose_return(buf, rsize, fd));
+	return (choose_return(buf, rsize));
 }

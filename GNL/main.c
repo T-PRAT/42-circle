@@ -25,9 +25,10 @@ int main(int ac, char **av)
 			printf("error");
 			return (0);
 		}
-		printf("return:%d\n", c);
+		//printf("return:%d\n", c);
 		printf("ligne %d : \"%s\"\n", i, line);
 		i++;
 	}
+	free(line);
 	close(fd);
 }
