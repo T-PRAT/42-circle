@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 16:11:12 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/15 07:09:03 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:28:51 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *line, char *buf)
+char	*ft_strjoin(char **line, char *buf)
 {
 	char	*str;
 	int		i;
@@ -31,11 +31,11 @@ char	*ft_strjoin(char *line, char *buf)
 
 	i = 0;
 	j = 0;
-	if (!(str = malloc(sizeof(char) * (ft_strlen(line) + ft_strlen(buf) + 1))))
+	if (!(str = malloc(sizeof(char) * (ft_strlen(*line) + ft_strlen(buf) + 1))))
 		return (0);
-	while (line[i])
+	while ((*line)[i])
 	{
-		str[j] = line[i];
+		str[j] = (*line)[i];
 		i++;
 		j++;
 	}
@@ -47,7 +47,7 @@ char	*ft_strjoin(char *line, char *buf)
 		j++;
 	}
 	str[j] = 0;
-	free(line);
+	free(*line);
 	return (str);
 }
 

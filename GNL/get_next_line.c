@@ -6,14 +6,14 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/15 07:04:37 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:26:06 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		take_rest(char *line, char *buf)
+int		take_rest(char **line, char *buf)
 {
 	int		i;
 	int		j;
@@ -21,17 +21,17 @@ int		take_rest(char *line, char *buf)
 
 	i = 0;
 	j = 0;
-	while (line[i] && line[i] != '\n')
+	while ((*line)[i] && (*line)[i] != '\n')
 		i++;
-	if (!(line[i]))
+	if (!((*line)[i]))
 		return (0);
-	line[i] = 0;
+	(*line)[i] = 0;
 	i++;
-	while (line[i])
-		buf[j++] = line[i++];
+	while ((*line)[i])
+		buf[j++] = (*line)[i++];
 	buf[j] = 0;
-	tmp = line;
-	line = ft_strdup(line);
+	tmp = *line;
+	*line = ft_strdup(*line);
 	free(tmp);
 	return (0);
 }
@@ -68,7 +68,7 @@ int		get_next_line(int fd, char **line)
 	{
 		if (buf[0])
 		{
-			*line = ft_strjoin(*line, buf);
+			*line = ft_strjoin(line, buf);
 			clear_buf(buf);
 		}
 		else
@@ -76,6 +76,6 @@ int		get_next_line(int fd, char **line)
 		if (ft_strchr(*line, '\n'))
 			break ;
 	}
-	take_rest(*line, buf);
+	take_rest(line, buf);
 	return (choose_return(buf, rsize));
 }
