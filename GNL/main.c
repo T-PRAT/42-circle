@@ -19,7 +19,7 @@ int main(int ac, char **av)
 		printf("cant open file");
 	while (c)
 	{
-		c = get_next_line(fd, &line);
+		c = get_next_line(2, &line);
 		if (c == -1)
 		{
 			printf("error");
