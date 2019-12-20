@@ -6,20 +6,34 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/06 16:11:12 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 17:28:51 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 18:34:05 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	while (str[i])
 		i++;
+	return (i);
+}
+
+int		ft_buflen(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (i < BUFFER_SIZE)
+	{
+		if (!(str[i]))
+			return (i);
+		i++;
+	}
 	return (i);
 }
 
@@ -31,7 +45,7 @@ char	*ft_strjoin(char **line, char *buf)
 
 	i = 0;
 	j = 0;
-	if (!(str = malloc(sizeof(char) * (ft_strlen(*line) + ft_strlen(buf) + 1))))
+	if (!(str = malloc(sizeof(char) * (ft_strlen(*line) + ft_buflen(buf) + 1))))
 		return (0);
 	while ((*line)[i])
 	{
@@ -40,7 +54,7 @@ char	*ft_strjoin(char **line, char *buf)
 		j++;
 	}
 	i = 0;
-	while (buf[i])
+	while (i < ft_buflen(buf))
 	{
 		str[j] = buf[i];
 		i++;

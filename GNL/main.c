@@ -19,13 +19,13 @@ int main(int ac, char **av)
 		printf("cant open file");
 	while (c)
 	{
-		c = get_next_line(2, &line);
+		c = get_next_line(fd, &line);
 		if (c == -1)
 		{
 			printf("error");
 			return (0);
 		}
-		printf("ligne %d : \"%s\"\n", i, line);
+		printf("ligne %d : \"%s\", ret: %d\n", i, line, c);
 		free(line);
 		i++;
 	}

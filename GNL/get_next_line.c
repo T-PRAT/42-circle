@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 17:07:14 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/20 18:26:20 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,7 +59,7 @@ int		get_next_line(int fd, char **line)
 	static int	rsize;
 	static char	buf[BUFFER_SIZE];
 
-	if (fd < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (-1);
 	if (!(rsize))
 		rsize = read(fd, buf, BUFFER_SIZE);
