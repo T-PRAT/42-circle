@@ -6,12 +6,20 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 17:54:13 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 18:52:50 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-int		ft_printf(const char *, ...)
-{
+#include "../ft_printf.h"
 
+int		ft_printf(const char *al, ...)
+{
+	va_list	ap;
+	int		i;
+
+	va_start(ap, al);
+	i = 0;
+	va_end(ap);
+	return(0);
 }
