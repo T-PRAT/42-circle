@@ -6,7 +6,7 @@
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/04 19:16:32 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/13 21:48:05 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/15 17:46:37 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,10 +38,10 @@ int		take_rest(char **line, char *buf)
 
 int		choose_return(char *buf, int rsize)
 {
-	if (buf[0] || rsize != 0)
-		return (1);
 	if (rsize == -1)
 		return (-1);
+	if (buf[0] || rsize != 0)
+		return (1);
 	return (0);
 }
 
