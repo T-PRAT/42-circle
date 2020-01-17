@@ -1,4 +1,4 @@
-SRCS= src/ft_printf.c
+SRCS= src/ft_printf.c src/ft_printf_utils.c
 
 BONUS= 
 

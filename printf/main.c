@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <libftprintf.a>
-
+#include "ft_printf.h"
 int main()
 {
 	char *s = "Hello";
-	printf("real%s\n", s);
+	printf("real%p\n", s);
 	ft_printf("mine%s\n",s);
 }
