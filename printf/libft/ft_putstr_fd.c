@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_putstr_fd.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/12 11:33:53 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/28 21:32:59 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+void	ft_putstr_fd(char *s, int fd)
 {
-	va_list	ap;
-	char	*str;
+	int i;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+			i++;
+		write(fd, s, i);
+	}
 }

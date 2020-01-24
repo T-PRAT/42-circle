@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/12 11:25:19 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/12 11:31:40 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+void	ft_putchar_fd(char c, int fd)
 {
-	va_list	ap;
-	char	*str;
-
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	write(fd, &c, 1);
 }

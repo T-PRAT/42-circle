@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_memmove.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 10:53:16 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/28 19:53:39 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+void	*ft_memmove(void *pdst, const void *psrc, size_t len)
 {
-	va_list	ap;
-	char	*str;
+	size_t	i;
+	char	*src;
+	char	*dst;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	i = len - 1;
+	dst = pdst;
+	src = (char *)psrc;
+	if (dst > src)
+	{
+		while (i + 1 > 0)
+		{
+			dst[i] = src[i];
+			i--;
+		}
+	}
+	else if (dst < src)
+	{
+		i = 0;
+		while (i < len)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	}
+	return (pdst);
 }

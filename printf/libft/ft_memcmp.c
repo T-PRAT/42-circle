@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_memcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 11:29:46 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/22 15:24:51 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+int		ft_memcmp(const void *p1, const void *p2, size_t n)
 {
-	va_list	ap;
-	char	*str;
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	s1 = (unsigned char *)p1;
+	s2 = (unsigned char *)p2;
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

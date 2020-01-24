@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_bzero.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 11:07:57 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/22 13:56:04 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+void	ft_bzero(void *ptr, size_t n)
 {
-	va_list	ap;
+	size_t	i;
 	char	*str;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	str = ptr;
+	i = 0;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
 }

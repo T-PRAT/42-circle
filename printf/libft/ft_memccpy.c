@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_memccpy.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 11:44:38 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/30 16:13:57 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	va_list	ap;
-	char	*str;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	str2 = (unsigned char *)dest;
+	str1 = (unsigned char *)src;
+	i = 0;
+	if (n == 0)
+		return (NULL);
+	while (n >= i && str1[i] != (unsigned char)c)
+	{
+		str2[i] = str1[i];
+		i++;
+	}
+	if (str1[i] == (unsigned char)c)
+	{
+		str2[i] = str1[i];
+		return (str2 + i + 1);
+	}
+	return (NULL);
 }

@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_strchr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 18:21:43 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/09 18:21:45 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+char	*ft_strchr(const char *str, int c)
 {
-	va_list	ap;
-	char	*str;
+	int		i;
+	char	*str2;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	str2 = (char *)str;
+	i = 0;
+	while (str[i] != c && str[i])
+		i++;
+	if (str[i] == 0)
+	{
+		if (c == 0)
+			return (str2 + i);
+		else
+			return (0);
+	}
+	else
+		return (str2 + i);
 }

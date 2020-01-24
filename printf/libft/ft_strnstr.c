@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_strnstr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 16:02:31 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/09 18:22:17 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+char	*ft_strnstr(const char *str, const char *to_find, size_t size)
 {
-	va_list	ap;
-	char	*str;
+	int		i;
+	size_t	j;
+	size_t	k;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	i = 0;
+	j = 0;
+	if (to_find[i] == '\0')
+		return ((char *)str);
+	while (str[i] && j < size)
+	{
+		k = i;
+		while (str[k] == to_find[j] && k < size)
+		{
+			k++;
+			j++;
+			if (to_find[j] == '\0')
+				return ((char *)str + (k - j));
+		}
+		j = 0;
+		i++;
+	}
+	return (0);
 }

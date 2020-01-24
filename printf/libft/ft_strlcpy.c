@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_strlcpy.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 09:56:21 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/30 18:14:10 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	va_list	ap;
-	char	*str;
+	size_t	i;
+	char	*dst;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	dst = (char *)dest;
+	i = 0;
+	if (!(dest && src))
+		return (0);
+	if (size == 0)
+	{
+		while (src[i])
+			i++;
+		return (i);
+	}
+	while (src[i] && size - 1 > i)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
 }

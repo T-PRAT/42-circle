@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   ft_strlcat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 18:46:40 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 15:40:05 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/30 18:03:19 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *al, ...)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	va_list	ap;
-	char	*str;
+	size_t	i;
+	size_t	j;
 
-	va_start(ap, al);
-	str = va_arg(ap, char *);
-	va_end(ap);
-	return(0);
+	i = 0;
+	j = 0;
+	while (dst[i])
+		i++;
+	if (size <= i)
+	{
+		while (src[j])
+			j++;
+		return (size + j);
+	}
+	while (src[j])
+	{
+		if (size >= i)
+			dst[i] = src[j];
+		i++;
+		j++;
+		if (i == size)
+			dst[i - 1] = 0;
+	}
+	dst[i] = 0;
+	return (i);
 }
