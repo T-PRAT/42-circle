@@ -24,16 +24,17 @@ int		take_rest(char **line, char *buf)
 	while ((*line)[i] && (*line)[i] != '\n')
 		i++;
 	if (!((*line)[i]))
-		return (0);
+		return (1);
 	(*line)[i] = 0;
 	i++;
 	while ((*line)[i])
 		buf[j++] = (*line)[i++];
 	buf[j] = 0;
 	tmp = *line;
-	*line = ft_strdup(*line);
+	if (!(*line = ft_strdup(*line)))
+		return (0);
 	free(tmp);
-	return (0);
+	return (1);
 }
 
 int		choose_return(char *buf, int rsize)
@@ -63,12 +64,14 @@ int		get_next_line(int fd, char **line)
 		return (-1);
 	if (!(rsize))
 		rsize = read(fd, buf, BUFFER_SIZE);
-	*line = ft_strdup("");
-	while (rsize > 0 && (*line))
+	if (!(*line = ft_strdup("")))
+		return (-1);
+	while (rsize > 0)
 	{
 		if (buf[0])
 		{
-			*line = ft_strjoin(line, buf);
+			if (!(*line = ft_strjoin(line, buf)))
+				return (-1);
 			clear_buf(buf);
 		}
 		else
@@ -76,6 +79,7 @@ int		get_next_line(int fd, char **line)
 		if (ft_strchr(*line, '\n'))
 			break ;
 	}
-	take_rest(line, buf);
+	if (!(take_rest(line, buf)))
+		return (-1);
 	return (choose_return(buf, rsize));
 }
