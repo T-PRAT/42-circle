@@ -64,6 +64,7 @@ RM= rm -f
 
 $(NAME):${OBJS}
 	ar rc ${NAME} ${OBJS}
+	ranlib ${NAME}
 
 all:${NAME}
 

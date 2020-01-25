@@ -1,38 +1,50 @@
-SRCS= src/ft_printf.c src/ft_printf_utils.c
+NAME = libftprintf.a
 
-BONUS= 
+FLAGS = -Wall -Wextra -Werror
 
-OBJS= ${SRCS:.c=.o}
+LIBFT = libft
 
-BOBJS= ${BONUS:.c=.o}
+DIR_S = src
 
-NAME= libftprintf.a
+DIR_O = obj
 
-HEAD= ft_printf.h
+HEADER = include
 
-CFLAGS= -Wall -Wextra -Werror
+SOURCES = ft_printf.c \
+	  ft_printf_utils.c
 
-CC= cc
+SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
-RM= rm -f
+OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
 
-%o : %c ${HEAD}
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all: $(NAME)
 
-$(NAME):${OBJS}
-	ar rc ${NAME} ${OBJS}
+$(NAME): $(OBJS)
+	${MAKE} -C $(LIBFT)
+	cp libft/libft.a ./$(NAME)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
-all:${NAME}
+$(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)/ft_printf.h
+	mkdir -p obj
+	$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
 
-bonus:${OBJS} ${BOBJS}
-	ar rc ${NAME} ${OBJS} ${BOBJS}
+norme:
+	norminette ./libft/
+	@echo
+	norminette ./$(HEADER)/
+	@echo
+	norminette ./$(DIR_S)/
 
 clean:
-	${RM} ${OBJS} ${BOBJS}
+	rm -f $(OBJS)
+	rm -rf $(DIR_O)
+	make clean -C $(LIBFT)
 
-fclean:clean
-	${RM} ${NAME}
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C $(LIBFT)
 
-re:fclean all
+re: fclean all
 
-.PHONY:all clean fclean re
+.PHONY: fclean re norme all clean
