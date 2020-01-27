@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "ft_printf.h"
+#include "include/ft_printf.h"
 int main()
 {
 	char *s = "Hello";
-	printf("real%p\n", s);
-	ft_printf("mine%s\n",s);
+	int d = 42;
+	printf("%.0\n", d);
 }

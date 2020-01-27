@@ -13,13 +13,28 @@
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *al, ...)
+int	get_arg(const char *al, va_list ap)
+{
+	int i;
+
+	i = 0;
+	while (al[i])
+	{
+		if (al[i] == '%')
+		{
+			while((ft_strchr("-0.*", al[i])))
+		}
+	}
+}
+
+int	ft_printf(const char *al, ...)
 {
 	va_list	ap;
 	char	*str;
 
 	va_start(ap, al);
 	str = va_arg(ap, char *);
+	get_arg(al, ap);
 	va_end(ap);
 	return(0);
 }

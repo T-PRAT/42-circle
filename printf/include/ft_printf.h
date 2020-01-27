@@ -16,6 +16,15 @@
 
 #include <unistd.h>
 #include <stdarg.h>
+#include "libft.h"
+
+typedef struct 		s_arg
+{
+	char		*flag;
+	char		*type;
+	struct s_arg	*first;
+	struct s_arg	*next;
+}			t_arg;
 
 int		ft_printf(const char *al, ...);
 void	ft_putstr(char *s);
