@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_printf.h                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: tprat <marvin@le-101.fr>                   +:+   +:    +:    +:+     */
+/*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:42:09 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 18:35:12 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/30 19:36:34 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@
 typedef struct 		s_arg
 {
 	char		*flag;
-	char		*type;
+	char		type;
 	struct s_arg	*first;
 	struct s_arg	*next;
 }			t_arg;

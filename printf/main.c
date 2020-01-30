@@ -4,5 +4,5 @@ int main()
 {
 	char *s = "Hello";
 	int d = 42;
-	printf("%.0\n", d);
+		printf("%", d);
 }
