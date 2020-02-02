@@ -6,14 +6,14 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 20:20:42 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 00:36:18 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	fill_struct(char *al, t_arg *arg)
+int	fill_struct(const char *al, t_arg *arg)
 {
 	int i;
 
@@ -27,9 +27,10 @@ int	fill_struct(char *al, t_arg *arg)
 	}
 	if (ft_strchr("cspdiuxX%", al[++i]))
 		arg->type = al[i];
+	return (1);
 }
 
-int	get_args(const char *al, va_list ap)
+int	get_args(const char *al)
 {
 	int		i;
 	t_arg	*arg;
@@ -49,14 +50,16 @@ int	get_args(const char *al, va_list ap)
 				return (0);
 			if (!(first))
 				first = arg;
-			if (!(arg->first = ft_strdup(first)))
+			if (!(arg->first = first))
 				return (0);
 			if (previous)
-				ft_lstadd_back(&previous, arg);
+				ft_lstaddarg_back(&previous, arg);
 			else
 				previous = arg;
+			i++;
 		}
 	}
+	return (1);
 }
 
 int	ft_printf(const char *al, ...)
@@ -66,7 +69,7 @@ int	ft_printf(const char *al, ...)
 
 	va_start(ap, al);
 	str = va_arg(ap, char *);
-	get_args(al, ap);
+	get_args(al);
 	va_end(ap);
 	return (0);
 }

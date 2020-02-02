@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:42:09 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 19:36:34 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/02 22:53:43 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,8 +26,6 @@ typedef struct 		s_arg
 	struct s_arg	*next;
 }			t_arg;
 
-int		ft_printf(const char *al, ...);
-void	ft_putstr(char *s);
-void	ft_putchar(char c);
-void	ft_putnbr(int n);
+void	ft_lstaddarg_back(t_arg **alst, t_arg *new);
+
 #endif
