@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/17 18:32:20 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 18:23:47 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 19:01:41 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,6 @@ t_arg	*ft_lstnewarg(t_arg *first)
 	new->next = 0;
 	if (!(first))
 		first = new;
-	if (!(new->first = first))
-		return (0);
+	new->first = first;
 	return (new);
 }
