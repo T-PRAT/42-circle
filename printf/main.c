@@ -4,5 +4,6 @@ int main()
 {
 	char *s = "Hello";
 	int d = 42;
-		printf("%", d);
+	printf("%-0\n", s);
+	ft_printf("%-0s%.*d", s);
 }

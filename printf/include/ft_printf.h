@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:42:09 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/02 22:53:43 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 18:23:04 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,6 +17,8 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "libft.h"
+//a retirer
+#include <stdio.h>
 
 typedef struct 		s_arg
 {
@@ -27,5 +29,6 @@ typedef struct 		s_arg
 }			t_arg;
 
 void	ft_lstaddarg_back(t_arg **alst, t_arg *new);
+t_arg	*ft_lstnewarg(t_arg *first);
 
 #endif

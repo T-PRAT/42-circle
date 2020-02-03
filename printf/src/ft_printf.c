@@ -6,14 +6,14 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 00:36:18 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/03 18:27:50 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	fill_struct(const char *al, t_arg *arg)
+int		fill_struct(const char *al, t_arg *arg)
 {
 	int i;
 
@@ -25,12 +25,14 @@ int	fill_struct(const char *al, t_arg *arg)
 		if (!(arg->flag = ft_substr(al, 0, i)))
 			return (0);
 	}
-	if (ft_strchr("cspdiuxX%", al[++i]))
+	else
+		arg->flag = 0;
+	if (ft_strchr("cspdiuxX%", al[i]))
 		arg->type = al[i];
 	return (1);
 }
 
-int	get_args(const char *al)
+t_arg	*get_args(const char *al)
 {
 	int		i;
 	t_arg	*arg;
@@ -44,32 +46,37 @@ int	get_args(const char *al)
 	{
 		if (al[i] == '%')
 		{
-			if (!(arg = malloc(sizeof(t_arg))))
+			i++;
+			if (!(arg = ft_lstnewarg(first)))
 				return (0);
 			if (!(fill_struct(al + i, arg)))
-				return (0);
-			if (!(first))
-				first = arg;
-			if (!(arg->first = first))
 				return (0);
 			if (previous)
 				ft_lstaddarg_back(&previous, arg);
 			else
 				previous = arg;
-			i++;
 		}
+		i++;
 	}
-	return (1);
+	return (first);
 }
 
-int	ft_printf(const char *al, ...)
+int		ft_printf(const char *al, ...)
 {
 	va_list	ap;
 	char	*str;
+	t_arg	*arg;
 
 	va_start(ap, al);
 	str = va_arg(ap, char *);
-	get_args(al);
+	if (!(arg = get_args(al)))
+		return (0);
+	while (arg)
+	{
+		printf("flag:%s\n", arg->flag);
+		printf("type:%c\n", arg->type);
+		arg = arg->next;
+	}
 	va_end(ap);
 	return (0);
 }
