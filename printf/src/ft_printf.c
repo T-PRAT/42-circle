@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/03 18:27:50 by tprat       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/05 20:11:54 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,6 +58,8 @@ t_arg	*get_args(const char *al)
 		}
 		i++;
 	}
+		printf("flag:%s\n", first->flag);
+		printf("type:%c\n", first->type);
 	return (first);
 }
 
