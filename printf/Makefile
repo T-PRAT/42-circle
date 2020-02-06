@@ -11,7 +11,7 @@ DIR_O = obj
 HEADER = include
 
 SOURCES = ft_printf.c \
-	  ft_printf_utils.c
+		list.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
@@ -35,6 +35,9 @@ norme:
 	norminette ./$(HEADER)/
 	@echo
 	norminette ./$(DIR_S)/
+
+test: all
+	gcc -o EXEC main.c $(NAME)
 
 clean:
 	rm -f $(OBJS)
