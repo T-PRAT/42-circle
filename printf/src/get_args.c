@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*   get_args.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/18 17:53:18 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/12 04:26:56 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/12 03:23:48 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/12 05:05:24 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *al, ...)
+char	*choose_type(t_arg *arg, va_list ap)
 {
-	t_arg	*arg;
-	va_list	ap;
+	char *res;
 
-	va_start(ap, al);
-	if (!(arg = get_flags(al)))
-		return (0);
-	if (!(get_args(ap, arg)))
-		return (0);
+	res = 0;
+	if (arg->type == 'c')
+	{
+		if (!(res = malloc(sizeof(char) * 2)))
+			return (0);
+		res[0] = va_arg(ap, int);
+	}
+	return (res);
+}
+
+int		get_args(va_list ap, t_arg *arg)
+{
 	while (arg)
 	{
-		printf("flag:%s\n", arg->flag);
-		printf("type:%c\n", arg->type);
-		printf("res:%s\n", arg->res);
+		if (!(arg->res = choose_type(arg, ap)))
 		arg = arg->next;
 	}
-	va_end(ap);
-	return (0);
+	return (1);
 }

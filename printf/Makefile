@@ -11,7 +11,8 @@ DIR_O = obj
 HEADER = include
 
 SOURCES = ft_printf.c \
-		list.c
+		get_flags.c \
+		get_args.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

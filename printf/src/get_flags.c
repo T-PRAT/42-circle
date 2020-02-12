@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   list.c                                           .::    .:/ .      .::   */
+/*   get_flags.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: tprat <tprat@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/06 19:25:30 by tprat        #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/06 20:34:23 by tprat       ###    #+. /#+    ###.fr     */
+/*   Created: 2020/02/12 03:22:48 by tprat        #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/12 03:22:52 by tprat       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,12 +42,14 @@ t_arg	*new_elem(const char *al)
 		return (0);
 	if (!(new->next = malloc(sizeof(t_arg))))
 		return(0);
+	new->next = 0;
 	if (!(new->first = malloc(sizeof(t_arg))))
 		return(0);
+	new->first = 0;
 	return (new);
 }
 
-t_arg	*get_args(const char *al)
+t_arg	*get_flags(const char *al)
 {
 	int		i;
 	t_arg	*curr;
@@ -71,7 +73,7 @@ t_arg	*get_args(const char *al)
 			if (prev)
 				prev->next = curr;
 			else
-				curr = prev;
+				prev = curr;
 		}
 		else
 			i++;
