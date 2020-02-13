@@ -4,6 +4,9 @@ int main()
 {
 	char *s = "Hello";
 	int d = 42;
-	printf("printf:%c\n", 'a');
-	ft_printf("%c", 'a');
+	printf("%d", ft_atoi("050"));
+	//printf("%c%s%u%x%X|%p", 'a', "Hello", 32, 32, -32, s);
+	printf("\n");
+	//ft_printf("%c%s%u%x%X%p", 'a', "Hello", 32, 32, -32, s);
+
 }

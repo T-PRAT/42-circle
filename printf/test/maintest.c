@@ -2,6 +2,7 @@
 
 int main()
 {
-	printf("%d", printf("%s\n", "Hello", "boyaaas"));
+	unsigned int u = 42;
+	printf("%u\n", u);
 	return (0);
 }
