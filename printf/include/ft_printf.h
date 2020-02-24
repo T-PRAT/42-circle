@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 23:23:32 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/14 01:55:18 by tprat            ###   ########.fr       */
+/*   Updated: 2020/02/24 18:58:45 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ typedef struct 		s_arg
 
 int		ft_printf(const char *al, ...);
 t_arg	*create_list(const char *al, va_list ap);
+int		apply_flags(t_arg *current);
 
 #endif

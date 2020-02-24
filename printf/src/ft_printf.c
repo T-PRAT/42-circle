@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/12 23:22:45 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/14 05:31:53 by tprat            ###   ########.fr       */
+/*   Created: 2020/02/24 18:58:05 by tprat             #+#    #+#             */
+/*   Updated: 2020/02/24 18:58:07 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_printf(const char *al, ...)
 
 	va_start(ap, al);
 	if (!(arg = create_list(al, ap)))
+		return (0);
+	if (!(apply_flags(arg)))
 		return (0);
 	while (arg)
 	{

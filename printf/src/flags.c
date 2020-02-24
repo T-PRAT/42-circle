@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 18:46:50 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/24 19:23:51 by tprat            ###   ########lyon.fr   */
+/*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
+/*   Updated: 2020/02/24 19:10:28 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "include/ft_printf.h"
-int main()
-{
-	char *s = "Hello";
-	int d = 42;
-	//char *a = ft_strdup(d);
-	//printf("%c%s%u%x%X|%p", 'a', "Hello", 32, 32, -32, s);
-	printf("%.12d", 12);
-	printf("\n");
-	//ft_printf("%.-12d", 12);
+#include "ft_printf.h"
 
+char	*apply_prec(char *res, int prec)
+{
+	if (prec > 0)
+	{
+		while (prec)
+		{
+			if (!(res = ft_strjoin("0", res)))
+				return (0);
+			prec--;
+		}
+	}
+	return (res);
+}
+
+int		apply_flags(t_arg *current)
+{
+	while (current)
+	{
+		if (current->prec)
+			if (!(current->res = apply_prec(current->res, current->prec)))
+				return (0);
+		current = current->next;
+	}
+	return (1);
 }
