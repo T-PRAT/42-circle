@@ -12,7 +12,9 @@ HEADER = include
 
 SOURCES = ft_printf.c \
 		list.c \
-		flags.c
+		flags.c \
+		print.c \
+		free.c
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 

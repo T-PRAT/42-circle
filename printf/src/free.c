@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 18:58:05 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 18:42:53 by tprat            ###   ########lyon.fr   */
+/*   Created: 2020/02/25 18:43:38 by tprat             #+#    #+#             */
+/*   Updated: 2020/02/25 18:55:11 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int		ft_printf(const char *al, ...)
+void	free_all(t_arg *current)
 {
-	t_arg	*arg;
-	va_list	ap;
-	int		c;
+	t_arg	*tmp;
 
-	va_start(ap, al);
-	if (!(arg = create_list(al, ap)))
-		return (0);
-	va_end(ap);
-	if (!(apply_flags(arg)))
-		return (0);
-	c = print_all(al, arg);
-	free_list(arg);
-	return (c);
+	while (current)
+	{
+		if (!tmp)
+			tmp = current->next;
+
+		current = tmp;
+	}
 }

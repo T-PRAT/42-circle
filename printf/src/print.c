@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 18:58:05 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 18:42:53 by tprat            ###   ########lyon.fr   */
+/*   Created: 2020/02/25 15:39:11 by tprat             #+#    #+#             */
+/*   Updated: 2020/02/25 18:18:09 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *al, ...)
+int	print_all(const char *al, t_arg *current)
 {
-	t_arg	*arg;
-	va_list	ap;
-	int		c;
+	int i;
+	int	c;
 
-	va_start(ap, al);
-	if (!(arg = create_list(al, ap)))
-		return (0);
-	va_end(ap);
-	if (!(apply_flags(arg)))
-		return (0);
-	c = print_all(al, arg);
-	free_list(arg);
-	return (c);
+	i = 0;
+	c = 0;
+	while (al[i])
+	{
+		if (al[i] == '%')
+		{
+			i++;
+			ft_putstr_fd(current->res, 1);
+			c += ft_strlen(current->res);
+			current = current->next;
+			while (!(ft_strchr("cspdiuxX%", al[i])))
+				i++;
+			i++;
+		}
+		else
+		{
+			ft_putchar_fd(al[i], 1);
+			c++;
+		}
+		if (al[i])
+			i++;
+	}
+	return (i);
 }
