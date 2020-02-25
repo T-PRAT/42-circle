@@ -6,11 +6,13 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 18:43:38 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 18:55:11 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/25 19:07:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	free_all(t_arg *current)
+#include "ft_printf.h"
+
+void	free_list(t_arg *current)
 {
 	t_arg	*tmp;
 
@@ -18,7 +20,9 @@ void	free_all(t_arg *current)
 	{
 		if (!tmp)
 			tmp = current->next;
-
+		free(current->res);
+		free(current->next);
+		free(current);
 		current = tmp;
 	}
 }

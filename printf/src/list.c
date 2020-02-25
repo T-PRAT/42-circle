@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/24 19:02:13 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/25 19:02:19 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,6 @@ t_arg	*new_elem(const char *al, va_list ap)
 	if (!(new->next = malloc(sizeof(t_arg))))
 		return (0);
 	new->next = 0;
-	if (!(new->first = malloc(sizeof(t_arg))))
-		return (0);
-	new->first = 0;
 	if (!(new->res = fill_res(new, ap)))
 		return (0);
 	return (new);
@@ -102,8 +99,8 @@ t_arg	*create_list(const char *al, va_list ap)
 			i++;
 			if (!(curr = new_elem(al + i, ap)))
 				return (0);
-			(first) ? (curr->first = first) :
-			(first = curr);
+			if (!(first))
+				first = curr;
 			if (prev)
 				prev->next = curr;
 			prev = curr;
