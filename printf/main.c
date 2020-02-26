@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:46:50 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 19:42:41 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/26 16:29:41 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ int main()
 {
 	char *s = "Hello";
 	int d = 42;
-	//char *a = ft_strdup(d);
-	//printf("%c%s%u%x%X|%p", 'a', "Hello", 32, 32, -32, s);
-	printf("%d", printf("|%.4d/", 42));
+
+	int i = printf("|%4d%i", 12, 23);
 	printf("|\n");
-	printf("%d", ft_printf("|%.4d/", 42));
-	//printf("|%.4d/", 42);
+	int j = ft_printf("|%4d%i", 12, 23);
 	printf("|\n");
+	printf("%d/%d\n", i, j);
 	while (d);
 }

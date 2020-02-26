@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 18:12:54 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/26 16:02:06 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	apply_prec(t_arg *current)
 {
-	int i;
+	int 	i;
+	char	*tmp;
 
 	i = -1;
 	if (ft_strchr("s", current->type))
@@ -28,8 +29,10 @@ int	apply_prec(t_arg *current)
 		current->prec -= i;
 		while (current->prec > 0)
 		{
+			tmp = current->res;
 			if (!(current->res = ft_strjoin("0", current->res)))
 				return (0);
+			free(tmp);
 			current->prec--;
 		}
 	}
@@ -39,6 +42,7 @@ int	apply_prec(t_arg *current)
 int	apply_blank(t_arg *current)
 {
 	int i;
+	char	*tmp;
 
 	i = -1;
 	while (current->res[++i]);
@@ -47,8 +51,10 @@ int	apply_blank(t_arg *current)
 		current->blank += i;
 		while (current->blank < 0)
 		{
+			tmp = current->res;
 			if (!(current->res = ft_strjoin(current->res, " ")))
 				return (0);
+			free(tmp);
 			current->blank++;
 		}
 	}
@@ -57,8 +63,10 @@ int	apply_blank(t_arg *current)
 		current->blank -= i;
 		while (current->blank > 0)
 		{
+			tmp = current->res;
 			if (!(current->res = ft_strjoin(" ", current->res)))
 				return (0);
+			free(tmp);
 			current->blank--;
 		}
 	}
@@ -69,14 +77,17 @@ int	apply_blank(t_arg *current)
 int	apply_zero(t_arg *current)
 {
 	int i;
+	char	*tmp;
 
 	i = -1;
 	while (current->res[++i]);
 	current->zero -= i;
 	while (current->zero > 0)
 	{
+		tmp = current->res;
 		if (!(current->res = ft_strjoin("0", current->res)))
 			return (0);
+		free(tmp);
 		current->zero--;
 	}
 	return (1);

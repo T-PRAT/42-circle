@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/25 19:02:19 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/26 18:55:32 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_arg	*new_elem(const char *al, va_list ap)
 	new->blank = 0;
 	if (!(fill_flags(al, new, ap)))
 		return (0);
-	if (!(new->next = malloc(sizeof(t_arg))))
+	if (!(new->next = (t_arg *)malloc(sizeof(t_arg))))
 		return (0);
 	new->next = 0;
 	if (!(new->res = fill_res(new, ap)))
