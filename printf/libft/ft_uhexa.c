@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 01:43:42 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/13 02:27:16 by tprat            ###   ########.fr       */
+/*   Updated: 2020/02/28 21:57:56 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	*ft_uhexa(unsigned long long i, char c)
 
 	j = i;
 	x = 1;
+	if (i == 0)
+		return (ft_strdup("0"));
 	while (j > 16)
 	{
 		x++;

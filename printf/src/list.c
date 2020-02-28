@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/26 18:55:32 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/28 22:21:16 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int		fill_flags(const char *al, t_arg *arg, va_list ap)
 		i++;
 	if (ft_strchr("cspdiuxX%", al[i]))
 		arg->type = al[i];
+	else
+		return (0);
 	return (1);
 }
 
@@ -74,12 +76,18 @@ t_arg	*new_elem(const char *al, va_list ap)
 	new->blank = 0;
 	if (!(fill_flags(al, new, ap)))
 		return (0);
-	if (!(new->next = (t_arg *)malloc(sizeof(t_arg))))
-		return (0);
 	new->next = 0;
 	if (!(new->res = fill_res(new, ap)))
 		return (0);
 	return (new);
+}
+
+int		lst_add_b(t_arg *current, t_arg *prev)
+{
+	if (!(prev->next = (t_arg *)malloc(sizeof(t_arg))))
+		return (0);
+	prev->next = current;
+	return (1);
 }
 
 t_arg	*create_list(const char *al, va_list ap)
@@ -102,8 +110,10 @@ t_arg	*create_list(const char *al, va_list ap)
 			if (!(first))
 				first = curr;
 			if (prev)
-				prev->next = curr;
+				lst_add_b(curr, prev);
 			prev = curr;
+			if (al[i] == '%')
+			i++;
 		}
 		else
 			i++;

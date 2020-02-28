@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:39:11 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/26 16:42:30 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/02/28 21:41:03 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	print_all(const char *al, t_arg *current)
 			i++;
 		}
 	}
-	return (i);
+	return (c);
 }
