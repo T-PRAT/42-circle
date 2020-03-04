@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/28 22:21:16 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 19:34:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ char	*fill_res(t_arg *arg, va_list ap)
 		res[1] = 0;
 	}
 	if (arg->type == 's')
-		res = ft_strdup(va_arg(ap, char *));
+		res = ft_strdup_null(va_arg(ap, char *));
 	if (arg->type == 'd' || arg->type == 'i')
 		res = ft_itoa(va_arg(ap, int));
 	if (arg->type == 'u')
 		res = ft_utoa(va_arg(ap, unsigned int));
-	if (arg->type == 'x' || arg->type == 'X')
-		res = ft_uhexa(va_arg(ap, unsigned int), arg->type);
+	if (arg->type == 'x')
+		res = ft_itoa_base(va_arg(ap, unsigned int), "0123456789abcdef");
+	if (arg->type == 'X')
+		res = ft_itoa_base(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	if (arg->type == 'p')
-		res = ft_strjoin("0x", ft_uhexa(va_arg(ap, unsigned long long), 'x'));
+		res = ft_strjoin("0x", ft_itoa_base(va_arg(ap, unsigned long long),
+		 "0123456789abcdef"));
 	if (arg->type == '%')
 		res = ft_strdup("%");
 	return (res);
@@ -47,7 +50,10 @@ int		fill_flags(const char *al, t_arg *arg, va_list ap)
 	if (al[i] == '0')
 		(al[++i] == '*') ? (arg->zero = va_arg(ap, int)) :
 		(arg->zero = ft_atoi(al + i));
-	else if (ft_isdigit(al[i]) || al[i] == '-')
+	else if (al[i] == '-')
+		(al[++i] == '*') ? (arg->blank = va_arg(ap, int) * -1) :
+		(arg->blank = ft_atoi(al + i - 1));
+	else if (ft_isdigit(al[i]))
 		arg->blank = ft_atoi(al + i);
 	else if (al[i] == '*')
 		arg->blank = va_arg(ap, int);
@@ -56,7 +62,7 @@ int		fill_flags(const char *al, t_arg *arg, va_list ap)
 	if (al[i] == '.')
 		(al[++i] == '*') ? (arg->prec = va_arg(ap, int)) :
 		(arg->prec = ft_atoi(al + i));
-	while (ft_isdigit(al[i]) || al[i] == '.' || al[i] == '-')
+	while (ft_isdigit(al[i]) || al[i] == '.' || al[i] == '-' || al[i] == '*')
 		i++;
 	if (ft_strchr("cspdiuxX%", al[i]))
 		arg->type = al[i];
@@ -112,8 +118,8 @@ t_arg	*create_list(const char *al, va_list ap)
 			if (prev)
 				lst_add_b(curr, prev);
 			prev = curr;
-			if (al[i] == '%')
-			i++;
+			if (curr->type == '%')
+				while (al[i++] != '%');
 		}
 		else
 			i++;

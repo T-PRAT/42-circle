@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 18:43:38 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/28 21:53:51 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 19:43:06 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	free_list(t_arg *current)
 	while (current)
 	{
 		tmp = current->next;
-		free(current->res);
+		if (current->res)
+			free(current->res);
 		free(current);
 		current = tmp;
 	}

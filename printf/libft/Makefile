@@ -7,8 +7,8 @@ ft_isascii.c \
 ft_isdigit.c \
 ft_isprint.c \
 ft_itoa.c \
+ft_itoa_base.c \
 ft_utoa.c \
-ft_uhexa.c \
 ft_memccpy.c \
 ft_memchr.c \
 ft_memcmp.c \
@@ -22,6 +22,7 @@ ft_putstr_fd.c \
 ft_split.c \
 ft_strchr.c \
 ft_strdup.c \
+ft_strdup_null.c \
 ft_strjoin.c \
 ft_strlcat.c \
 ft_strlcpy.c \

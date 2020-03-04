@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup_null.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 18:46:50 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/04 18:47:15 by tprat            ###   ########lyon.fr   */
+/*   Created: 2020/03/04 17:56:06 by tprat             #+#    #+#             */
+/*   Updated: 2020/03/04 17:59:33 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "include/ft_printf.h"
-int main()
-{
-	char *s = "Hello";
-	int d = 42;
+#include "libft.h"
 
-	int i = printf("|%p|\n", s);
-	int j = ft_printf("|%p\n", s);
-	printf("%d/%d\n", i, j);
-	//while (d);
+char	*ft_strdup_null(const char *src)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	if (!(src))
+	{
+		if (!(dest = ft_strdup("(null)")))
+			return (0);
+	}
+	else
+	{
+		if (!(dest = ft_strdup(src)))
+			return (0);
+	}
+	return (dest);
+
 }

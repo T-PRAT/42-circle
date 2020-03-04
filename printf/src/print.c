@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:39:11 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/28 21:41:03 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 17:30:05 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	print_all(const char *al, t_arg *current)
 		{
 			ft_putchar_fd(al[i], 1);
 			c++;
-		if (al[i])
-			i++;
+			if (al[i])
+				i++;
 		}
 	}
 	return (c);

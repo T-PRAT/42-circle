@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 17:53:44 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/24 17:49:13 by tprat            ###   ########.fr       */
+/*   Created: 2020/03/04 17:54:42 by tprat             #+#    #+#             */
+/*   Updated: 2020/03/04 17:55:23 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "stdlib.h"
+#include "libft.h"
 
 char	*ft_strdup(const char *src)
 {
