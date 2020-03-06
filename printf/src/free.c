@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 18:43:38 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/04 19:43:06 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/05 19:32:32 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	free_list(t_arg *current)
 		free(current);
 		current = tmp;
 	}
+	free(tmp);
 }

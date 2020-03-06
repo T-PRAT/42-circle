@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/04 19:34:44 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/05 19:04:32 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,12 @@ int		fill_flags(const char *al, t_arg *arg, va_list ap)
 	while (ft_isdigit(al[i]) || al[i] == '*' || al[i] == '-')
 		i++;
 	if (al[i] == '.')
+	{
 		(al[++i] == '*') ? (arg->prec = va_arg(ap, int)) :
 		(arg->prec = ft_atoi(al + i));
+		if (arg->prec == 0)
+			arg->prec = -1;
+	}
 	while (ft_isdigit(al[i]) || al[i] == '.' || al[i] == '-' || al[i] == '*')
 		i++;
 	if (ft_strchr("cspdiuxX%", al[i]))
