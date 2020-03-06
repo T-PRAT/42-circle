@@ -12,6 +12,7 @@ HEADER = include
 
 SOURCES = ft_printf.c \
 		list.c \
+		list2.c \
 		flags.c \
 		print.c \
 		free.c

@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 23:23:32 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/04 18:25:39 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/06 18:58:08 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_arg	*create_list(const char *al, va_list ap);
 int		apply_flags(t_arg *current);
 int		print_all(const char *al, t_arg *current);
 void	free_list(t_arg *current);
+int		fill_flags(const char *al, t_arg *arg, va_list ap);
 
 #endif

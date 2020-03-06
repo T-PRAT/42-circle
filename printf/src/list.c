@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/05 19:04:32 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/06 23:24:36 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,39 +42,6 @@ char	*fill_res(t_arg *arg, va_list ap)
 	return (res);
 }
 
-int		fill_flags(const char *al, t_arg *arg, va_list ap)
-{
-	int i;
-
-	i = 0;
-	if (al[i] == '0')
-		(al[++i] == '*') ? (arg->zero = va_arg(ap, int)) :
-		(arg->zero = ft_atoi(al + i));
-	else if (al[i] == '-')
-		(al[++i] == '*') ? (arg->blank = va_arg(ap, int) * -1) :
-		(arg->blank = ft_atoi(al + i - 1));
-	else if (ft_isdigit(al[i]))
-		arg->blank = ft_atoi(al + i);
-	else if (al[i] == '*')
-		arg->blank = va_arg(ap, int);
-	while (ft_isdigit(al[i]) || al[i] == '*' || al[i] == '-')
-		i++;
-	if (al[i] == '.')
-	{
-		(al[++i] == '*') ? (arg->prec = va_arg(ap, int)) :
-		(arg->prec = ft_atoi(al + i));
-		if (arg->prec == 0)
-			arg->prec = -1;
-	}
-	while (ft_isdigit(al[i]) || al[i] == '.' || al[i] == '-' || al[i] == '*')
-		i++;
-	if (ft_strchr("cspdiuxX%", al[i]))
-		arg->type = al[i];
-	else
-		return (0);
-	return (1);
-}
-
 t_arg	*new_elem(const char *al, va_list ap)
 {
 	t_arg *new;
@@ -90,14 +57,6 @@ t_arg	*new_elem(const char *al, va_list ap)
 	if (!(new->res = fill_res(new, ap)))
 		return (0);
 	return (new);
-}
-
-int		lst_add_b(t_arg *current, t_arg *prev)
-{
-	if (!(prev->next = (t_arg *)malloc(sizeof(t_arg))))
-		return (0);
-	prev->next = current;
-	return (1);
 }
 
 t_arg	*create_list(const char *al, va_list ap)
@@ -120,7 +79,7 @@ t_arg	*create_list(const char *al, va_list ap)
 			if (!(first))
 				first = curr;
 			if (prev)
-				lst_add_b(curr, prev);
+				prev->next = curr;
 			prev = curr;
 			if (curr->type == '%')
 				while (al[i++] != '%');
