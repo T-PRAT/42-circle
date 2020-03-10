@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/06 23:43:37 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 19:27:42 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	apply_prec(t_arg *current)
 	char	*tmp;
 
 	i = -1;
-	if (ft_strchr("s", current->type) && current->blank)
+	if (ft_strchr("s", current->type))
 	{
 		if (!(current->res = ft_substr(current->res, 0, current->prec)))
 			return (0);
@@ -141,7 +141,7 @@ int	apply_flags(t_arg *current)
 			if (!(prec_one(current)))
 				return (0);
 		}
-		if (current->prec)
+		if (current->prec > 0)
 		{
 			if (!(apply_prec(current)))
 				return (0);
