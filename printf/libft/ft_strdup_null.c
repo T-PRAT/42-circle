@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 17:56:06 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/04 17:59:33 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 01:57:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ char	*ft_strdup_null(const char *src)
 			return (0);
 	}
 	return (dest);
-
 }

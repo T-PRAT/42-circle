@@ -6,12 +6,11 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 18:56:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/10 19:27:23 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 00:39:55 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 int	custom_atoi(const char *al, t_arg *arg, va_list ap)
 {
@@ -36,7 +35,7 @@ int	custom_atoi(const char *al, t_arg *arg, va_list ap)
 	return (i);
 }
 
-int	fill_flags(const char *al, t_arg *arg, va_list ap)
+int	fill_flags2(const char *al, t_arg *arg, va_list ap)
 {
 	int i;
 
@@ -62,6 +61,15 @@ int	fill_flags(const char *al, t_arg *arg, va_list ap)
 		if (arg->prec == 0)
 			arg->prec = -1;
 	}
+	return (i);
+}
+
+int	fill_flags(const char *al, t_arg *arg, va_list ap)
+{
+	int i;
+
+	i = 0;
+	i += fill_flags2(al, arg, ap);
 	while (ft_isdigit(al[i]) || al[i] == '.' || al[i] == '-' || al[i] == '*')
 		i++;
 	if (ft_strchr("cspdiuxX%", al[i]))

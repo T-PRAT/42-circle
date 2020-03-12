@@ -6,11 +6,22 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/06 23:24:36 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 01:16:43 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*chardup(int val)
+{
+	char *res;
+
+	if (!(res = malloc(sizeof(char) * 2)))
+		return (0);
+	res[0] = val;
+	res[1] = 0;
+	return (res);
+}
 
 char	*fill_res(t_arg *arg, va_list ap)
 {
@@ -18,12 +29,7 @@ char	*fill_res(t_arg *arg, va_list ap)
 
 	res = 0;
 	if (arg->type == 'c')
-	{
-		if (!(res = malloc(sizeof(char) * 2)))
-			return (0);
-		res[0] = va_arg(ap, int);
-		res[1] = 0;
-	}
+		res = chardup(va_arg(ap, int));
 	if (arg->type == 's')
 		res = ft_strdup_null(va_arg(ap, char *));
 	if (arg->type == 'd' || arg->type == 'i')
@@ -36,7 +42,7 @@ char	*fill_res(t_arg *arg, va_list ap)
 		res = ft_itoa_base(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	if (arg->type == 'p')
 		res = ft_strjoin("0x", ft_itoa_base(va_arg(ap, unsigned long long),
-		 "0123456789abcdef"));
+		"0123456789abcdef"));
 	if (arg->type == '%')
 		res = ft_strdup("%");
 	return (res);
@@ -59,21 +65,18 @@ t_arg	*new_elem(const char *al, va_list ap)
 	return (new);
 }
 
-t_arg	*create_list(const char *al, va_list ap)
+t_arg	*create_list(const char *al, va_list ap, t_arg *first)
 {
 	int		i;
 	t_arg	*curr;
-	t_arg	*first;
 	t_arg	*prev;
 
-	first = 0;
 	prev = 0;
 	i = 0;
-	while (al[i])
+	while (al[i++])
 	{
-		if (al[i] == '%')
+		if (al[i - 1] == '%')
 		{
-			i++;
 			if (!(curr = new_elem(al + i, ap)))
 				return (0);
 			if (!(first))
@@ -82,10 +85,11 @@ t_arg	*create_list(const char *al, va_list ap)
 				prev->next = curr;
 			prev = curr;
 			if (curr->type == '%')
-				while (al[i++] != '%');
+			{
+				while (al[i++] != '%')
+					curr->type = '%';
+			}
 		}
-		else
-			i++;
 	}
 	return (first);
 }
