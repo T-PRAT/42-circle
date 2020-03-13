@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:27:36 by tprat             #+#    #+#             */
-/*   Updated: 2020/02/28 19:05:49 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 23:54:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,8 @@ char	*ft_itoa(int n)
 		res = ft_strdup("0");
 	else
 	{
-		if (!(ft_itoa2(res, n)))
+		if (!(res = ft_itoa2(res, n)))
 			return (0);
-		res = ft_itoa2(res, n);
 	}
 	return (res);
 }

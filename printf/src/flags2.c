@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 01:20:55 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:42:34 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 23:28:51 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ int	apply_prec2(t_arg *curr)
 
 int	apply_prec(t_arg *curr)
 {
+	char *tmp;
+
 	if (ft_strchr("s", curr->type))
 	{
+		tmp = curr->res;
 		if (!(curr->res = ft_substr(curr->res, 0, curr->prec)))
 			return (0);
+		free(tmp);
 	}
 	else if (curr->prec > 0 && ft_strchr("diuxX", curr->type))
 	{

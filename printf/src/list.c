@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:30:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:16:43 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/13 00:12:59 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ char	*chardup(int val)
 	return (res);
 }
 
+char	*iadress(unsigned long long val)
+{
+	char *res;
+	char *tmp;
+
+	res = ft_itoa_base(val, "0123456789abcdef");
+	tmp = res;
+	res = ft_strjoin("0x", res);
+	free(tmp);
+	return (res);
+}
+
 char	*fill_res(t_arg *arg, va_list ap)
 {
 	char *res;
@@ -31,7 +43,10 @@ char	*fill_res(t_arg *arg, va_list ap)
 	if (arg->type == 'c')
 		res = chardup(va_arg(ap, int));
 	if (arg->type == 's')
-		res = ft_strdup_null(va_arg(ap, char *));
+	{
+		(arg->prec == -1 && !(arg->blank)) ? (res = ft_strdup("")) :
+		(res = ft_strdup_null(va_arg(ap, char *)));
+	}
 	if (arg->type == 'd' || arg->type == 'i')
 		res = ft_itoa(va_arg(ap, int));
 	if (arg->type == 'u')
@@ -41,8 +56,7 @@ char	*fill_res(t_arg *arg, va_list ap)
 	if (arg->type == 'X')
 		res = ft_itoa_base(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	if (arg->type == 'p')
-		res = ft_strjoin("0x", ft_itoa_base(va_arg(ap, unsigned long long),
-		"0123456789abcdef"));
+		res = iadress(va_arg(ap, unsigned long long));
 	if (arg->type == '%')
 		res = ft_strdup("%");
 	return (res);

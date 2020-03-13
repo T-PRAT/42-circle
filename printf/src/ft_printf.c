@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:58:05 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 00:59:19 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 23:35:15 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int		ft_printf(const char *al, ...)
 	}
 	va_start(ap, al);
 	if (!(arg = create_list(al, ap, arg)))
-		return (0);
+		return (free_list(arg));
 	va_end(ap);
 	if (!(apply_flags(arg)))
-		return (0);
+		return (free_list(arg));
 	c = print_all(al, arg);
 	free_list(arg);
 	return (c);

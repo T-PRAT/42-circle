@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 18:46:50 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/11 22:59:16 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/03/13 00:35:23 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int main()
 {
 	char *s = "Hello";
-	int d = 42;
+	int c = 42;
+	int b = 42;
 
-	int i = printf("%.5p\n", 0);
-	int j = printf("%.5p", 0);
-	printf("%d/%d\n", i, j);
-	//while (d);
+	printf("%.5p", 0);
+	ft_printf("%.5p", 0);
+	//while(b);
 }
