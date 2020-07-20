@@ -1,0 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/14 15:22:20 by tprat             #+#    #+#             */
+/*   Updated: 2020/03/12 01:52:39 by tprat            ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list *new;
+
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
+		return (0);
+	if (!(new->content = malloc(sizeof(content))))
+		return (0);
+	new->content = content;
+	new->next = 0;
+	return (new);
+}
