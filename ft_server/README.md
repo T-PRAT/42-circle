@@ -1,7 +1,7 @@
 # FT_SERVER
 
 ## Build
-docker build . --rm -t ft_server/latest
+> docker build . --rm -t ft_server/latest
 
 ## Run
 - autoindex on :
