@@ -8,4 +8,4 @@
 > docker run -it -p 80:80 -p 443:443 ft_server/latest
 
 - autoindex off :
-> docker run -it -p 80:80 -p 443:443 -eINDEXOFF ft_server/latest
+> docker run -it -p 80:80 -p 443:443 -eINDEXOFF= ft_server/latest
