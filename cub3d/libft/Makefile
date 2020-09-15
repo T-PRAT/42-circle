@@ -41,7 +41,9 @@ ft_lstiter.c \
 ft_lstlast.c \
 ft_lstmap.c \
 ft_lstnew.c \
-ft_lstsize.c
+ft_lstsize.c \
+get_next_line.c \
+get_next_line_utils.c
 
 OBJS= ${SRCS:.c=.o}
 

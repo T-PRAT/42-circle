@@ -12,7 +12,8 @@ MLXFLAGS = -lmlx -lm -lX11 -lXext -lbsd
 
 HEADER = -I./include
 
-SRCS = src/main.c
+SRCS = src/main.c \
+src/map_parsing.c
 
 OBJS = $(SRCS:.c=.o)
 

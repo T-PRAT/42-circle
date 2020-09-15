@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <tprat@student.le-101.fr>           +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:05:47 by tprat             #+#    #+#             */
-/*   Updated: 2020/06/19 17:12:50 by user42           ###   ########.fr       */
+/*   Updated: 2020/09/14 19:08:42 by tprat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,15 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_utoa(unsigned int n);
+int					get_next_line(int fd, char **line);
+char				*ft_strdupgnl(const char *src);
+char				*ft_strbufjoin(char **line, char *buf);
+int					ft_buflen(const char *str);
 
 #endif
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 512
+
+#endif
+
