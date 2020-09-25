@@ -6,14 +6,14 @@ CC = gcc
 
 LIBFT = libft/libft.a
 
-MLXSRC = minilibx-linux
-
 MLXFLAGS = -lmlx -lm -lX11 -lXext -lbsd
 
 HEADER = -I./include
 
 SRCS = src/main.c \
-src/map_parsing.c
+src/map_parsing.c \
+src/map_parsing2.c \
+src/loop.c
 
 OBJS = $(SRCS:.c=.o)
 
