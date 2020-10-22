@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2020/09/24 19:28:33 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/10/23 01:08:55 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ typedef struct s_map
 	char	*text_S;
 	char	*text_W;
 	char	*text_E;
+	char	**all_text;
 	char	*sprite;
 	char	*color_f;
 	char	*color_c;
+	int		x;
+	int		y;
 }				t_map;
 
 t_map	*parse_map(char *map_path);
 char	*clean_map(char *map);
 int		loop(t_map *map);
+void	*create_image(t_loop *loop, t_map *map);
+t_map	*get_pos(t_map *map);
 
 #endif

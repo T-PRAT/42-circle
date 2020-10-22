@@ -6,13 +6,13 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:51:16 by tprat             #+#    #+#             */
-/*   Updated: 2020/09/24 16:42:32 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2020/10/22 00:35:04 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int check_body(char *map, int i)
+int 	check_body(char *map, int i)
 {
 	int P;
 
@@ -38,7 +38,7 @@ int check_body(char *map, int i)
 	return (i);
 }
 
-int check_map(char *map)
+int		check_map(char *map)
 {
 	int i;
 
@@ -60,9 +60,9 @@ int check_map(char *map)
 	return (1);
 }
 
-char *clean_map(char *map)
+char	*clean_map(char *map)
 {
-	int i;
+	int	i;
 	int c;
 	char *clean_map;
 
