@@ -9,8 +9,7 @@ RUN apt-get update && \
 RUN cd /tmp && tar xf latest.tar.gz && tar xf phpMyAdmin-4.9.5-english.tar.gz && \
 	rm latest.tar.gz phpMyAdmin-4.9.5-english.tar.gz && \
 	mv /tmp/wordpress/ /var/www/html/wordpress && mv /tmp/phpMyAdmin-4.9.5-english /var/www//html/phpmyadmin && \
-	chown -R www-data:www-data /var/www/html/wordpress/ && \
-	rm -f /var/www/html/index.nginx-debian.html
+	chown -R www-data:www-data /var/www/html/wordpress/
 
 #SSL
 RUN mkdir /etc/nginx/ssl && \

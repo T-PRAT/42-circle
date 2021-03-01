@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2020/10/23 00:25:36 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/01/05 16:09:38 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_map	*img_path_to_adr(t_map *map, void *mlx)
 	size = 512;
 	bpp = 4;
 	endian = 0;
+	map->all_text = malloc(sizeof(map->all_text));
 	img = mlx_xpm_file_to_image(mlx, map->text_N, &size, &size);
 	map->all_text[0] = mlx_get_data_addr(img, &bpp, &size, &endian);
 	img = mlx_xpm_file_to_image(mlx, map->text_S, &size, &size);
