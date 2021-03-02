@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-LIBFT = libft/libft.a
+LIBFT = libft/libft.a mlx/libmlx.a
 
-MLXFLAGS = -lmlx -lm -lX11 -lXext -lbsd
+MLXFLAGS = -framework OpenGL -framework AppKit
 
 HEADER = -I./include
 

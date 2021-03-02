@@ -6,14 +6,14 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2020/10/23 01:08:55 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/02 15:59:30 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -40,8 +40,10 @@ typedef struct s_map
 	char	*sprite;
 	char	*color_f;
 	char	*color_c;
-	int		x;
-	int		y;
+	int		pos_x;
+	int		pos_y;
+	int		dir_x;
+	int		dir_y;
 }				t_map;
 
 t_map	*parse_map(char *map_path);
