@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 01:39:15 by tprat             #+#    #+#             */
-/*   Updated: 2020/10/14 21:25:33 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 11:22:04 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	*create_image(t_loop *loop, t_map *map)
 	addr = mlx_get_data_addr(text_N, &bpp, &s_line, &endian);
     ft_memcpy(addr, "\0\0\0\0\0\0\0\0\0", 9);
 	write(1, text_N, 10);
+	return (img);
 }

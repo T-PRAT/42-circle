@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:20:47 by tprat             #+#    #+#             */
-/*   Updated: 2020/09/24 19:39:16 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/03 11:51:52 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,5 @@ int main(int ac, char **av)
         if (!(loop(map)))
             return (0);
     }
-
-    /*
-    vars = malloc(sizeof(t_vars));
-    vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, 1280 ,1024, "LA FENETRE");
-    print_img(vars);
-    //mlx_key_hook(vars->win, key_press, vars);
-	mlx_loop(vars->mlx);
-    */
     return (0);
 }

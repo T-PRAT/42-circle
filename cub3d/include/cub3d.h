@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/02 15:59:30 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/04 15:45:20 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 // A VIRER
 # include <stdio.h>
 # include "../libft/libft.h"
+
+# define UNIT 64
+# define POV 60
 
 typedef struct  s_loop {
 	void    *mlx;
@@ -40,10 +43,22 @@ typedef struct s_map
 	char	*sprite;
 	char	*color_f;
 	char	*color_c;
-	int		pos_x;
-	int		pos_y;
-	int		dir_x;
-	int		dir_y;
+	double	dir_x;
+	double	dir_y;
+	double	pos_x;
+	double	pos_y;
+	double	pla_x;
+	double	pla_y;
+	double	ray_x;
+	double	ray_y;
+	double	cam_x;
+	double	side_x;
+	double	side_y;
+	double	delta_x;
+	double	delta_y;
+	double	ray_l;
+	int		map_x;
+	int		map_y;
 }				t_map;
 
 t_map	*parse_map(char *map_path);
@@ -51,5 +66,6 @@ char	*clean_map(char *map);
 int		loop(t_map *map);
 void	*create_image(t_loop *loop, t_map *map);
 t_map	*get_pos(t_map *map);
+void	raycasting(t_map *map, t_loop *loop);
 
 #endif
