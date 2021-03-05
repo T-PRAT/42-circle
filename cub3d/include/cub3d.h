@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/04 15:45:20 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 10:46:18 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ typedef struct s_map
 	double	delta_x;
 	double	delta_y;
 	double	ray_l;
+	int		step_x;
+	int		step_y;
 	int		map_x;
 	int		map_y;
+	char	side;
 }				t_map;
 
 t_map	*parse_map(char *map_path);
@@ -66,6 +69,6 @@ char	*clean_map(char *map);
 int		loop(t_map *map);
 void	*create_image(t_loop *loop, t_map *map);
 t_map	*get_pos(t_map *map);
-void	raycasting(t_map *map, t_loop *loop);
+t_map	*raycasting(t_map *map, t_loop *loop);
 
 #endif

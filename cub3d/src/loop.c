@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/04 11:42:58 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 10:34:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ int		loop(t_map *map)
 	loop->win = mlx_new_window(loop->mlx, map->res_w, map->res_h, "CUB3D");
 	mlx_key_hook(loop->win, deal_key, loop);
 	map = img_path_to_adr(map, loop->mlx);
-	map = get_pos(map);
+	//map = get_pos(map);
 	//printf("pos:%f///%f", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
-	raycasting(map, loop);
+	//raycasting(map, loop);
 	//create_image(loop, map);
 	mlx_loop(loop->mlx);
 	return (0);
