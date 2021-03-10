@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/05 10:34:26 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 13:34:29 by tprat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int 	print_img(t_loop *loop, int x)
 int		deal_key(int key, t_loop *loop)
 {
 	//ft_putnbr_fd(key, 1);
-	if (key == 53)
+	if (key == 65307)
+//	if (key == 53)
 	{
 		mlx_destroy_window(loop->mlx, loop->win);
 		exit (1);
@@ -75,11 +76,11 @@ int		loop(t_map *map)
 	loop->win = mlx_new_window(loop->mlx, map->res_w, map->res_h, "CUB3D");
 	mlx_key_hook(loop->win, deal_key, loop);
 	map = img_path_to_adr(map, loop->mlx);
-	//map = get_pos(map);
-	//printf("pos:%f///%f", map->pos_x, map->pos_y);
+	map = get_pos(map);
+	printf("pos:%f///%f", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
-	//raycasting(map, loop);
+	map = raycasting(map, loop);
 	//create_image(loop, map);
 	mlx_loop(loop->mlx);
 	return (0);

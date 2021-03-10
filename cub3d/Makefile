@@ -4,9 +4,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-LIBFT = libft/libft.a mlx/libmlx.a
+LIB = libft/libft.a mlx-linux/libmlx.a
+#libft/libft.a mlx/libmlx.a
+MLXFLAGS = -lX11 -lXext
 
-MLXFLAGS = -framework OpenGL -framework AppKit
+#-framework OpenGL -framework AppKit mlx/libmlx.a
 
 HEADER = -I./include
 
@@ -24,7 +26,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C libft
-	$(CC) $(HEADER) $(FLAGS) $(OBJS) $(LIBFT) -o ${NAME} $(MLXFLAGS)
+	$(CC) $(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
 
 
 norme:

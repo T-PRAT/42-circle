@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:20:47 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/03 11:51:52 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/05 13:29:32 by tprat            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main(int ac, char **av)
 {
     t_map   *map;
 
+	if(!(map = malloc(sizeof(t_map))))
+		return (0);
     if (ac != 2)
     {
         ft_putstr_fd("to many arguments", 2);
