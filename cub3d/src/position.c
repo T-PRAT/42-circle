@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:47:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/04 11:42:20 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/15 16:36:12 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ t_map	*get_pos(t_map *map)
 			map->pos_y++;
 		i--;
 	}
-	map = get_dir(map, map->map[i]);
-	while (map->map[i--] != '\n')
+	while (map->map[i - 1] != '\n' && i > 1)
+	{
 		map->pos_x++;
-	map->pos_x--;
-	map->pos_y++;
-	map->pos_x = map->pos_x * UNIT - UNIT / 2;
-	map->pos_y = map->pos_y * UNIT - UNIT / 2;
+		i--;
+	}
+	map = get_dir(map, map->map[i]);
 	return (map);
 }

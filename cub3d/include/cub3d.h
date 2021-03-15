@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/05 13:05:19 by tprat            ###   ########.fr       */
+/*   Updated: 2021/03/15 15:32:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-//# include "../mlx/mlx.h"
-# include "../mlx-linux/mlx.h"
+# include "../mlx/mlx.h"
+//# include "../mlx-linux/mlx.h"
 # include <math.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -23,7 +23,6 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-# define UNIT 64
 # define POV 60
 
 typedef struct  s_loop {

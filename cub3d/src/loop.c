@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/05 13:34:29 by tprat            ###   ########.fr       */
+/*   Updated: 2021/03/15 16:36:51 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int 	print_img(t_loop *loop, int x)
 int		deal_key(int key, t_loop *loop)
 {
 	//ft_putnbr_fd(key, 1);
-	if (key == 65307)
-//	if (key == 53)
+//	if (key == 65307)
+	if (key == 53)
 	{
 		mlx_destroy_window(loop->mlx, loop->win);
 		exit (1);
@@ -77,7 +77,7 @@ int		loop(t_map *map)
 	mlx_key_hook(loop->win, deal_key, loop);
 	map = img_path_to_adr(map, loop->mlx);
 	map = get_pos(map);
-	printf("pos:%f///%f", map->pos_x, map->pos_y);
+	printf("pos:%f///%f\n", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
 	map = raycasting(map, loop);
