@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/15 15:32:44 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:24:00 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_map
 	char	*sprite;
 	char	*color_f;
 	char	*color_c;
+	char	*img_data;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
@@ -62,6 +63,7 @@ typedef struct s_map
 	int		map_x;
 	int		map_y;
 	char	side;
+	int		wall_h;
 }				t_map;
 
 t_map	*parse_map(char *map_path);
@@ -69,6 +71,8 @@ char	*clean_map(char *map);
 int		loop(t_map *map);
 void	*create_image(t_loop *loop, t_map *map);
 t_map	*get_pos(t_map *map);
-t_map	*raycasting(t_map *map, t_loop *loop);
+t_map	*raycasting(t_map *map);
+char	*draw_line(t_map *map);
+char	*draw_pixel(char *img_addr, int	x, int y, char *color);
 
 #endif

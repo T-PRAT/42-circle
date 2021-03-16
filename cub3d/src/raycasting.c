@@ -6,13 +6,13 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 00:28:07 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/15 16:46:09 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 15:19:12 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int		check_wall(t_map *map)
+int	check_wall(t_map *map)
 {
 	int	i;
 	int	c;
@@ -21,7 +21,7 @@ int		check_wall(t_map *map)
 	c = 0;
 	while (map->map[i++]);
 	i--;
-	while (i && c <= map->map_y)
+	while (c < map->map_y && i)
 	{
 		if (map->map[i] == '\n')
 			c++;
@@ -29,8 +29,8 @@ int		check_wall(t_map *map)
 	}
 	while (map->map[i - 1] != '\n' && i >= 0)
 		i--;
-	printf("mapx:%d|||mapy:%d\n", map->map_x, map->map_y);
-	printf("map:%c\n", map->map[i + map->map_x]);
+	//printf("mapx:%d|||mapy:%d\n", map->map_x, map->map_y);
+	//printf("map:%c\n", map->map[i + map->map_x]);
 	if (map->map[i + map->map_x] != '1')
 		return (1);
 	return (0);
@@ -38,22 +38,21 @@ int		check_wall(t_map *map)
 
 t_map	*ray_steps(t_map *map)
 {
-	while (check_wall(map))
+	while (check_wall(map) == 1)
 	{
 		if (map->side_x < map->side_y)
 		{
 			map->side_x += map->delta_x;
 			map->map_x += map->step_x;
-			map->side = 0;
+			map->side = 1;
 		}
 		else
 		{
 			map->side_y += map->delta_y;
 			map->map_y += map->step_y;
-			map->side = 1;
+			map->side = 0;
 		}
 	}
-	printf("------------\n");
 	return (map);
 }
 
@@ -67,7 +66,7 @@ t_map	*ray_steps_init(t_map *map)
 	else
 	{
 		map->step_x = 1;
-		map->side_x = ((double)map->map_x + 1 - map->pos_x)	* map->delta_x;
+		map->side_x = ((double)map->map_x + 1 - map->pos_x) * map->delta_x;
 	}
 	if (map->ray_y < 0)
 	{
@@ -77,13 +76,13 @@ t_map	*ray_steps_init(t_map *map)
 	else
 	{
 		map->step_y = 1;
-		map->side_y = ((double)map->map_y + 1 - map->pos_y)	* map->delta_y;
+		map->side_y = ((double)map->map_y + 1 - map->pos_y) * map->delta_y;
 	}
 	//printf ("sidex:%f|||sidey:%f\n", map->side_x, map->side_y);
 	return (ray_steps(map));
 }
 
-t_map	*raycasting(t_map *map, t_loop *loop)
+t_map	*raycasting(t_map *map)
 {
 	int	x;
 
@@ -114,6 +113,8 @@ t_map	*raycasting(t_map *map, t_loop *loop)
 				map->delta_y = fabs(1 / map->ray_y);
 		}
 		map = ray_steps_init(map);
+		map->img_data = draw_line(map);
+		//printf("------------\n");
 		//printf("res_w:%fcam_x:%f\n", (double)map->res_w, map->cam_x);
 		//printf("ray_x:%f||ray_y:%f\n", map->ray_x, map->ray_y);
 		x++;

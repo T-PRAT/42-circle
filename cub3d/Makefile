@@ -18,7 +18,9 @@ src/map_parsing2.c \
 src/loop.c \
 src/create_image.c \
 src/position.c \
-src/raycasting.c
+src/raycasting.c \
+src/raycasting2.c \
+src/utils.c
 
 OBJS = $(SRCS:.c=.o)
 

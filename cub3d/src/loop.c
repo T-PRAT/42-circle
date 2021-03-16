@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/15 16:36:51 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/16 14:23:31 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,18 @@ t_map	*img_path_to_adr(t_map *map, void *mlx)
 	return (map);
 }
 
-int 	print_img(t_loop *loop, int x)
+char	*get_data_addr(void	*img)
 {
-	void	*img;
-	char    *murnoir_path = "./img/img.xpm";
-    int     img_width = 160;
-    int     img_height = 160;
+	int		size;
+	int		bpp;
+	int		endian;
+	char	*img_addr;
 
-    img = mlx_xpm_file_to_image(loop->mlx, murnoir_path, &img_width, &img_height);
-	mlx_put_image_to_window(loop->mlx, loop->win, img, x, x);
-	return (0);
+	size = 512;
+	bpp = 4;
+	endian = 0;
+	img_addr = mlx_get_data_addr(img, &bpp, &size, &endian);
+	return (img_addr);
 }
 
 int		deal_key(int key, t_loop *loop)
@@ -69,6 +71,7 @@ int		deal_key(int key, t_loop *loop)
 int		loop(t_map *map)
 {
     t_loop	*loop;
+	void	*img;
 
 	if(!(loop = malloc(sizeof(t_loop))))
 		return (0);
@@ -80,8 +83,12 @@ int		loop(t_map *map)
 	printf("pos:%f///%f\n", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
-	map = raycasting(map, loop);
-	//create_image(loop, map);
+	img = mlx_new_image(loop->mlx, map->res_w, map->res_h);
+	map->img_data = get_data_addr(img);
+	map = raycasting(map);
+	map->img_data = draw_pixel(map->img_data, 1, 1, "255,0,0");
+	mlx_put_image_to_window(loop->mlx, loop->win, img, 0, 0);
+	printf("%d", map->img_data);
 	mlx_loop(loop->mlx);
 	return (0);
 }
