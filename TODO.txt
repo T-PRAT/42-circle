@@ -1,0 +1,6 @@
+finir calc
+affichage
+move
+sprite
+orga struct
+norme
