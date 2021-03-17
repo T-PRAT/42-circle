@@ -12,21 +12,15 @@
 
 #include "../include/cub3d.h"
 
-char	*draw_pixel(char *img_addr, int	x, int y, char *color)
+int		create_trgb(int t, int r, int g, int b)
 {
-	int i;
-	char	color_1;
-	char	color_2;
-	char	color_3;
+	return(t << 24 | r << 16 | g << 8 | b);
+}
 
-	i = 0;
-	color_1 = ft_atoi(color);
-	while (color[i++] != "," && color[i]);
-	color_1 = ft_atoi(color + i);
-	while (color[i++] != "," && color[i]);
-	color_1 = ft_atoi(color + i);
-	img_addr[x * y ] = color_1;
-	img_addr[x * y + 1] = color_2;
-	img_addr[x * y + 2] = color_3;
-	return (img_addr);
+void	insert_pixel(t_data *data, int	x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->img_adr + (y * data->line_s + x * (data->bpp / 8));
+	*(unsigned int*)dst = color;
 }

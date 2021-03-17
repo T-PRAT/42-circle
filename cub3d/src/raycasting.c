@@ -82,7 +82,7 @@ t_map	*ray_steps_init(t_map *map)
 	return (ray_steps(map));
 }
 
-t_map	*raycasting(t_map *map)
+t_map	*raycasting(t_map *map, t_data *data)
 {
 	int	x;
 
@@ -92,6 +92,7 @@ t_map	*raycasting(t_map *map)
 		map->cam_x = 2 * x / (double)(map->res_w) - 1;
 		map->ray_x = map->dir_x + map->pla_x * map->cam_x;
 		map->ray_y = map->dir_y + map->pla_y * map->cam_x;
+
 		map->map_x = (int)map->pos_x;
 		map->map_y = (int)map->pos_y;
 		if (map->ray_y == 0)
@@ -113,7 +114,7 @@ t_map	*raycasting(t_map *map)
 				map->delta_y = fabs(1 / map->ray_y);
 		}
 		map = ray_steps_init(map);
-		map->img_data = draw_line(map);
+		draw_line(map, data);
 		//printf("------------\n");
 		//printf("res_w:%fcam_x:%f\n", (double)map->res_w, map->cam_x);
 		//printf("ray_x:%f||ray_y:%f\n", map->ray_x, map->ray_y);

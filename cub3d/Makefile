@@ -16,7 +16,6 @@ SRCS = src/main.c \
 src/map_parsing.c \
 src/map_parsing2.c \
 src/loop.c \
-src/create_image.c \
 src/position.c \
 src/raycasting.c \
 src/raycasting2.c \
