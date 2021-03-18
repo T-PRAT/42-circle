@@ -25,16 +25,6 @@
 
 # define POV 60
 
-typedef struct  s_data {
-	void    *mlx;
-    void    *win;
-	void	*img;
-	char	*img_adr;
-	int		bpp;
-	int		line_s;
-	int		endian;
-}               t_data;
-
 typedef struct s_map
 {
 	char	*map;
@@ -67,8 +57,18 @@ typedef struct s_map
 	int		map_x;
 	int		map_y;
 	char	side;
-	int		wall_h;
 }				t_map;
+
+typedef struct  s_data {
+	void    *mlx;
+    void    *win;
+	void	*img;
+	char	*img_adr;
+	int		bpp;
+	int		line_s;
+	int		endian;
+	t_map	*map;
+}               t_data;
 
 t_map	*parse_map(char *map_path);
 char	*clean_map(char *map);
@@ -76,7 +76,7 @@ int		loop(t_map *map);
 void	*create_image(t_data *data, t_map *map);
 t_map	*get_pos(t_map *map);
 t_map	*raycasting(t_map *map, t_data *data);
-void	draw_line(t_map *map, t_data *data);
+void	draw_line(t_map *map, t_data *data, int x);
 void	insert_pixel(t_data *t_data, int	x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 

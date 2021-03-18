@@ -42,10 +42,19 @@ int		deal_key(int key, t_data *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
-		free (data);
-		exit (1);
+		exit (0);
 		return (0);
 	}
+	if (key == 13)
+		data->map->pos_y++;
+	if (key == 0)
+		data->map->pos_x--;
+	if (key == 1)
+		data->map->pos_y--;
+	if (key == 12)
+		data->map->pos_x++;
+	data->map = raycasting(data->map, data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
 
@@ -57,22 +66,23 @@ int		loop(t_map *map)
 
 	if(!(data = malloc(sizeof(t_data))))
 		return (0);
+	data->map = map;
     data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, map->res_w, map->res_h, "CUB3D");
-	mlx_key_hook(data->win, deal_key, data);
 	map = img_path_to_adr(map, data);
 	map = get_pos(map);
-	printf("pos:%f///%f\n", map->pos_x, map->pos_y);
+	//printf("pos:%f///%f\n", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
 	data->img = mlx_new_image(data->mlx, map->res_w, map->res_h);
 	data->img_adr = mlx_get_data_addr(data->img, &data->bpp, &data->line_s, &data->endian);
 	//color = create_trgb(255, 255, 0, 0);
-	insert_pixel(data, 1, 1, 0x00FF0000);
+	//insert_pixel(data, 1, 1, 0x00FF0000);
 	map = raycasting(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	mlx_key_hook(data->win, deal_key, data);
+	mlx_loop(data->mlx);
 	//map->img_data = draw_pixel(map->img_data, 1, 1, "255,0,0");
 	//printf("%s", map->img_data);
-	mlx_loop(data->mlx);
 	return (0);
 }

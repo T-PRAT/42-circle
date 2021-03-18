@@ -29,7 +29,7 @@ int	check_wall(t_map *map)
 	}
 	while (map->map[i - 1] != '\n' && i >= 0)
 		i--;
-	//printf("mapx:%d|||mapy:%d\n", map->map_x, map->map_y);
+	printf("mapx:%d|||mapy:%d\n", map->map_x, map->map_y);
 	//printf("map:%c\n", map->map[i + map->map_x]);
 	if (map->map[i + map->map_x] != '1')
 		return (1);
@@ -44,13 +44,13 @@ t_map	*ray_steps(t_map *map)
 		{
 			map->side_x += map->delta_x;
 			map->map_x += map->step_x;
-			map->side = 1;
+			map->side = 0;
 		}
 		else
 		{
 			map->side_y += map->delta_y;
 			map->map_y += map->step_y;
-			map->side = 0;
+			map->side = 1;
 		}
 	}
 	return (map);
@@ -89,6 +89,7 @@ t_map	*raycasting(t_map *map, t_data *data)
 	x = 0;
 	while (x < map->res_w)
 	{
+		printf("x:%d------------\n", x);
 		map->cam_x = 2 * x / (double)(map->res_w) - 1;
 		map->ray_x = map->dir_x + map->pla_x * map->cam_x;
 		map->ray_y = map->dir_y + map->pla_y * map->cam_x;
@@ -114,8 +115,7 @@ t_map	*raycasting(t_map *map, t_data *data)
 				map->delta_y = fabs(1 / map->ray_y);
 		}
 		map = ray_steps_init(map);
-		draw_line(map, data);
-		//printf("------------\n");
+		draw_line(map, data, x);
 		//printf("res_w:%fcam_x:%f\n", (double)map->res_w, map->cam_x);
 		//printf("ray_x:%f||ray_y:%f\n", map->ray_x, map->ray_y);
 		x++;
