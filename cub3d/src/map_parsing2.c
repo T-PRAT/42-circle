@@ -6,11 +6,28 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:51:16 by tprat             #+#    #+#             */
-/*   Updated: 2020/10/22 00:35:04 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 14:33:57 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int		get_color(char *str)
+{
+	int color;
+	int	r;
+	int	g;
+	int	b;
+	int	i;
+
+	i = 0;
+	r = ft_atoi(str);
+	while (str[i++] != ',');
+	g = ft_atoi(str + i);
+	while (str[i++] != ',');
+	b = ft_atoi(str + i);
+	return (0 << 24 | r << 16 | g << 8 | b);
+}
 
 int 	check_body(char *map, int i)
 {

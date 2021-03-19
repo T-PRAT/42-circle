@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/16 14:23:31 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 16:15:51 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ t_map	*img_path_to_adr(t_map *map, t_data *data)
 int		deal_key(int key, t_data *data)
 {
 	//ft_putnbr_fd(key, 1);
-//	if (key == 65307)
-	if (key == 53)
+	if (key == 65307)
+	//if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit (0);
 		return (0);
 	}
+/*
 	if (key == 13)
 		data->map->pos_y++;
 	if (key == 0)
@@ -53,6 +54,20 @@ int		deal_key(int key, t_data *data)
 		data->map->pos_y--;
 	if (key == 12)
 		data->map->pos_x++;
+*/
+// LINUX
+	if (key == 119 && check_wall((int)data->map->pos_x + 0.1,\
+	 (int)data->map->pos_y, data->map) == 0)
+		data->map->pos_y += 0.1;
+	if (key == 97 && check_wall((int)data->map->pos_x - 0.1,\
+	 (int)data->map->pos_y, data->map) == 0)
+		data->map->pos_x -= 0.1;
+	if (key == 115 && check_wall((int)data->map->pos_x, \
+	 (int)data->map->pos_y - 0.1, data->map) == 0)
+		data->map->pos_y -= 0.1;
+	if (key == 100 && check_wall((int)data->map->pos_x, \
+	 (int)data->map->pos_y + 0.1, data->map) == 0)
+		data->map->pos_x += 0.1;
 	data->map = raycasting(data->map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
@@ -71,13 +86,11 @@ int		loop(t_map *map)
 	data->win = mlx_new_window(data->mlx, map->res_w, map->res_h, "CUB3D");
 	map = img_path_to_adr(map, data);
 	map = get_pos(map);
-	//printf("pos:%f///%f\n", map->pos_x, map->pos_y);
+	printf("pos:%f///%f\n", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
 	data->img = mlx_new_image(data->mlx, map->res_w, map->res_h);
 	data->img_adr = mlx_get_data_addr(data->img, &data->bpp, &data->line_s, &data->endian);
-	//color = create_trgb(255, 255, 0, 0);
-	//insert_pixel(data, 1, 1, 0x00FF0000);
 	map = raycasting(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	mlx_key_hook(data->win, deal_key, data);

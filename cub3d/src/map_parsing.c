@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:21:22 by tprat             #+#    #+#             */
-/*   Updated: 2020/09/22 18:23:49 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 13:19:29 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@ t_map *get_line_info2(t_map *map, char **parts)
 		map->sprite = ft_strdup(parts[1]);
 	}
 	else if (!(ft_strncmp(parts[0], "F", 2)))
-		map->color_f = ft_strdup(parts[1]);
+		map->color_f = get_color(parts[1]);
 	else if (!(ft_strncmp(parts[0], "C", 2)))
-		map->color_c = ft_strdup(parts[1]);
+		map->color_c = get_color(parts[1]);
 	else
 		return (0);
-
 	return (map);
 }
 

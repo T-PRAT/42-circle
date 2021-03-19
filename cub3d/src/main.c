@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:20:47 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/05 13:29:32 by tprat            ###   ########.fr       */
+/*   Updated: 2021/03/19 14:29:45 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av)
         ft_putstr_fd("Error\n", 2);
     else
     {
-	    printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%s\ncorlor_c:%s\nmap:\n>>>%s<<<\n", map->res_w, map->res_h, map->text_N, map->text_S, map->text_W, map->text_E, map->sprite, map->color_f, map->color_c, map->map);
+	    printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%d\ncorlor_c:%d\nmap:\n>>>%s<<<\n", map->res_w, map->res_h, map->text_N, map->text_S, map->text_W, map->text_E, map->sprite, map->color_f, map->color_c, map->map);
         if (!(loop(map)))
             return (0);
     }

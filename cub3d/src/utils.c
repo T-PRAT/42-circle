@@ -6,11 +6,33 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:43:32 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/16 15:16:31 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 16:08:46 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	check_wall(int x, int y, t_map *map)
+{
+	int	i;
+	int	c;
+
+	i = 0;
+	c = 0;
+	while (map->map[i++]);
+	i--;
+	while (c < y && i)
+	{
+		if (map->map[i] == '\n')
+			c++;
+		i--;
+	}
+	while (map->map[i - 1] != '\n' && i >= 0)
+		i--;
+	if (map->map[i + x] != '1')
+		return (1);
+	return (0);
+}
 
 int		create_trgb(int t, int r, int g, int b)
 {

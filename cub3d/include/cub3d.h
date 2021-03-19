@@ -6,15 +6,15 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/16 14:24:00 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/03/19 16:06:08 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../mlx/mlx.h"
-//# include "../mlx-linux/mlx.h"
+//# include "../mlx/mlx.h"
+# include "../mlx-linux/mlx.h"
 # include <math.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -36,8 +36,8 @@ typedef struct s_map
 	char	*text_E;
 	char	**all_text;
 	char	*sprite;
-	char	*color_f;
-	char	*color_c;
+	int		color_f;
+	int		color_c;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
@@ -72,10 +72,12 @@ typedef struct  s_data {
 
 t_map	*parse_map(char *map_path);
 char	*clean_map(char *map);
+int		get_color(char *str);
 int		loop(t_map *map);
 void	*create_image(t_data *data, t_map *map);
 t_map	*get_pos(t_map *map);
 t_map	*raycasting(t_map *map, t_data *data);
+int		check_wall(int x, int y, t_map *map);
 void	draw_line(t_map *map, t_data *data, int x);
 void	insert_pixel(t_data *t_data, int	x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);

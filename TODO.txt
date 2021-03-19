@@ -1,6 +1,7 @@
 finir calc
-affichage
-move
+texture
+move:ajouter rota + collision
 sprite
 orga struct
+recheck parsing
 norme
