@@ -5,3 +5,4 @@ sprite
 orga struct
 recheck parsing
 norme
+makefile (copiler minilibx et verifier le reste)

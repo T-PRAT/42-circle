@@ -56,17 +56,17 @@ int		deal_key(int key, t_data *data)
 		data->map->pos_x++;
 */
 // LINUX
-	if (key == 119 && check_wall((int)data->map->pos_x + 0.1,\
-	 (int)data->map->pos_y, data->map) == 0)
+	if (key == 119 && check_wall((int)(data->map->pos_x + 0.1),\
+	 (int)data->map->pos_y, data->map) == 1)
 		data->map->pos_y += 0.1;
 	if (key == 97 && check_wall((int)data->map->pos_x - 0.1,\
-	 (int)data->map->pos_y, data->map) == 0)
+	 (int)data->map->pos_y, data->map) == 1)
 		data->map->pos_x -= 0.1;
 	if (key == 115 && check_wall((int)data->map->pos_x, \
-	 (int)data->map->pos_y - 0.1, data->map) == 0)
+	 (int)data->map->pos_y - 0.1, data->map) == 1)
 		data->map->pos_y -= 0.1;
 	if (key == 100 && check_wall((int)data->map->pos_x, \
-	 (int)data->map->pos_y + 0.1, data->map) == 0)
+	 (int)data->map->pos_y + 0.1, data->map) == 1)
 		data->map->pos_x += 0.1;
 	data->map = raycasting(data->map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
