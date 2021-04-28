@@ -69,7 +69,6 @@ t_map	*raycasting(t_map *map, t_data *data)
 		map->cam_x = 2 * x / (double)(map->res_w) - 1;
 		map->ray_x = map->dir_x + map->pla_x * map->cam_x;
 		map->ray_y = map->dir_y + map->pla_y * map->cam_x;
-
 		map->map_x = (int)map->pos_x;
 		map->map_y = (int)map->pos_y;
 		if (map->ray_y == 0)

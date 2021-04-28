@@ -33,7 +33,7 @@ void	draw_line(t_map *map, t_data *data, int x)
 	int	wall_h;
 	int	start;
 	int	end;
-	int c;
+	int	c;
 
 	c = -1;
 	map->ray_l = wall_height(map);

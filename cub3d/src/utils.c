@@ -34,9 +34,9 @@ int	check_wall(int x, int y, t_map *map)
 	return (0);
 }
 
-int		create_trgb(int t, int r, int g, int b)
+int	create_trgb(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8 | b);
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
 void	insert_pixel(t_data *data, int	x, int y, int color)
@@ -44,5 +44,5 @@ void	insert_pixel(t_data *data, int	x, int y, int color)
 	char	*dst;
 
 	dst = data->img_adr + (y * data->line_s + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int*) dst = color;
 }

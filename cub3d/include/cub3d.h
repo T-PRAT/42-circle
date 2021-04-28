@@ -13,8 +13,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-//# include "../mlx/mlx.h"
-# include "../mlx-linux/mlx.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -34,7 +33,7 @@ typedef struct s_map
 	char	*text_S;
 	char	*text_W;
 	char	*text_E;
-	char	**all_text;
+	char	**texts;
 	char	*sprite;
 	int		color_f;
 	int		color_c;
@@ -59,16 +58,17 @@ typedef struct s_map
 	char	side;
 }				t_map;
 
-typedef struct  s_data {
-	void    *mlx;
-    void    *win;
+typedef struct	s_data
+{
+	void	*mlx;
+	void	*win;
 	void	*img;
 	char	*img_adr;
 	int		bpp;
 	int		line_s;
 	int		endian;
 	t_map	*map;
-}               t_data;
+}				t_data;
 
 t_map	*parse_map(char *map_path);
 char	*clean_map(char *map);

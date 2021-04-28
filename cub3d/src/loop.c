@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-int		close_wd(int keycode, t_data *data)
+int	close_wd(int keycode, t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	return (0);
@@ -22,50 +22,46 @@ t_map	*img_path_to_adr(t_map *map, t_data *data)
 {
 	void	*img;
 
-	map->all_text = malloc(sizeof(map->all_text));
-	img = mlx_xpm_file_to_image(data->mlx, map->text_N, &data->line_s, &data->line_s);
-	map->all_text[0] = mlx_get_data_addr(img, &data->bpp, &data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_S, &data->line_s, &data->line_s);
-	map->all_text[1] = mlx_get_data_addr(img, &data->bpp, &data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_E, &data->line_s, &data->line_s);
-	map->all_text[2] = mlx_get_data_addr(img, &data->bpp, &data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_W, &data->line_s, &data->line_s);
-	map->all_text[3] = mlx_get_data_addr(img, &data->bpp, &data->line_s, &data->endian);
-	map->all_text[4] = ft_strdup(0);
+	map->texts = malloc(sizeof(map->texts));
+	img = mlx_xpm_file_to_image(data->mlx, map->text_N, \
+	&data->line_s, &data->line_s);
+	map->texts[0] = mlx_get_data_addr(img, &data->bpp, \
+	&data->line_s, &data->endian);
+	img = mlx_xpm_file_to_image(data->mlx, map->text_S, \
+	&data->line_s, &data->line_s);
+	map->texts[1] = mlx_get_data_addr(img, &data->bpp, \
+	&data->line_s, &data->endian);
+	img = mlx_xpm_file_to_image(data->mlx, map->text_E, \
+	&data->line_s, &data->line_s);
+	map->texts[2] = mlx_get_data_addr(img, &data->bpp, \
+	&data->line_s, &data->endian);
+	img = mlx_xpm_file_to_image(data->mlx, map->text_W, \
+	&data->line_s, &data->line_s);
+	map->texts[3] = mlx_get_data_addr(img, &data->bpp, \
+	&data->line_s, &data->endian);
+	map->texts[4] = ft_strdup(0);
 	return (map);
 }
 
-int		deal_key(int key, t_data *data)
+int	deal_key(int key, t_data *data)
 {
 	//ft_putnbr_fd(key, 1);
-	if (key == 65307)
-	//if (key == 53)
+	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit (0);
 		return (0);
 	}
-/*
-	if (key == 13)
-		data->map->pos_y++;
-	if (key == 0)
-		data->map->pos_x--;
-	if (key == 1)
-		data->map->pos_y--;
-	if (key == 12)
-		data->map->pos_x++;
-*/
-// LINUX
-	if (key == 119 && check_wall((int)(data->map->pos_x + 0.1),\
-	 (int)data->map->pos_y, data->map) == 1)
+	if (key == 13 && check_wall((int)data->map->pos_x + 0.1, \
+	(int)data->map->pos_y, data->map) == 1 )
 		data->map->pos_y += 0.1;
-	if (key == 97 && check_wall((int)data->map->pos_x - 0.1,\
-	 (int)data->map->pos_y, data->map) == 1)
+	if (key == 0 && check_wall((int)data->map->pos_x - 0.1, \
+	(int)data->map->pos_y, data->map) == 1)
 		data->map->pos_x -= 0.1;
-	if (key == 115 && check_wall((int)data->map->pos_x, \
+	if (key == 1 && check_wall((int)data->map->pos_x, \
 	 (int)data->map->pos_y - 0.1, data->map) == 1)
 		data->map->pos_y -= 0.1;
-	if (key == 100 && check_wall((int)data->map->pos_x, \
+	if (key == 2 && check_wall((int)data->map->pos_x, \
 	 (int)data->map->pos_y + 0.1, data->map) == 1)
 		data->map->pos_x += 0.1;
 	data->map = raycasting(data->map, data);
@@ -73,13 +69,13 @@ int		deal_key(int key, t_data *data)
 	return (0);
 }
 
-int		loop(t_map *map)
+int	loop(t_map *map)
 {
     t_data	*data;
 	void	*img;
 	int		color;
 
-	if(!(data = malloc(sizeof(t_data))))
+	if(!(data = malloc (sizeof(t_data))))
 		return (0);
 	data->map = map;
     data->mlx = mlx_init();

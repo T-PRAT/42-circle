@@ -12,9 +12,9 @@
 
 #include "../include/cub3d.h"
 
-int		get_color(char *str)
+int	get_color(char *str)
 {
-	int color;
+	int	color;
 	int	r;
 	int	g;
 	int	b;
@@ -31,7 +31,7 @@ int		get_color(char *str)
 
 int 	check_body(char *map, int i)
 {
-	int P;
+	int	P;
 
 	P = 0;
 	while (map[i])
@@ -55,9 +55,9 @@ int 	check_body(char *map, int i)
 	return (i);
 }
 
-int		check_map(char *map)
+int	check_map(char *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i] != '\n' && map[i])
@@ -79,9 +79,9 @@ int		check_map(char *map)
 
 char	*clean_map(char *map)
 {
-	int	i;
-	int c;
-	char *clean_map;
+	int		i;
+	int		c;
+	char	*clean_map;
 
 	i = 0;
 	c = 0;

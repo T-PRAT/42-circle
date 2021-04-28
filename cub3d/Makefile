@@ -4,11 +4,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-#LIB = libft/libft.a mlx/libmlx.a
-LIB = libft/libft.a mlx-linux/libmlx.a
+LIB = libft/libft.a mlx/libmlx.a
+#LIB = libft/libft.a mlx-linux/libmlx.a
 
-#MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.a
-MLXFLAGS = -lX11 -lXext
+MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.a
+#MLXFLAGS = -lX11 -lXext
 
 HEADER = -I./include
 
