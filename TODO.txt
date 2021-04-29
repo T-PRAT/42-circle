@@ -1,7 +1,7 @@
-finir calc
 texture
 move:ajouter rota + collision
 sprite
+--save
 orga struct
 recheck parsing
 norme
