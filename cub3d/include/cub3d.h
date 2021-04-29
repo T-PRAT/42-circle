@@ -33,6 +33,11 @@ typedef struct s_map
 	char	*text_S;
 	char	*text_W;
 	char	*text_E;
+	void	*img_N;
+	void	*img_S;
+	void	*img_W;
+	void	*img_E;
+	int		text_s;
 	char	**texts;
 	char	*sprite;
 	int		color_f;
@@ -56,6 +61,9 @@ typedef struct s_map
 	int		map_x;
 	int		map_y;
 	char	side;
+	double	wall_x;
+	int		text_x;
+	int		text_y;
 }				t_map;
 
 typedef struct	s_data
@@ -64,22 +72,23 @@ typedef struct	s_data
 	void	*win;
 	void	*img;
 	char	*img_adr;
+	t_map	*map;
 	int		bpp;
 	int		line_s;
 	int		endian;
-	t_map	*map;
 }				t_data;
 
-t_map	*parse_map(char *map_path);
-char	*clean_map(char *map);
-int		get_color(char *str);
-int		loop(t_map *map);
-void	*create_image(t_data *data, t_map *map);
-t_map	*get_pos(t_map *map);
-t_map	*raycasting(t_map *map, t_data *data);
-int		check_wall(int x, int y, t_map *map);
-void	draw_line(t_map *map, t_data *data, int x);
-void	insert_pixel(t_data *t_data, int	x, int y, int color);
-int		create_trgb(int t, int r, int g, int b);
+t_map		*parse_map(char *map_path);
+char		*clean_map(char *map);
+int			get_color(char *str);
+int			loop(t_map *map);
+void		*create_image(t_data *data, t_map *map);
+t_map		*get_pos(t_map *map);
+t_map		*raycasting(t_map *map, t_data *data);
+int			check_wall(int x, int y, t_map *map);
+void		draw_line(t_map *map, t_data *data, int x);
+void		insert_pixel(t_data *t_data, int	x, int y, int color);
+int			create_trgb(int t, int r, int g, int b);
+void		ft_error(char *str);
 
 #endif

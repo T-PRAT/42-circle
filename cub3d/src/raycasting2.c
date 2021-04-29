@@ -13,19 +13,30 @@
 
 #include "../include/cub3d.h"
 
-double	wall_height(t_map *map)
+t_map	*calc_wall(t_map *map)
 {
-	double	ray_l;
-
 	if (map->side == 0)
-		ray_l = ((double)map->map_x - map->pos_x + \
+	{
+		map->ray_l = ((double)map->map_x - map->pos_x + \
 		((double)(1 - map->step_x)) / 2) / map->ray_x;
+		map->wall_x = map->pos_y + map->ray_l * map->dir_y;
+	}
 	else
-		ray_l = ((double)map->map_y - map->pos_y + \
+	{
+		map->ray_l = ((double)map->map_y - map->pos_y + \
 		((double)(1 - map->step_y)) / 2) / map->ray_y;
-	//printf("side:%d||mapy:%f||posy:%f||stepy:%f||rayy:%f||ray_l:%f\n", map->side,(double)map->map_y, map->pos_y, (double)map->step_y, map->ray_y, ray_l);
-	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||rayx:%f||ray_x:%f\n", map->side,(double)map->map_x, map->pos_x, (double)map->step_x, map->ray_x, ray_l);
-	return (ray_l);
+		map->wall_x = map->pos_x + map->ray_l * map->dir_x;
+	}
+	map->wall_x -= floor(map->wall_x);
+	map->text_x = (int)(map->wall_x * (double)map->text_s);
+	if (map->side == 0 &&  map->dir_x > 0)
+		map->text_x = map->text_s - map->text_x - 1;
+	if (map->side == 1 &&  map->dir_y < 0)
+		map->text_x = map->text_s - map->text_x - 1;
+	//printf("side:%d||mapy:%f||posy:%f||stepy:%f||rayy:%f||ray_l:%f\n", map->side,(double)map->map_y, map->pos_y, (double)map->step_y, map->ray_y, map->ray_l);
+	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||rayx:%f||ray_x:%f\n", map->side,(double)map->map_x, map->pos_x, (double)map->step_x, map->ray_x, map->ray_l);
+	printf("side:%d||wallx:%f||textx:%d\n", map->side, map->wall_x, map->text_x);
+	return (map);
 }
 
 void	draw_line(t_map *map, t_data *data, int x)
@@ -35,8 +46,8 @@ void	draw_line(t_map *map, t_data *data, int x)
 	int	end;
 	int	c;
 
-	c = -1;
-	map->ray_l = wall_height(map);
+	c = 0;
+	map = calc_wall(map);
 	//printf("ray_l:%f\n", map->ray_l);
 	wall_h = (map->res_h / map->ray_l);
 	start = -wall_h / 2 + map->res_h / 2;

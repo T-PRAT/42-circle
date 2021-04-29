@@ -46,3 +46,9 @@ void	insert_pixel(t_data *data, int	x, int y, int color)
 	dst = data->img_adr + (y * data->line_s + x * (data->bpp / 8));
 	*(unsigned int*) dst = color;
 }
+
+void	ft_error(char *str)
+{
+	ft_putstr_fd(str, 2);
+	exit(1);
+}

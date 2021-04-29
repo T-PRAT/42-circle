@@ -21,25 +21,30 @@ int	close_wd(int keycode, t_data *data)
 t_map	*img_path_to_adr(t_map *map, t_data *data)
 {
 	void	*img;
+	int		bpp;
+	int		line_s;
+	int		endian;
+	int		texts;
 
 	map->texts = malloc(sizeof(map->texts));
-	img = mlx_xpm_file_to_image(data->mlx, map->text_N, \
-	&data->line_s, &data->line_s);
-	map->texts[0] = mlx_get_data_addr(img, &data->bpp, \
-	&data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_S, \
-	&data->line_s, &data->line_s);
-	map->texts[1] = mlx_get_data_addr(img, &data->bpp, \
-	&data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_E, \
-	&data->line_s, &data->line_s);
-	map->texts[2] = mlx_get_data_addr(img, &data->bpp, \
-	&data->line_s, &data->endian);
-	img = mlx_xpm_file_to_image(data->mlx, map->text_W, \
-	&data->line_s, &data->line_s);
-	map->texts[3] = mlx_get_data_addr(img, &data->bpp, \
-	&data->line_s, &data->endian);
+	if(!(map->img_N = mlx_xpm_file_to_image(data->mlx, map->text_N, \
+	&texts, &texts)))
+		ft_error("corrupted XPM");
+	map->texts[0] = mlx_get_data_addr(map->img_N, &bpp, &line_s, &endian);
+	if(!(map->img_S = mlx_xpm_file_to_image(data->mlx, map->text_S, \
+	&texts, &texts)))
+		ft_error("corrupted XPM");
+	map->texts[1] = mlx_get_data_addr(map->img_S, &bpp, &line_s, &endian);
+	if(!(map->img_E = mlx_xpm_file_to_image(data->mlx, map->text_E, \
+	&texts, &texts)))
+		ft_error("corrupted XPM");
+	map->texts[2] = mlx_get_data_addr(map->img_E, &bpp, &line_s, &endian);
+	if(!(map->img_W = mlx_xpm_file_to_image(data->mlx, map->text_W, \
+	&texts, &texts)))
+		ft_error("corrupted XPM");
+	map->texts[3] = mlx_get_data_addr(map->img_W, &bpp, &line_s, &endian);
 	map->texts[4] = ft_strdup(0);
+	map->text_s = texts;
 	return (map);
 }
 
@@ -74,6 +79,9 @@ int	loop(t_map *map)
     t_data	*data;
 	void	*img;
 	int		color;
+	int		bpp;
+	int		line_s;
+	int		endian;
 
 	if(!(data = malloc (sizeof(t_data))))
 		return (0);

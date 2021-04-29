@@ -10,7 +10,7 @@ LIB = libft/libft.a mlx/libmlx.a
 MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.a
 #MLXFLAGS = -lX11 -lXext
 
-HEADER = -I./include
+HEADER = include/cub3d.h
 
 SRCS = src/main.c \
 src/map_parsing.c \
@@ -25,9 +25,9 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(MAKE) -C libft
-	$(CC) $(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
+	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
 
 
 norme:
