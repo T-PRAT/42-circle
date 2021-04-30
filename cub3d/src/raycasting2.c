@@ -28,14 +28,14 @@ t_map	*calc_wall(t_map *map)
 		map->wall_x = map->pos_x + map->ray_l * map->dir_x;
 	}
 	map->wall_x -= floor(map->wall_x);
-	map->text_x = (int)(map->wall_x * (double)map->text_s);
+	map->text_x = (int)map->wall_x * map->texts[0].width;
 	if (map->side == 0 &&  map->dir_x > 0)
-		map->text_x = map->text_s - map->text_x - 1;
+		map->text_x = map->texts[0].width - map->text_x - 1;
 	if (map->side == 1 &&  map->dir_y < 0)
-		map->text_x = map->text_s - map->text_x - 1;
+		map->text_x = map->texts[0].width - map->text_x - 1;
 	//printf("side:%d||mapy:%f||posy:%f||stepy:%f||rayy:%f||ray_l:%f\n", map->side,(double)map->map_y, map->pos_y, (double)map->step_y, map->ray_y, map->ray_l);
 	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||rayx:%f||ray_x:%f\n", map->side,(double)map->map_x, map->pos_x, (double)map->step_x, map->ray_x, map->ray_l);
-	printf("side:%d||wallx:%f||textx:%d\n", map->side, map->wall_x, map->text_x);
+	//printf("side:%d||wallx:%f||textx:%d\n", map->side, map->wall_x, map->text_x);
 	return (map);
 }
 
@@ -45,6 +45,8 @@ void	draw_line(t_map *map, t_data *data, int x)
 	int	start;
 	int	end;
 	int	c;
+	double	step;
+	double	text_p;
 
 	c = 0;
 	map = calc_wall(map);
@@ -56,16 +58,19 @@ void	draw_line(t_map *map, t_data *data, int x)
 	end = wall_h / 2 + map->res_h / 2;
 	if (end >= (map->res_h))
 		end = map->res_h - 1;
-	//printf("wall_h:%dstrart:%d||end:%d\n", wall_h, start, end);
+	step = (double)map->texts[0].height / (double)wall_h;
+	text_p = (double)(start - map->res_h / 2) * step;
+	//printf("wall_h:%dstrart:%d||end:%d||step:%f\n", wall_h, start, end, step);
 	while (c++ < start)
 		insert_pixel(data, x, c, map->color_c);
 	while (start < end)
 	{
-		if (map->side == 1)
-			insert_pixel(data, x, start, 0x00FFDD00);
-		else
-			insert_pixel(data, x, start, 0x00FFFF00);
+		map->text_y = (int)text_p & (map->texts[0].height - 1);
+		//printf("texx:%d||texy:%d\n", map->text_x, text_y);
+		//printf("||%f||\n", step);
+		text_p += step;
 		start++;
+		data->img_adr[start * data->line_s / 4 + x] = map->texts[0].addr[map->text_y * map->texts[0].line_s / 4 + map->text_x];
 	}
 	while (start++ < map->res_h -1)
 		insert_pixel(data, x, start, map->color_f);

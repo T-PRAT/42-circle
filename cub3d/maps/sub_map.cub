@@ -1,8 +1,8 @@
 R 1280 1024
-NO ./rcs/text_N.xpm
-SO ./rcs/text_S.xpm
-WE ./rcs/text_W.xpm
-EA ./rcs/text_E.xpm
+NO ./rcs/greywall1.xpm
+SO ./rcs/greywall2.xpm
+WE ./rcs/greywall3.xpm
+EA ./rcs/greywall4.xpm
 
 S ./path_to_the_sprite_texture
 F 100,140,255

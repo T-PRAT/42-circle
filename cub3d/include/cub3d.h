@@ -24,21 +24,25 @@
 
 # define POV 60
 
+typedef struct s_tex
+{
+	char		*path;
+	void		*img;
+	char		*addr;
+	int			bpp;
+	int			line_s;
+	int			endian;
+	int			width;
+	int			height;
+}				t_tex;
+
 typedef struct s_map
 {
 	char	*map;
 	int		res_w;
 	int		res_h;
-	char	*text_N;
-	char	*text_S;
-	char	*text_W;
-	char	*text_E;
-	void	*img_N;
-	void	*img_S;
-	void	*img_W;
-	void	*img_E;
+	t_tex	texts[5];
 	int		text_s;
-	char	**texts;
 	char	*sprite;
 	int		color_f;
 	int		color_c;
@@ -68,11 +72,11 @@ typedef struct s_map
 
 typedef struct	s_data
 {
+	t_map	*map;
 	void	*mlx;
 	void	*win;
 	void	*img;
 	char	*img_adr;
-	t_map	*map;
 	int		bpp;
 	int		line_s;
 	int		endian;

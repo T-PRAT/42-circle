@@ -21,56 +21,63 @@ int	close_wd(int keycode, t_data *data)
 t_map	*img_path_to_adr(t_map *map, t_data *data)
 {
 	void	*img;
-	int		bpp;
-	int		line_s;
-	int		endian;
-	int		texts;
+	t_tex	*texts;
 
-	map->texts = malloc(sizeof(map->texts));
-	if(!(map->img_N = mlx_xpm_file_to_image(data->mlx, map->text_N, \
-	&texts, &texts)))
+	if(!(map->texts[0].img = mlx_xpm_file_to_image(data->mlx, map->texts[0].path, \
+	&map->texts[0].width, &map->texts[0].height)))
 		ft_error("corrupted XPM");
-	map->texts[0] = mlx_get_data_addr(map->img_N, &bpp, &line_s, &endian);
-	if(!(map->img_S = mlx_xpm_file_to_image(data->mlx, map->text_S, \
-	&texts, &texts)))
+	map->texts[0].addr = ft_strdup(mlx_get_data_addr(map->texts[0].img, &map->texts[0].bpp, &map->texts[0].line_s, &map->texts[0].endian));
+	if(!(map->texts[1].img = mlx_xpm_file_to_image(data->mlx, map->texts[1].path, \
+	&map->texts[1].width, &map->texts[1].height)))
 		ft_error("corrupted XPM");
-	map->texts[1] = mlx_get_data_addr(map->img_S, &bpp, &line_s, &endian);
-	if(!(map->img_E = mlx_xpm_file_to_image(data->mlx, map->text_E, \
-	&texts, &texts)))
+	map->texts[1].addr = ft_strdup(mlx_get_data_addr(map->texts[1].img, &map->texts[1].bpp, &map->texts[1].line_s, &map->texts[1].endian));
+	if(!(map->texts[2].img = mlx_xpm_file_to_image(data->mlx, map->texts[2].path, \
+	&map->texts[1].width, &map->texts[2].height)))
 		ft_error("corrupted XPM");
-	map->texts[2] = mlx_get_data_addr(map->img_E, &bpp, &line_s, &endian);
-	if(!(map->img_W = mlx_xpm_file_to_image(data->mlx, map->text_W, \
-	&texts, &texts)))
+	map->texts[2].addr = ft_strdup(mlx_get_data_addr(map->texts[2].img, &map->texts[2].bpp, &map->texts[2].line_s, &map->texts[2].endian));
+	if(!(map->texts[3].img = mlx_xpm_file_to_image(data->mlx, map->texts[2].path, \
+	&map->texts[3].width, &map->texts[3].height)))
 		ft_error("corrupted XPM");
-	map->texts[3] = mlx_get_data_addr(map->img_W, &bpp, &line_s, &endian);
-	map->texts[4] = ft_strdup(0);
-	map->text_s = texts;
+	map->texts[3].addr = ft_strdup(mlx_get_data_addr(map->texts[3].img, &map->texts[3].bpp, &map->texts[3].line_s, &map->texts[3].endian));
 	return (map);
 }
 
-int	deal_key(int key, t_data *data)
+int		deal_key(int key, t_data *data)
 {
 	//ft_putnbr_fd(key, 1);
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
-		exit (0);
-		return (0);
+		exit(1);
 	}
-	if (key == 13 && check_wall((int)data->map->pos_x + 0.1, \
+	else if (key == 13 && check_wall((int)data->map->pos_x + 0.1, \
 	(int)data->map->pos_y, data->map) == 1 )
+	{
 		data->map->pos_y += 0.1;
-	if (key == 0 && check_wall((int)data->map->pos_x - 0.1, \
+		data->map = raycasting(data->map, data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	}
+	else if (key == 0 && check_wall((int)data->map->pos_x - 0.1, \
 	(int)data->map->pos_y, data->map) == 1)
+	{
 		data->map->pos_x -= 0.1;
-	if (key == 1 && check_wall((int)data->map->pos_x, \
-	 (int)data->map->pos_y - 0.1, data->map) == 1)
+		data->map = raycasting(data->map, data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	}
+	else if (key == 1 && check_wall((int)data->map->pos_x, \
+	(int)data->map->pos_y - 0.1, data->map) == 1)
+	{
 		data->map->pos_y -= 0.1;
-	if (key == 2 && check_wall((int)data->map->pos_x, \
-	 (int)data->map->pos_y + 0.1, data->map) == 1)
+		data->map = raycasting(data->map, data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	}
+	else if (key == 2 && check_wall((int)data->map->pos_x, \
+	(int)data->map->pos_y + 0.1, data->map) == 1)
+	{
 		data->map->pos_x += 0.1;
-	data->map = raycasting(data->map, data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		data->map = raycasting(data->map, data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	}
 	return (0);
 }
 
@@ -79,9 +86,6 @@ int	loop(t_map *map)
     t_data	*data;
 	void	*img;
 	int		color;
-	int		bpp;
-	int		line_s;
-	int		endian;
 
 	if(!(data = malloc (sizeof(t_data))))
 		return (0);

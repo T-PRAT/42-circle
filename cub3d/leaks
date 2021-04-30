@@ -1,0 +1,99 @@
+==36152== Memcheck, a memory error detector
+==36152== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==36152== Using Valgrind-3.16.0.GIT and LibVEX; rerun with -h for copyright info
+==36152== Command: ./Cub3D maps/sub_map.cub
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x100030330: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x100032456: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==36152==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x10002CBBC: dyld::processDyldEnvironmentVariable(char const*, char const*, char const*) (in /usr/lib/dyld)
+==36152==    by 0x100032566: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==36152==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x100030341: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x10002D61D: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==36152==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== Conditional jump or move depends on uninitialised value(s)
+==36152==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==36152==    by 0x10002D658: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==36152==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==36152==    by 0x1: ???
+==36152==    by 0x1048F492A: ???
+==36152==    by 0x1048F4932: ???
+==36152==  Uninitialised value was created by a stack allocation
+==36152==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==36152== 
+==36152== 
+==36152== Process terminating with default action of signal 2 (SIGINT)
+==36152==    at 0x100040EEB: ImageLoaderMachO::doGetDependentLibraries(ImageLoader::DependentLibraryInfo*) (in /usr/lib/dyld)
+==36152==    by 0x10003D085: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10003C429: ImageLoader::link(ImageLoader::LinkContext const&, bool, bool, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==36152==    by 0x10002F823: dyld::link(ImageLoader*, bool, bool, ImageLoader::RPathChain const&, unsigned int) (in /usr/lib/dyld)
+==36152==    by 0x1000313F7: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==36152==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==36152== 
+==36152== HEAP SUMMARY:
+==36152==     in use at exit: 0 bytes in 0 blocks
+==36152==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==36152== 
+==36152== All heap blocks were freed -- no leaks are possible
+==36152== 
+==36152== For lists of detected and suppressed errors, rerun with: -s
+==36152== ERROR SUMMARY: 602 errors from 6 contexts (suppressed: 19 from 4)

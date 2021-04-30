@@ -15,13 +15,13 @@
 t_map *get_line_info2(t_map *map, char **parts)
 {
 	if (!(ft_strncmp(parts[0], "NO", 3)))
-		map->text_N = ft_strdup(parts[1]);
+		map->texts[0].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "SO", 3)))
-		map->text_S = ft_strdup(parts[1]);
+		map->texts[1].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "WE", 3)))
-		map->text_W = ft_strdup(parts[1]);
+		map->texts[2].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "EA", 3)))
-		map->text_E = ft_strdup(parts[1]);
+		map->texts[3].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "S", 2)))
 	{
 		map->sprite = ft_strdup(parts[1]);
