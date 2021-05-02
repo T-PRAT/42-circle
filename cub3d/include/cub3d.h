@@ -28,7 +28,7 @@ typedef struct s_tex
 {
 	char		*path;
 	void		*img;
-	char		*addr;
+	int			*addr;
 	int			bpp;
 	int			line_s;
 	int			endian;
@@ -82,17 +82,18 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-t_map		*parse_map(char *map_path);
-char		*clean_map(char *map);
-int			get_color(char *str);
-int			loop(t_map *map);
-void		*create_image(t_data *data, t_map *map);
-t_map		*get_pos(t_map *map);
-t_map		*raycasting(t_map *map, t_data *data);
-int			check_wall(int x, int y, t_map *map);
-void		draw_line(t_map *map, t_data *data, int x);
-void		insert_pixel(t_data *t_data, int	x, int y, int color);
-int			create_trgb(int t, int r, int g, int b);
-void		ft_error(char *str);
+t_map			*parse_map(char *map_path);
+char			*clean_map(char *map);
+int				get_color(char *str);
+int				loop(t_map *map);
+void			*create_image(t_data *data, t_map *map);
+t_map			*get_pos(t_map *map);
+t_map			*raycasting(t_map *map, t_data *data);
+int				check_wall(int x, int y, t_map *map);
+void			draw_line(t_map *map, t_data *data, int x);
+void			insert_pixel(t_data *t_data, int	x, int y, int color);
+void			get_pixel(t_tex *text, int x, int y, int color);
+int				create_trgb(int t, int r, int g, int b);
+void			ft_error(char *str);
 
 #endif

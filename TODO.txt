@@ -4,5 +4,6 @@ sprite
 --save
 orga struct
 recheck parsing
+quitter clean avec la croix
 norme
 makefile (copiler minilibx et verifier le reste)
