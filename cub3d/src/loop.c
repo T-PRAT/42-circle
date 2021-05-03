@@ -12,12 +12,6 @@
 
 #include "../include/cub3d.h"
 
-int	close_wd(int keycode, t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
-	return (0);
-}
-
 t_map	*img_path_to_adr(t_map *map, t_data *data)
 {
 	void	*img;
@@ -42,6 +36,17 @@ t_map	*img_path_to_adr(t_map *map, t_data *data)
 	return (map);
 }
 
+t_data	*new_frame(t_data *data, t_map *map)
+{
+	void	*img;
+
+	mlx_destroy_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, map->res_w, map->res_h);
+	data->map = raycasting(data->map, data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	return (data);
+}
+
 int		deal_key(int key, t_data *data)
 {
 	//ft_putnbr_fd(key, 1);
@@ -54,29 +59,25 @@ int		deal_key(int key, t_data *data)
 	(int)data->map->pos_y, data->map) == 1 )
 	{
 		data->map->pos_y += 0.1;
-		data->map = raycasting(data->map, data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		data = new_frame(data, data->map);
 	}
 	else if (key == 0 && check_wall((int)data->map->pos_x - 0.1, \
 	(int)data->map->pos_y, data->map) == 1)
 	{
 		data->map->pos_x -= 0.1;
-		data->map = raycasting(data->map, data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		data = new_frame(data, data->map);
 	}
 	else if (key == 1 && check_wall((int)data->map->pos_x, \
 	(int)data->map->pos_y - 0.1, data->map) == 1)
 	{
 		data->map->pos_y -= 0.1;
-		data->map = raycasting(data->map, data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		data = new_frame(data, data->map);
 	}
 	else if (key == 2 && check_wall((int)data->map->pos_x, \
 	(int)data->map->pos_y + 0.1, data->map) == 1)
 	{
 		data->map->pos_x += 0.1;
-		data->map = raycasting(data->map, data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+		data = new_frame(data, data->map);
 	}
 	return (0);
 }
@@ -85,7 +86,6 @@ int	loop(t_map *map)
 {
     t_data	*data;
 	void	*img;
-	int		color;
 
 	if(!(data = malloc (sizeof(t_data))))
 		return (0);
@@ -101,7 +101,7 @@ int	loop(t_map *map)
 	data->img_adr = mlx_get_data_addr(data->img, &data->bpp, &data->line_s, &data->endian);
 	map = raycasting(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	//mlx_put_image_to_window(data->mlx, data->win, map->texts[0].img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, map->texts[0].img, 0, 0);
 	mlx_key_hook(data->win, deal_key, data);
 	mlx_loop(data->mlx);
 	//map->img_data = draw_pixel(map->img_data, 1, 1, "255,0,0");
