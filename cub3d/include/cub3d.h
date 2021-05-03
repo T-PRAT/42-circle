@@ -26,14 +26,14 @@
 
 typedef struct s_tex
 {
-	char		*path;
-	void		*img;
-	int			*addr;
-	int			bpp;
-	int			line_s;
-	int			endian;
-	int			width;
-	int			height;
+	char	*path;
+	void	*img;
+	int		*addr;
+	int		bpp;
+	int		line_s;
+	int		endian;
+	int		width;
+	int		height;
 }				t_tex;
 
 typedef struct s_map
@@ -92,8 +92,10 @@ t_map			*raycasting(t_map *map, t_data *data);
 int				check_wall(int x, int y, t_map *map);
 void			draw_line(t_map *map, t_data *data, int x);
 void			insert_pixel(t_data *t_data, int	x, int y, int color);
-void			get_pixel(t_tex *text, int x, int y, int color);
+int				get_pixel(t_tex *text, int x, int y);
 int				create_trgb(int t, int r, int g, int b);
 void			ft_error(char *str);
+t_map			*key_press(t_data *data);
+t_map			*key_release(t_data *data);
 
 #endif

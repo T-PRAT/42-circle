@@ -14,9 +14,6 @@
 
 t_map	*img_path_to_adr(t_map *map, t_data *data)
 {
-	void	*img;
-	t_tex	*texts;
-
 	if(!(map->texts[0].img = mlx_xpm_file_to_image(data->mlx, map->texts[0].path, \
 	&map->texts[0].width, &map->texts[0].height)))
 		ft_error("corrupted XPM");
@@ -53,6 +50,8 @@ int		deal_key(int key, t_data *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->win);
+		free(data->map);
+		free(data);
 		exit(1);
 	}
 	else if (key == 13 && check_wall((int)data->map->pos_x + 0.1, \
@@ -94,14 +93,17 @@ int	loop(t_map *map)
 	data->win = mlx_new_window(data->mlx, map->res_w, map->res_h, "CUB3D");
 	map = img_path_to_adr(map, data);
 	map = get_pos(map);
-	printf("pos:%f///%f\n", map->pos_x, map->pos_y);
+	printf("x:%f///y:%f\n", map->pos_x, map->pos_y);
 	//printf("dir:%f///%f\n", map->dir_x, map->dir_y);
 	//printf("pla:%f///%f\n", map->pla_x, map->pla_y);
 	data->img = mlx_new_image(data->mlx, map->res_w, map->res_h);
 	data->img_adr = mlx_get_data_addr(data->img, &data->bpp, &data->line_s, &data->endian);
 	map = raycasting(map, data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win, map->texts[0].img, 0, 0);
+	//mlx_put_image_to_window(data->mlx, data->win, map->texts[0].img, 0, 0);
+	mlx_hook(data->win, 2, 1L << 0, key_press, data);
+	mlx_loop_hook(data->mlx, raycasting, data);
+	mlx_hook(data->win, 3, 1L << 1, key_release, data);
 	mlx_key_hook(data->win, deal_key, data);
 	mlx_loop(data->mlx);
 	//map->img_data = draw_pixel(map->img_data, 1, 1, "255,0,0");

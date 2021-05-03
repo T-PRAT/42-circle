@@ -29,7 +29,6 @@ $(NAME): $(OBJS) $(HEADER)
 	$(MAKE) -C libft
 	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
 
-
 norme:
 	norminette libft
 	@echo

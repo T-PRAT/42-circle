@@ -12,6 +12,16 @@
 
 #include "../include/cub3d.h"
 
+t_map	*key_press(t_data *data)
+{
+
+}
+
+t_map	*key_release(t_data *data)
+{
+
+}
+
 t_map	*get_dir(t_map *map, char c)
 {
 	map->dir_x = 0;

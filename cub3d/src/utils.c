@@ -47,12 +47,14 @@ void	insert_pixel(t_data *data, int	x, int y, int color)
 	*(unsigned int*) dst = color;
 }
 
-void	get_pixel(t_tex *text, int x, int y, int color)
+int		get_pixel(t_tex *text, int x, int y)
 {
+	int	color;
 	int	*dest;
 
-	dest = text->addr + (y * text->line_s + x * (text->bpp / 8));
+	dest = text->addr + (y * text->line_s / 4 + x);
 	color = *(unsigned int *)dest;
+	return (color);
 	printf("color:%d\n", color);
 }
 

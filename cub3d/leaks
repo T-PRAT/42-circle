@@ -1,534 +1,99 @@
-==94939== Memcheck, a memory error detector
-==94939== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==94939== Using Valgrind-3.16.0.GIT and LibVEX; rerun with -h for copyright info
-==94939== Command: ./Cub3D maps/sub_map.cub
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x100030330: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x100032456: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
-==94939==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10002CBBC: dyld::processDyldEnvironmentVariable(char const*, char const*, char const*) (in /usr/lib/dyld)
-==94939==    by 0x100032566: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
-==94939==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x100030341: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x10002D61D: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
-==94939==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
-==94939==    by 0x10002D658: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
-==94939==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
-==94939==    by 0x1: ???
-==94939==    by 0x1048F4936: ???
-==94939==    by 0x1048F493E: ???
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D763B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D887C: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8654: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6FD4: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6E2B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1CFE: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x1063A1E1C: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D763B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D890C: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8654: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6FD4: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6E2B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1CFE: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x1063A1E1C: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D763B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D86B6: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6FD4: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6E2B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1CFE: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x1063A1E1C: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D876B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6FD4: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6E2B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1CFE: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x1063A1E1C: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D8A4E: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D704C: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D6E2B: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1CFE: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x1063A1E1C: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==    by 0x102607233: environ_init (in /usr/lib/libobjc.A.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8C6E: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1E87: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==    by 0x102607233: environ_init (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106279E35: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x106285AD1: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D7726: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D89D1: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8CB9: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1E87: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==    by 0x102607233: environ_init (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106279E35: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D89EE: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8CB9: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1E87: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==    by 0x102607233: environ_init (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106279E35: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x106285AD1: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1061D8A4E: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1061D8CB9: ??? (in /usr/lib/system/libcorecrypto.dylib)
-==94939==    by 0x1063A1E87: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939==    by 0x102608A24: _read_images (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x102607A4F: _hasObjcContents (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10261A55F: __objc_personality_v0 (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002F47A: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==94939==    by 0x10002F62D: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==94939==    by 0x1062E2A26: ??? (in /usr/lib/system/libdyld.dylib)
-==94939==    by 0x102607233: environ_init (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106279E35: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x106285AD1: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10260FA27: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CA4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA29: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CA4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA3B: objc_memmove_collectable (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CA4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA59: objc_initializeClassPair (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CA4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA67: objc_initializeClassPair (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CA4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10260FA27: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA29: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA3B: objc_memmove_collectable (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA59: objc_initializeClassPair (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x106634CBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x106635C1F: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x106635BAD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x10663501E: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==    by 0x10002C71E: dyld::initializeMainExecutable() (in /usr/lib/dyld)
-==94939==    by 0x100031708: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10663597A: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x106635D05: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x10002E873: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
-==94939==    by 0x106635BBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x10663501E: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1066359E4: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x106635D05: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x10002E873: dyld::registerLoadCallback(void (*)(mach_header const*, char const*, bool)) (in /usr/lib/dyld)
-==94939==    by 0x106635BBD: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x10663501E: ??? (in /usr/lib/system/libxpc.dylib)
-==94939==    by 0x1018929C9: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==94939==    by 0x100042591: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x100042797: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CD72: ImageLoader::processInitializers(ImageLoader::LinkContext const&, unsigned int, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003CE04: ImageLoader::runInitializers(ImageLoader::LinkContext const&, ImageLoader::InitializerTimingList&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10260FA27: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189DD29: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10260ED50: (anonymous namespace)::AutoreleasePoolPage::autoreleaseNoPage(objc_object*) (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10260C404: objc_msgSend (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002C469: dyld::notifySingle(dyld_image_states, ImageLoader const*, ImageLoader::InitializerTimingList*) (in /usr/lib/dyld)
-==94939==    by 0x10003DBD4: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA29: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189DD29: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10260ED50: (anonymous namespace)::AutoreleasePoolPage::autoreleaseNoPage(objc_object*) (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10260C404: objc_msgSend (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002C469: dyld::notifySingle(dyld_image_states, ImageLoader const*, ImageLoader::InitializerTimingList*) (in /usr/lib/dyld)
-==94939==    by 0x10003DBD4: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA3B: objc_memmove_collectable (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189DD29: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10260ED50: (anonymous namespace)::AutoreleasePoolPage::autoreleaseNoPage(objc_object*) (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10260C404: objc_msgSend (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10002C469: dyld::notifySingle(dyld_image_states, ImageLoader const*, ImageLoader::InitializerTimingList*) (in /usr/lib/dyld)
-==94939==    by 0x10003DBD4: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x10260FA27: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10189EA82: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189EA3E: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10189E010: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10004233E: ImageLoaderMachO::doImageInit(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10004278C: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA29: _objc_rootAlloc (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10189EA82: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189EA3E: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10189E010: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10004233E: ImageLoaderMachO::doImageInit(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10004278C: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Use of uninitialised value of size 8
-==94939==    at 0x10260FA3B: objc_memmove_collectable (in /usr/lib/libobjc.A.dylib)
-==94939==    by 0x10189EA82: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10627A63C: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10627BD4A: ??? (in /usr/lib/system/libdispatch.dylib)
-==94939==    by 0x10189EA3E: _CFStringGetUserDefaultEncoding (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10189E010: ??? (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10004233E: ImageLoaderMachO::doImageInit(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10004278C: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x1063A1C54: ??? (in /usr/lib/system/libsystem_c.dylib)
-==94939== 
-==94939== Conditional jump or move depends on uninitialised value(s)
-==94939==    at 0x1018A051B: __CFAllocateObject2 (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10189E1C7: __CFInitialize (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
-==94939==    by 0x10004233E: ImageLoaderMachO::doImageInit(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10004278C: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==94939==    by 0x10003DBE9: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==    by 0x10003DB7F: ImageLoader::recursiveInitialization(ImageLoader::LinkContext const&, unsigned int, char const*, ImageLoader::InitializerTimingList&, ImageLoader::UninitedUpwards&) (in /usr/lib/dyld)
-==94939==  Uninitialised value was created by a stack allocation
-==94939==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
-==94939== 
-==94939== 
-==94939== Process terminating with default action of signal 2 (SIGINT)
-==94939==    at 0x10000472C: ft_buflen (in ./Cub3D)
-==94939==    by 0x100004838: ft_strbufjoin (in ./Cub3D)
-==94939==    by 0x100004655: get_next_line (in ./Cub3D)
-==94939==    by 0x100001F42: parse_map (in ./Cub3D)
-==94939==    by 0x100001980: main (in ./Cub3D)
-==94939== 
-==94939== HEAP SUMMARY:
-==94939==     in use at exit: 0 bytes in 0 blocks
-==94939==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==94939== 
-==94939== All heap blocks were freed -- no leaks are possible
-==94939== 
-==94939== For lists of detected and suppressed errors, rerun with: -s
-==94939== ERROR SUMMARY: 2213 errors from 34 contexts (suppressed: 44 from 4)
+==40409== Memcheck, a memory error detector
+==40409== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==40409== Using Valgrind-3.16.0.GIT and LibVEX; rerun with -h for copyright info
+==40409== Command: ./Cub3D maps/sub_map.cub
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x100030330: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x100032456: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==40409==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x10002CBBC: dyld::processDyldEnvironmentVariable(char const*, char const*, char const*) (in /usr/lib/dyld)
+==40409==    by 0x100032566: dyld::checkEnvironmentVariables(char const**) (in /usr/lib/dyld)
+==40409==    by 0x100030339: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x100030341: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x10002D61D: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==40409==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== Conditional jump or move depends on uninitialised value(s)
+==40409==    at 0x10003439D: dyld::loadPhase3(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x100033D17: dyld::loadPhase1(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x10002DAC9: dyld::loadPhase0(char const*, char const*, dyld::LoadContext const&, unsigned int&, std::__1::vector<char const*, std::__1::allocator<char const*> >*) (in /usr/lib/dyld)
+==40409==    by 0x10002D658: dyld::load(char const*, dyld::LoadContext const&, unsigned int&) (in /usr/lib/dyld)
+==40409==    by 0x1000313A0: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B502: dyldbootstrap::start(macho_header const*, int, char const**, long, macho_header const*, unsigned long*) (in /usr/lib/dyld)
+==40409==    by 0x10002B035: _dyld_start (in /usr/lib/dyld)
+==40409==    by 0x1: ???
+==40409==    by 0x1048F4936: ???
+==40409==    by 0x1048F493E: ???
+==40409==  Uninitialised value was created by a stack allocation
+==40409==    at 0x100063A64: amfi_check_dyld_policy_self (in /usr/lib/dyld)
+==40409== 
+==40409== 
+==40409== Process terminating with default action of signal 2 (SIGINT)
+==40409==    at 0x100050F75: dyld3::MachOFile::forEachLoadCommand(Diagnostics&, void ( block_pointer)(load_command const*, bool&)) const (in /usr/lib/dyld)
+==40409==    by 0x100050D7B: dyld3::MachOFile::forEachSupportedPlatform(void ( block_pointer)(dyld3::Platform, unsigned int, unsigned int)) const (in /usr/lib/dyld)
+==40409==    by 0x100050C9B: dyld3::MachOFile::supportsPlatform(dyld3::Platform) const (in /usr/lib/dyld)
+==40409==    by 0x10003D223: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003D41A: ImageLoader::recursiveLoadLibraries(ImageLoader::LinkContext const&, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10003C429: ImageLoader::link(ImageLoader::LinkContext const&, bool, bool, bool, ImageLoader::RPathChain const&, char const*) (in /usr/lib/dyld)
+==40409==    by 0x10002F823: dyld::link(ImageLoader*, bool, bool, ImageLoader::RPathChain const&, unsigned int) (in /usr/lib/dyld)
+==40409==    by 0x1000313F7: dyld::_main(macho_header const*, unsigned long, int, char const**, char const**, char const**, unsigned long*) (in /usr/lib/dyld)
+==40409== 
+==40409== HEAP SUMMARY:
+==40409==     in use at exit: 0 bytes in 0 blocks
+==40409==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==40409== 
+==40409== All heap blocks were freed -- no leaks are possible
+==40409== 
+==40409== For lists of detected and suppressed errors, rerun with: -s
+==40409== ERROR SUMMARY: 986 errors from 6 contexts (suppressed: 27 from 4)
