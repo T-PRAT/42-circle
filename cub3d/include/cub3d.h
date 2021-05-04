@@ -117,7 +117,7 @@ int				create_trgb(int t, int r, int g, int b);
 void			ft_error(char *str);
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_key *key);
-void			clean_exit(t_data	*data);
+int				clean_exit(t_data	*data);
 void			check_move(t_map *map);
 
 #endif

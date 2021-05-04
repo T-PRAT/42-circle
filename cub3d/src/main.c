@@ -27,7 +27,7 @@ int main(int ac, char **av)
         ft_putstr_fd("Error\n", 2);
     else
     {
-	    printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%d\ncorlor_c:%d\nmap:\n>>>%s<<<\n", map->res_w, map->res_h, map->texts[0].path, map->texts[1].path, map->texts[2].path, map->texts[3].path, map->sprite, map->color_f, map->color_c, map->map);
+	    //printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%d\ncorlor_c:%d\nmap:\n>>>%s<<<\n", map->res_w, map->res_h, map->texts[0].path, map->texts[1].path, map->texts[2].path, map->texts[3].path, map->sprite, map->color_f, map->color_c, map->map);
         if (!(loop(map)))
             return (0);
     }

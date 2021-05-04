@@ -33,7 +33,7 @@ t_map	*img_path_to_adr(t_map *map, t_data *data)
 	return (map);
 }
 
-void	clean_exit(t_data	*data)
+int		clean_exit(t_data	*data)
 {
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_window(data->mlx, data->win);
@@ -41,6 +41,7 @@ void	clean_exit(t_data	*data)
 	free(data->map);
 	free(data);
 	exit(1);
+	return (0);
 }
 
 int		loop(t_map *map)
@@ -63,6 +64,7 @@ int		loop(t_map *map)
 	//map = raycasting(map, data);
 	//mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	//mlx_put_image_to_window(data->mlx, data->win, map->texts[3].img, 0, 0);
+	mlx_hook(data->win, 17, 0, clean_exit, data);
 	mlx_hook(data->win, 2, 1L << 0, key_press, data);
 	mlx_loop_hook(data->mlx, raycasting, data);
 	mlx_hook(data->win, 3, 1L << 1, key_release, map->key);
