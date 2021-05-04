@@ -12,14 +12,43 @@
 
 #include "../include/cub3d.h"
 
-t_map	*key_press(t_data *data)
+int	key_press(int keycode, t_data *data)
 {
+	t_key	*key;
 
+	key = data->map->key;
+	if (keycode == ESC)
+		clean_exit(data);
+	else if (keycode == FORWARD)
+		key->forward = true;
+	else if (keycode == BACKWARD)
+		key->backward = true;
+	else if (keycode == RIGHT)
+		key->right = true;
+	else if (keycode == LEFT)
+		key->left = true;
+	else if (keycode == ROT_RIGHT)
+		key->rot_right = true;
+	else if (keycode == ROT_LEFT)
+		key->rot_left = true;
+	return (0);
 }
 
-t_map	*key_release(t_data *data)
+int	key_release(int	keycode, t_key	*key)
 {
-
+	if (keycode == FORWARD)
+		key->forward = false;
+	else if(keycode == BACKWARD)
+		key->backward = false;
+	else if (keycode == RIGHT)
+		key->right = false;
+	else if (keycode == LEFT)
+		key->left = false;
+	else if (keycode == ROT_RIGHT)
+		key->rot_right = false;
+	else if (keycode == ROT_LEFT)
+		key->rot_left = false;
+	return (0);
 }
 
 t_map	*get_dir(t_map *map, char c)
@@ -51,11 +80,28 @@ t_map	*get_dir(t_map *map, char c)
 	return (map);
 }
 
+t_map	*init_key(t_map *map)
+{
+	t_key	*key;
+
+	if(!(key = malloc (sizeof(t_key))))
+		return (0);
+	map->key = key;
+	key->forward = false;
+	key->backward = false;
+	key->right = false;
+	key->left = false;
+	key->rot_right = false;
+	key->rot_left = false;
+	return (map);
+}
+
 t_map	*get_pos(t_map *map)
 {
 	int		i;
 
 	i = 0;
+	map = init_key(map);
 	map->pos_x = 0;
 	map->pos_y = 0;
 	while (map->map[++i]);

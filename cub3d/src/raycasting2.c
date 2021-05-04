@@ -10,8 +10,65 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/cub3d.h"
+
+void	check_move2(t_map *map)
+{
+	double	old_dir_x;
+	double	old_pla_x;
+
+	if (map->key->left == true)
+	{
+		if (check_wall((int)(map->pos_x - map->pla_x * MS), (int)map->pos_y, map))
+			map->pos_x -= map->pla_x * MS;
+		if (check_wall((int)map->pos_x, (int)(map->pos_y - map->pla_y * MS),map))
+			map->pos_y -= map->pla_y * MS;
+	}
+	if (map->key->rot_right == true)
+	{
+		old_dir_x = map->dir_x;
+		map->dir_x = map->dir_x * cos(-RS) - map->dir_y * sin(-RS);
+		map->dir_y = old_dir_x * sin(-RS) + map->dir_y * cos(-RS);
+		old_pla_x = map->pla_x;
+		map->pla_x = map->pla_x * cos(-RS) - map->pla_y * sin(-RS);
+		map->pla_y = old_pla_x * sin(-RS) + map->pla_y * cos(-RS);
+	}
+	if (map->key->rot_left == true)
+	{
+		old_dir_x = map->dir_x;
+		map->dir_x = map->dir_x * cos(RS) - map->dir_y * sin(RS);
+		map->dir_y = old_dir_x * sin(RS) + map->dir_y * cos(RS);
+		old_pla_x = map->pla_x;
+		map->pla_x = map->pla_x * cos(RS) - map->pla_y * sin(RS);
+		map->pla_y = old_pla_x * sin(RS) + map->pla_y * cos(RS);
+	}
+}
+
+void	check_move(t_map *map)
+{
+	if (map->key->forward == true)
+	{
+		if (check_wall((int)(map->pos_x + map->dir_x * MS), (int)map->pos_y, map))
+			map->pos_x += map->dir_x * MS;
+		if (check_wall((int)map->pos_x, (int)(map->pos_y + map->dir_y * MS),map))
+			map->pos_y += map->dir_y * MS;
+	}
+	if (map->key->backward == true)
+	{
+		if (check_wall((int)(map->pos_x - map->dir_x * MS), (int)map->pos_y, map))
+			map->pos_x -= map->dir_x * MS;
+		if (check_wall((int)map->pos_x, (int)(map->pos_y - map->dir_y * MS),map))
+			map->pos_y -= map->dir_y * MS;
+	}
+	if (map->key->right == true)
+	{
+		if (check_wall((int)(map->pos_x + map->pla_x * MS), (int)map->pos_y, map))
+			map->pos_x += map->pla_x * MS;
+		if (check_wall((int)map->pos_x, (int)(map->pos_y + map->pla_y * MS),map))
+			map->pos_y += map->pla_y * MS;
+	}
+	check_move2(map);
+}
 
 t_map	*calc_wall(t_map *map)
 {
@@ -37,6 +94,20 @@ t_map	*calc_wall(t_map *map)
 	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||dirx:%f||rayx:%f||ray_l:%f\n", map->side,(double)map->map_x, map->pos_x, (double)map->step_x,map->dir_x, map->ray_x, map->ray_l);
 	//printf("side:%d||wallx:%f||textx:%d||width:%d\n", map->side, map->wall_x, map->text_x, map->texts[0].width);
 	return (map);
+}
+
+int		select_texture(t_map *map)
+{
+	if (map->side == 0  && map->ray_x < 0)
+		return (1);
+	else if (map->side == 0  && map->ray_x >= 0)
+		return (0);
+	else if (map->side == 1  && map->ray_y < 0)
+		return (3);
+	else if (map->side == 1  && map->ray_y >= 0)
+		return (2);
+	else
+		return (0);
 }
 
 void	draw_line(t_map *map, t_data *data, int x)
@@ -76,7 +147,7 @@ void	draw_line(t_map *map, t_data *data, int x)
 		text_p += step;
 		//printf("color:%d\n", get_pixel(&map->texts[0], map->text_x, map->text_y));
 		//get_pixel(&map->texts[0], map->text_x, map->text_y, color);
-		insert_pixel(data, x, start, get_pixel(&map->texts[0], map->text_x, map->text_y));
+		insert_pixel(data, x, start, get_pixel(&map->texts[select_texture(map)], map->text_x, map->text_y));
 		start++;
 		//data->img_adr[start * data->line_s + x * (data->bpp / 8)] = map->texts[0].addr[map->text_y * map->texts[0].line_s / 4 + map->text_x];
 	}

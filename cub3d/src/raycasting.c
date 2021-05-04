@@ -12,7 +12,7 @@
 
 #include "../include/cub3d.h"
 
-t_map	*ray_steps(t_map *map)
+t_map *ray_steps(t_map *map)
 {
 	while (check_wall(map->map_x, map->map_y, map) == 1)
 	{
@@ -32,7 +32,7 @@ t_map	*ray_steps(t_map *map)
 	return (map);
 }
 
-t_map	*ray_steps_init(t_map *map)
+t_map *ray_steps_init(t_map *map)
 {
 	if (map->ray_x < 0)
 	{
@@ -58,9 +58,9 @@ t_map	*ray_steps_init(t_map *map)
 	return (ray_steps(map));
 }
 
-t_map	*raycasting(t_map *map, t_data *data)
+void	start_raycast(t_map *map, t_data *data)
 {
-	int	x;
+	int x;
 
 	x = 0;
 	while (x < map->res_w)
@@ -94,5 +94,12 @@ t_map	*raycasting(t_map *map, t_data *data)
 		//printf("ray_x:%f||ray_y:%f\n", map->ray_x, map->ray_y);
 		x++;
 	}
-	return (map);
+}
+
+int	raycasting(t_data *data)
+{
+	start_raycast(data->map, data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
+	check_move(data->map);
+	return (1);
 }

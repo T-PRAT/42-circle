@@ -18,11 +18,21 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <stdbool.h>
 // A VIRER
 # include <stdio.h>
 # include "../libft/libft.h"
 
 # define POV 60
+# define MS 0.05
+# define RS 0.03
+# define ESC 53
+# define FORWARD 13
+# define BACKWARD 1
+# define RIGHT 2
+# define LEFT 0
+# define ROT_RIGHT 124
+# define ROT_LEFT 123
 
 typedef struct s_tex
 {
@@ -35,6 +45,15 @@ typedef struct s_tex
 	int		width;
 	int		height;
 }				t_tex;
+typedef struct s_key
+{
+	bool	forward;
+	bool	backward;
+	bool	right;
+	bool	left;
+	bool	rot_right;
+	bool	rot_left;
+}				t_key;
 
 typedef struct s_map
 {
@@ -46,6 +65,7 @@ typedef struct s_map
 	char	*sprite;
 	int		color_f;
 	int		color_c;
+	t_key	*key;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
@@ -88,14 +108,16 @@ int				get_color(char *str);
 int				loop(t_map *map);
 void			*create_image(t_data *data, t_map *map);
 t_map			*get_pos(t_map *map);
-t_map			*raycasting(t_map *map, t_data *data);
+int				raycasting(t_data *data);
 int				check_wall(int x, int y, t_map *map);
 void			draw_line(t_map *map, t_data *data, int x);
 void			insert_pixel(t_data *t_data, int	x, int y, int color);
 int				get_pixel(t_tex *text, int x, int y);
 int				create_trgb(int t, int r, int g, int b);
 void			ft_error(char *str);
-t_map			*key_press(t_data *data);
-t_map			*key_release(t_data *data);
+int				key_press(int keycode, t_data *data);
+int				key_release(int keycode, t_key *key);
+void			clean_exit(t_data	*data);
+void			check_move(t_map *map);
 
 #endif

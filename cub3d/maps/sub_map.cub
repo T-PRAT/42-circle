@@ -1,11 +1,11 @@
 R 1280 1024
-NO ./rcs/window.xpm
-SO ./rcs/greywall2.xpm
-WE ./rcs/greywall3.xpm
-EA ./rcs/greywall4.xpm
+NO ./rcs/windowblue.xpm
+SO ./rcs/windowred.xpm
+WE ./rcs/windowyellow.xpm
+EA ./rcs/windowgreen.xpm
 
 S ./path_to_the_sprite_texture
-F 150,150,150
+F 25,42,41
 C 110,140,180
 
 11111111111
@@ -13,7 +13,7 @@ C 110,140,180
 10101101001
 10100001001
 10100101001
+1000N000001
 10000000001
-1000000N001
 10000000011
 11111111111

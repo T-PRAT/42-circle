@@ -55,7 +55,6 @@ int		get_pixel(t_tex *text, int x, int y)
 	dest = text->addr + (y * text->line_s / 4 + x);
 	color = *(unsigned int *)dest;
 	return (color);
-	printf("color:%d\n", color);
 }
 
 void	ft_error(char *str)
