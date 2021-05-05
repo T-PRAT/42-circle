@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/03/19 16:06:08 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:06:00 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,26 @@ typedef struct s_key
 	bool	rot_left;
 }				t_key;
 
+typedef struct	t_spr
+{
+	int		spr_pos_x;
+	int		spr_pos_y;
+	int		spr_x;
+	int		spr_y;
+	double	perp_d;
+}				t_spr;
+
 typedef struct s_map
 {
+	bool	save;
 	char	*map;
 	int		res_w;
 	int		res_h;
 	t_tex	texts[5];
-	int		text_s;
-	char	*sprite;
 	int		color_f;
 	int		color_c;
 	t_key	*key;
+	t_spr	*spr;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
@@ -79,15 +88,17 @@ typedef struct s_map
 	double	side_y;
 	double	delta_x;
 	double	delta_y;
-	double	ray_l;
+	double	perp_d;
 	int		step_x;
 	int		step_y;
 	int		map_x;
 	int		map_y;
 	char	side;
 	double	wall_x;
+	int		wall_h;
 	int		text_x;
 	int		text_y;
+	double	*perp_ds;
 }				t_map;
 
 typedef struct	s_data
@@ -119,5 +130,7 @@ int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_key *key);
 int				clean_exit(t_data	*data);
 void			check_move(t_map *map);
+t_map			*draw_sprite(t_map *map, t_data *data, int x);
+void			save_image(t_data *data, t_map *map);
 
 #endif

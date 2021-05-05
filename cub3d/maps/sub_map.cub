@@ -4,7 +4,7 @@ SO ./rcs/windowred.xpm
 WE ./rcs/windowyellow.xpm
 EA ./rcs/windowgreen.xpm
 
-S ./path_to_the_sprite_texture
+S ./rcs/cylindre.xpm
 F 25,42,41
 C 110,140,180
 
@@ -12,8 +12,8 @@ C 110,140,180
 10000000001
 10101101001
 10100001001
-10100101001
-1000N000001
+11111001111
 10000000001
+10000N00001
 10000000011
 11111111111

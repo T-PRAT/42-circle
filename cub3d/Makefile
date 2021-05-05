@@ -1,6 +1,7 @@
 NAME = Cub3D
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
+#-fsanitize=address
 
 CC = gcc
 
@@ -19,7 +20,9 @@ src/loop.c \
 src/position.c \
 src/raycasting.c \
 src/raycasting2.c \
-src/utils.c
+src/utils.c \
+src/sprite.c \
+src/save.c
 
 OBJS = $(SRCS:.c=.o)
 

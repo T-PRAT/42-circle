@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:47:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/19 16:01:07 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 15:10:38 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ t_map	*get_dir(t_map *map, char c)
 	if (c == 'S')
 	{
 		map->dir_y = -1;
-		map->pla_x = (double)(POV / 100) * -1;
+		map->pla_x = (double)-POV / 100;
 	}
 	if (c == 'E')
 	{
 		map->dir_x = 1;
-		map->pla_y = (double)(POV / 100) * -1;
+		map->pla_y = (double)-POV / 100;
 	}
 	if (c == 'W')
 	{

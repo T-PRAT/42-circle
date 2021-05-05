@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:43:32 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/19 16:08:46 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:06:49 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	check_wall(int x, int y, t_map *map)
 	}
 	while (map->map[i - 1] != '\n' && i >= 0)
 		i--;
+	if (map->map[i + x] == '2')
+		return (2);
 	if (map->map[i + x] != '1')
 		return (1);
 	return (0);

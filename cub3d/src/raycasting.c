@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 00:28:07 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/19 16:07:16 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 15:39:12 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_map *ray_steps(t_map *map)
 {
-	while (check_wall(map->map_x, map->map_y, map) == 1)
+	while (check_wall(map->map_x, map->map_y, map))
 	{
 		if (map->side_x < map->side_y)
 		{
@@ -27,6 +27,12 @@ t_map *ray_steps(t_map *map)
 			map->side_y += map->delta_y;
 			map->map_y += map->step_y;
 			map->side = 1;
+		}
+		if (check_wall(map->map_x, map->map_y, map) == 2)
+		{
+			map->spr->spr_pos_x = map->map_x;
+			map->spr->spr_pos_y = map->map_y;
+			//write(1 , "a", 1);
 		}
 	}
 	return (map);
@@ -65,6 +71,7 @@ void	start_raycast(t_map *map, t_data *data)
 	x = 0;
 	while (x < map->res_w)
 	{
+		map->spr->spr_pos_x = -1;
 		map->cam_x = 2 * x / (double)(map->res_w) - 1;
 		map->ray_x = map->dir_x + map->pla_x * map->cam_x;
 		map->ray_y = map->dir_y + map->pla_y * map->cam_x;
@@ -98,7 +105,11 @@ void	start_raycast(t_map *map, t_data *data)
 
 int	raycasting(t_data *data)
 {
+	data->map->spr->spr_pos_x = -1;
+	data->map->spr->spr_pos_y = -1;
 	start_raycast(data->map, data);
+	if (data->map->save == true)
+		return (1);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	check_move(data->map);
 	return (1);

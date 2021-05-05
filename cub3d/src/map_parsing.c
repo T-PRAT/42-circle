@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:21:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/19 13:19:29 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 15:29:05 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ t_map *get_line_info2(t_map *map, char **parts)
 	else if (!(ft_strncmp(parts[0], "EA", 3)))
 		map->texts[3].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "S", 2)))
-	{
-		map->sprite = ft_strdup(parts[1]);
-	}
+		map->texts[4].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "F", 2)))
 		map->color_f = get_color(parts[1]);
 	else if (!(ft_strncmp(parts[0], "C", 2)))
@@ -96,17 +94,14 @@ t_map	*get_map(t_map *map, char *line, int fd)
 	return (map);
 }
 
-t_map *parse_map(char *map_path)
+t_map	*parse_map(t_map *map, char *map_path)
 {
-	t_map *map;
 	int fd;
 	char *line;
 	int c;
 
 	c = 1;
 	fd = open(map_path, O_RDONLY);
-	if (!(map = (t_map *)malloc(sizeof(t_map))))
-		return (0);
 	while (c)
 	{
 		c = get_next_line(fd, &line);
