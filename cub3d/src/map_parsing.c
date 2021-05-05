@@ -6,36 +6,36 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:21:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 15:29:05 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:30:23 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_map *get_line_info2(t_map *map, char **parts)
+t_rcs	*get_line_info2(t_rcs *rcs, char **parts)
 {
 	if (!(ft_strncmp(parts[0], "NO", 3)))
-		map->texts[0].path = ft_strdup(parts[1]);
+		rcs->texts[0].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "SO", 3)))
-		map->texts[1].path = ft_strdup(parts[1]);
+		rcs->texts[1].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "WE", 3)))
-		map->texts[2].path = ft_strdup(parts[1]);
+		rcs->texts[2].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "EA", 3)))
-		map->texts[3].path = ft_strdup(parts[1]);
+		rcs->texts[3].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "S", 2)))
-		map->texts[4].path = ft_strdup(parts[1]);
+		rcs->texts[4].path = ft_strdup(parts[1]);
 	else if (!(ft_strncmp(parts[0], "F", 2)))
-		map->color_f = get_color(parts[1]);
+		rcs->color_f = get_color(parts[1]);
 	else if (!(ft_strncmp(parts[0], "C", 2)))
-		map->color_c = get_color(parts[1]);
+		rcs->color_c = get_color(parts[1]);
 	else
 		return (0);
-	return (map);
+	return (rcs);
 }
 
-void free_2d_str(char **str)
+void	free_2d_str(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -46,10 +46,10 @@ void free_2d_str(char **str)
 	free(str);
 }
 
-t_map *get_line_info(t_map *map, char *line)
+t_rcs	*get_line_info(t_rcs *rcs, char *line)
 {
-	char **parts;
-	int i;
+	char	**parts;
+	int		i;
 
 	i = 0;
 	parts = ft_split(line, ' ');
@@ -59,46 +59,48 @@ t_map *get_line_info(t_map *map, char *line)
 	{
 		if (parts[0][0] != 'R' || parts[0][1] != 0)
 			return (0);
-		map->res_w = ft_atoi(parts[1]);
-		map->res_h = ft_atoi(parts[2]);
+		rcs->res_w = ft_atoi(parts[1]);
+		rcs->res_h = ft_atoi(parts[2]);
 	}
 	else if (i == 2)
 	{
-		if (!(map = get_line_info2(map, parts)))
+		rcs = get_line_info2(rcs, parts);
+		if (!rcs)
 			return (0);
 	}
 	else
 		return (0);
 	free_2d_str(parts);
-	return (map);
+	return (rcs);
 }
 
-t_map	*get_map(t_map *map, char *line, int fd)
+t_rcs	*get_rcs(t_rcs *rcs, char *line, int fd)
 {
-	int c;
-	char *tmp;
+	int		c;
+	char	*tmp;
 
 	c = 1;
-	map->map = ft_strdup("");
+	rcs->map = ft_strdup("");
 	while (c)
 	{
-		tmp = map->map;
-		map->map = ft_strjoin(map->map, line);
-		map->map = ft_strjoin(map->map, "\n");
+		tmp = rcs->map;
+		rcs->map = ft_strjoin(rcs->map, line);
+		rcs->map = ft_strjoin(rcs->map, "\n");
 		free(tmp);
 		c = get_next_line(fd, &line);
 	}
-	map->map = ft_strjoin(map->map, line);
-	if (!(map->map = clean_map(map->map)))
+	rcs->map = ft_strjoin(rcs->map, line);
+	rcs->map = clean_map(rcs->map);
+	if (!rcs->map)
 		return (0);
-	return (map);
+	return (rcs);
 }
 
-t_map	*parse_map(t_map *map, char *map_path)
+t_rcs	*parse_map(t_rcs *rcs, char *map_path)
 {
-	int fd;
-	char *line;
-	int c;
+	int		fd;
+	char	*line;
+	int		c;
 
 	c = 1;
 	fd = open(map_path, O_RDONLY);
@@ -106,13 +108,14 @@ t_map	*parse_map(t_map *map, char *map_path)
 	{
 		c = get_next_line(fd, &line);
 		if (line[0] && line[0] != '1')
-			map = get_line_info(map, line);
+			rcs = get_line_info(rcs, line);
 		else if (line[0] == '1')
 		{
-			if (!(map = get_map(map, line, fd)))
+			rcs = get_rcs(rcs, line, fd);
+			if (!rcs)
 				return (0);
 			c = 0;
 		}
 	}
-	return (map);
+	return (rcs);
 }

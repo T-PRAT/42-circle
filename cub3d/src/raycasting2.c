@@ -6,146 +6,146 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 12:33:08 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 15:37:43 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:43:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	check_move2(t_map *map)
+void	check_move2(t_rcs *rcs)
 {
 	double	old_dir_x;
 	double	old_pla_x;
 
-	if (map->key->left == true)
+	if (rcs->key->left == true)
 	{
-		if (check_wall((int)(map->pos_x - map->pla_x * MS), (int)map->pos_y, map))
-			map->pos_x -= map->pla_x * MS;
-		if (check_wall((int)map->pos_x, (int)(map->pos_y - map->pla_y * MS),map))
-			map->pos_y -= map->pla_y * MS;
+		if (is_wall((int)(rcs->pos_x - rcs->pla_x * MS), (int)rcs->pos_y, rcs))
+			rcs->pos_x -= rcs->pla_x * MS;
+		if (is_wall((int)rcs->pos_x, (int)(rcs->pos_y - rcs->pla_y * MS), rcs))
+			rcs->pos_y -= rcs->pla_y * MS;
 	}
-	if (map->key->rot_right == true)
+	if (rcs->key->rot_right == true)
 	{
-		old_dir_x = map->dir_x;
-		map->dir_x = map->dir_x * cos(-RS) - map->dir_y * sin(-RS);
-		map->dir_y = old_dir_x * sin(-RS) + map->dir_y * cos(-RS);
-		old_pla_x = map->pla_x;
-		map->pla_x = map->pla_x * cos(-RS) - map->pla_y * sin(-RS);
-		map->pla_y = old_pla_x * sin(-RS) + map->pla_y * cos(-RS);
+		old_dir_x = rcs->dir_x;
+		rcs->dir_x = rcs->dir_x * cos(-RS) - rcs->dir_y * sin(-RS);
+		rcs->dir_y = old_dir_x * sin(-RS) + rcs->dir_y * cos(-RS);
+		old_pla_x = rcs->pla_x;
+		rcs->pla_x = rcs->pla_x * cos(-RS) - rcs->pla_y * sin(-RS);
+		rcs->pla_y = old_pla_x * sin(-RS) + rcs->pla_y * cos(-RS);
 	}
-	if (map->key->rot_left == true)
+	if (rcs->key->rot_left == true)
 	{
-		old_dir_x = map->dir_x;
-		map->dir_x = map->dir_x * cos(RS) - map->dir_y * sin(RS);
-		map->dir_y = old_dir_x * sin(RS) + map->dir_y * cos(RS);
-		old_pla_x = map->pla_x;
-		map->pla_x = map->pla_x * cos(RS) - map->pla_y * sin(RS);
-		map->pla_y = old_pla_x * sin(RS) + map->pla_y * cos(RS);
+		old_dir_x = rcs->dir_x;
+		rcs->dir_x = rcs->dir_x * cos(RS) - rcs->dir_y * sin(RS);
+		rcs->dir_y = old_dir_x * sin(RS) + rcs->dir_y * cos(RS);
+		old_pla_x = rcs->pla_x;
+		rcs->pla_x = rcs->pla_x * cos(RS) - rcs->pla_y * sin(RS);
+		rcs->pla_y = old_pla_x * sin(RS) + rcs->pla_y * cos(RS);
 	}
 }
 
-void	check_move(t_map *map)
+void	check_move(t_rcs *rcs)
 {
-	if (map->key->forward == true)
+	if (rcs->key->forward == true)
 	{
-		if (check_wall((int)(map->pos_x + map->dir_x * MS), (int)map->pos_y, map))
-			map->pos_x += map->dir_x * MS;
-		if (check_wall((int)map->pos_x, (int)(map->pos_y + map->dir_y * MS),map))
-			map->pos_y += map->dir_y * MS;
+		if (is_wall((int)(rcs->pos_x + rcs->dir_x * MS), (int)rcs->pos_y, rcs))
+			rcs->pos_x += rcs->dir_x * MS;
+		if (is_wall((int)rcs->pos_x, (int)(rcs->pos_y + rcs->dir_y * MS), rcs))
+			rcs->pos_y += rcs->dir_y * MS;
 	}
-	if (map->key->backward == true)
+	if (rcs->key->backward == true)
 	{
-		if (check_wall((int)(map->pos_x - map->dir_x * MS), (int)map->pos_y, map))
-			map->pos_x -= map->dir_x * MS;
-		if (check_wall((int)map->pos_x, (int)(map->pos_y - map->dir_y * MS),map))
-			map->pos_y -= map->dir_y * MS;
+		if (is_wall((int)(rcs->pos_x - rcs->dir_x * MS), (int)rcs->pos_y, rcs))
+			rcs->pos_x -= rcs->dir_x * MS;
+		if (is_wall((int)rcs->pos_x, (int)(rcs->pos_y - rcs->dir_y * MS), rcs))
+			rcs->pos_y -= rcs->dir_y * MS;
 	}
-	if (map->key->right == true)
+	if (rcs->key->right == true)
 	{
-		if (check_wall((int)(map->pos_x + map->pla_x * MS), (int)map->pos_y, map))
-			map->pos_x += map->pla_x * MS;
-		if (check_wall((int)map->pos_x, (int)(map->pos_y + map->pla_y * MS),map))
-			map->pos_y += map->pla_y * MS;
+		if (is_wall((int)(rcs->pos_x + rcs->pla_x * MS), (int)rcs->pos_y, rcs))
+			rcs->pos_x += rcs->pla_x * MS;
+		if (is_wall((int)rcs->pos_x, (int)(rcs->pos_y + rcs->pla_y * MS), rcs))
+			rcs->pos_y += rcs->pla_y * MS;
 	}
-	check_move2(map);
+	check_move2(rcs);
 }
 
-t_map	*calc_wall(t_map *map)
+t_rcs	*calc_wall(t_rcs *rcs)
 {
-	if (map->side == 0)
+	if (rcs->side == 0)
 	{
-		map->perp_d = ((double)map->map_x - map->pos_x + \
-		((double)(1 - map->step_x)) / 2) / map->ray_x;
-		map->wall_x = map->pos_y + map->perp_d * map->ray_y;
+		rcs->perp_d = ((double)rcs->map_x - rcs->pos_x + \
+		((double)(1 - rcs->step_x)) / 2) / rcs->ray_x;
+		rcs->wall_x = rcs->pos_y + rcs->perp_d * rcs->ray_y;
 	}
 	else
 	{
-		map->perp_d = ((double)map->map_y - map->pos_y + \
-		((double)(1 - map->step_y)) / 2) / map->ray_y;
-		map->wall_x = map->pos_x + map->perp_d * map->ray_x;
+		rcs->perp_d = ((double)rcs->map_y - rcs->pos_y + \
+		((double)(1 - rcs->step_y)) / 2) / rcs->ray_y;
+		rcs->wall_x = rcs->pos_x + rcs->perp_d * rcs->ray_x;
 	}
-	map->wall_x -= floor(map->wall_x);
-	map->text_x = (int)(map->wall_x * map->texts[0].width);
-	if (map->side == 0 &&  map->ray_x > 0)
-		map->text_x = map->texts[0].width - map->text_x - 1;
-	if (map->side == 1 &&  map->ray_y < 0)
-		map->text_x = map->texts[0].width - map->text_x - 1;
-	//printf("side:%d||mapy:%f||posy:%f||stepy:%f||diry:%f||rayy:%f||perp_d:%f\n", map->side,(double)map->map_y, map->pos_y, (double)map->step_y,map->dir_y, map->ray_y, map->perp_d);
-	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||dirx:%f||rayx:%f||perp_d:%f\n", map->side,(double)map->map_x, map->pos_x, (double)map->step_x,map->dir_x, map->ray_x, map->perp_d);
-	//printf("side:%d||wallx:%f||textx:%d||width:%d\n", map->side, map->wall_x, map->text_x, map->texts[0].width);
-	return (map);
+	rcs->wall_x -= floor(rcs->wall_x);
+	rcs->text_x = (int)(rcs->wall_x * rcs->texts[0].width);
+	if (rcs->side == 0 && rcs->ray_x > 0)
+		rcs->text_x = rcs->texts[0].width - rcs->text_x - 1;
+	if (rcs->side == 1 && rcs->ray_y < 0)
+		rcs->text_x = rcs->texts[0].width - rcs->text_x - 1;
+	//printf("side:%d||mapy:%f||posy:%f||stepy:%f||diry:%f||rayy:%f||perp_d:%f\n", rcs->side,(double)rcs->map_y, rcs->pos_y, (double)rcs->step_y,rcs->dir_y, rcs->ray_y, rcs->perp_d);
+	//printf("side:%d||mapx:%f||posx:%f||stepx:%f||dirx:%f||rayx:%f||perp_d:%f\n", rcs->side,(double)rcs->map_x, rcs->pos_x, (double)rcs->step_x,rcs->dir_x, rcs->ray_x, rcs->perp_d);
+	//printf("side:%d||wallx:%f||textx:%d||width:%d\n", rcs->side, rcs->wall_x, rcs->text_x, rcs->texts[0].width);
+	return (rcs);
 }
 
-int		select_texture(t_map *map)
+int	select_texture(t_rcs *rcs)
 {
-	if (map->side == 0  && map->ray_x < 0)
+	if (rcs->side == 0 && rcs->ray_x < 0)
 		return (1);
-	else if (map->side == 0  && map->ray_x >= 0)
+	else if (rcs->side == 0 && rcs->ray_x >= 0)
 		return (0);
-	else if (map->side == 1  && map->ray_y < 0)
+	else if (rcs->side == 1 && rcs->ray_y < 0)
 		return (3);
-	else if (map->side == 1  && map->ray_y >= 0)
+	else if (rcs->side == 1 && rcs->ray_y >= 0)
 		return (2);
 	else
 		return (0);
 }
 
-void	draw_line(t_map *map, t_data *data, int x)
+void	draw_line(t_rcs *rcs, t_data *data, int x)
 {
-	int	start;
-	int	end;
-	int	c;
+	int		start;
+	int		end;
+	int		c;
 	double	step;
 	double	text_p;
 
 	c = -1;
-	map = calc_wall(map);
-	//printf("perp_d:%f\n", map->perp_d);
-	map->wall_h = (map->res_h / map->perp_d);
-	start = -map->wall_h / 2 + map->res_h / 2;
+	rcs = calc_wall(rcs);
+	//printf("perp_d:%f\n", rcs->perp_d);
+	rcs->wall_h = (rcs->res_h / rcs->perp_d);
+	start = -rcs->wall_h / 2 + rcs->res_h / 2;
 	if (start < 0)
 		start = 0;
-	end = map->wall_h / 2 + map->res_h / 2;
-	if (end >= (map->res_h))
-		end = map->res_h - 1;
+	end = rcs->wall_h / 2 + rcs->res_h / 2;
+	if (end >= (rcs->res_h))
+		end = rcs->res_h - 1;
 	//1.0 * ???
-	step = 1.0 * (double)map->texts[0].height / (double)map->wall_h;
-	text_p = (double)(start - map->res_h / 2) * step;
+	step = 1.0 * (double)rcs->texts[0].height / (double)rcs->wall_h;
+	text_p = (double)(start - rcs->res_h / 2) * step;
 	//printf("x:%d\n", x);
-	map->perp_ds[x] = map->perp_d;
-	//printf("map->wall_h:%dstrart:%d||end:%d||step:%f\n", map->wall_h, start, end, step);
+	rcs->perp_ds[x] = rcs->perp_d;
+	//printf("rcs->wall_h:%dstrart:%d||end:%d||step:%f\n", rcs->wall_h, start, end, step);
 	while (c++ < start)
-		insert_pixel(data, x, c, map->color_c);
+		insert_pixel(data, x, c, rcs->color_c);
 	while (start < end)
 	{
-		map->text_y = (int)text_p & (map->texts[0].height - 1);
+		rcs->text_y = (int)text_p & (rcs->texts[0].height - 1);
 		text_p += step;
-		insert_pixel(data, x, start, get_pixel(&map->texts[select_texture(map)], map->text_x, map->text_y));
+		insert_pixel(data, x, start, get_pixel(&rcs->texts[select_texture(rcs)], rcs->text_x, rcs->text_y));
 		start++;
 	}
 	start--;
-	while (start++ < map->res_h - 1)
-		insert_pixel(data, x, start, map->color_f);
-	//if (map->spr->spr_pos_x >= 0)
-		//draw_sprite(map, data, x);
+	while (start++ < rcs->res_h - 1)
+		insert_pixel(data, x, start, rcs->color_f);
+	//if (rcs->spr->spr_pos_x >= 0)
+		//draw_sprite(rcs, data, x);
 }

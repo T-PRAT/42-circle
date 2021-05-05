@@ -6,36 +6,36 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 10:43:24 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 14:19:35 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:11:04 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_map	*calc_perp_d(t_map *map)
+t_rcs	*calc_perp_d(t_rcs *rcs)
 {
-	if (map->side == 0)
+	if (rcs->side == 0)
 	{
-		map->spr->perp_d = ((double)map->spr->spr_pos_x - map->pos_x + \
-		((double)(1 - map->step_x)) / 2) / map->ray_x;
-		map->wall_x = map->pos_y + map->spr->perp_d * map->ray_y;
+		rcs->spr->perp_d = ((double)rcs->spr->spr_pos_x - rcs->pos_x + \
+		((double)(1 - rcs->step_x)) / 2) / rcs->ray_x;
+		rcs->wall_x = rcs->pos_y + rcs->spr->perp_d * rcs->ray_y;
 	}
 	else
 	{
-		map->spr->perp_d = ((double)map->spr->spr_pos_y - map->pos_y + \
-		((double)(1 - map->step_y)) / 2) / map->ray_y;
-		map->wall_x = map->pos_x + map->spr->perp_d * map->ray_x;
+		rcs->spr->perp_d = ((double)rcs->spr->spr_pos_y - rcs->pos_y + \
+		((double)(1 - rcs->step_y)) / 2) / rcs->ray_y;
+		rcs->wall_x = rcs->pos_x + rcs->spr->perp_d * rcs->ray_x;
 	}
-	map->wall_x -= floor(map->wall_x);
-	map->spr->spr_x = (int)(map->wall_x * map->texts[4].width);
-	if (map->side == 0 &&  map->ray_x > 0)
-		map->spr->spr_x = map->texts[4].width - map->spr->spr_x - 1;
-	if (map->side == 1 &&  map->ray_y < 0)
-		map->spr->spr_x = map->texts[4].width - map->spr->spr_x - 1;
-	return (map);
+	rcs->wall_x -= floor(rcs->wall_x);
+	rcs->spr->spr_x = (int)(rcs->wall_x * rcs->texts[4].width);
+	if (rcs->side == 0 &&  rcs->ray_x > 0)
+		rcs->spr->spr_x = rcs->texts[4].width - rcs->spr->spr_x - 1;
+	if (rcs->side == 1 &&  rcs->ray_y < 0)
+		rcs->spr->spr_x = rcs->texts[4].width - rcs->spr->spr_x - 1;
+	return (rcs);
 }
 
-t_map	*draw_sprite(t_map *map, t_data *data, int x)
+t_rcs	*draw_sprite(t_rcs *rcs, t_data *data, int x)
 {
 	int		spr_h;
 	int 	start;
@@ -48,30 +48,30 @@ t_map	*draw_sprite(t_map *map, t_data *data, int x)
 	double	trans_y;
 	int		spr_t;
 
-	map = calc_perp_d(map);
-	face = 1.0 / (map->pla_x * map->dir_y - map->dir_x * map->pla_y);
-	trans_x = face * (map->dir_y * map->spr->spr_x - map->dir_x * map->spr->spr_y);
-	trans_x = face * (-map->pla_y * map->spr->spr_x + map->pla_x * map->spr->spr_y);
-	spr_t = (int)(map->res_w / 2) * (1 + trans_x / trans_y);
-	spr_h = (map->res_h / map->spr->perp_d);
+	rcs = calc_perp_d(rcs);
+	face = 1.0 / (rcs->pla_x * rcs->dir_y - rcs->dir_x * rcs->pla_y);
+	trans_x = face * (rcs->dir_y * rcs->spr->spr_x - rcs->dir_x * rcs->spr->spr_y);
+	trans_x = face * (-rcs->pla_y * rcs->spr->spr_x + rcs->pla_x * rcs->spr->spr_y);
+	spr_t = (int)(rcs->res_w / 2) * (1 + trans_x / trans_y);
+	spr_h = (rcs->res_h / rcs->spr->perp_d);
 	printf("spr_t:%d\n", spr_t);
 	start = spr_t;
 	if (start < 0)
 		start = 0;
-	end = spr_h / 2 + map->res_h / 2;
-	if (end >= (map->res_h))
-		end = map->res_h - 1;
-	step = 1.0 * (double)map->texts[4].height / (double)spr_h;
-	text_p = (double)(start - map->res_h / 2) * step;
+	end = spr_h / 2 + rcs->res_h / 2;
+	if (end >= (rcs->res_h))
+		end = rcs->res_h - 1;
+	step = 1.0 * (double)rcs->texts[4].height / (double)spr_h;
+	text_p = (double)(start - rcs->res_h / 2) * step;
 	while (start < end)
 	{
-		map->spr->spr_y = (int)text_p & (map->texts[4].height - 1);
+		rcs->spr->spr_y = (int)text_p & (rcs->texts[4].height - 1);
 		text_p += step;
-		color = get_pixel(&map->texts[4], map->spr->spr_x, map->spr->spr_y);
+		color = get_pixel(&rcs->texts[4], rcs->spr->spr_x, rcs->spr->spr_y);
 		if (color >= 0)
 			insert_pixel(data, x, start, color);
 		start++;
 	}
 	//printf("sprh:%d\n", spr_h);
-	return (map);
+	return (rcs);
 }

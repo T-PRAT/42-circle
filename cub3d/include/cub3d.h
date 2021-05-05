@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/05 17:06:00 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:45:37 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_key
 	bool	rot_left;
 }				t_key;
 
-typedef struct	t_spr
+typedef struct s_spr
 {
 	int		spr_pos_x;
 	int		spr_pos_y;
@@ -64,7 +64,7 @@ typedef struct	t_spr
 	double	perp_d;
 }				t_spr;
 
-typedef struct s_map
+typedef struct s_rcs
 {
 	bool	save;
 	char	*map;
@@ -99,11 +99,11 @@ typedef struct s_map
 	int		text_x;
 	int		text_y;
 	double	*perp_ds;
-}				t_map;
+}				t_rcs;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	t_map	*map;
+	t_rcs	*rcs;
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -113,15 +113,15 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-t_map			*parse_map(char *map_path);
-char			*clean_map(char *map);
+t_rcs			*parse_map(t_rcs *rcs, char *map_path);
+char			*clean_map(char *rcs);
 int				get_color(char *str);
-int				loop(t_map *map);
-void			*create_image(t_data *data, t_map *map);
-t_map			*get_pos(t_map *map);
+int				loop(t_rcs *rcs);
+void			*create_image(t_data *data, t_rcs *rcs);
+t_rcs			*get_pos(t_rcs *rcs);
 int				raycasting(t_data *data);
-int				check_wall(int x, int y, t_map *map);
-void			draw_line(t_map *map, t_data *data, int x);
+int				is_wall(int x, int y, t_rcs *rcs);
+void			draw_line(t_rcs *rcs, t_data *data, int x);
 void			insert_pixel(t_data *t_data, int	x, int y, int color);
 int				get_pixel(t_tex *text, int x, int y);
 int				create_trgb(int t, int r, int g, int b);
@@ -129,8 +129,8 @@ void			ft_error(char *str);
 int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_key *key);
 int				clean_exit(t_data	*data);
-void			check_move(t_map *map);
-t_map			*draw_sprite(t_map *map, t_data *data, int x);
-void			save_image(t_data *data, t_map *map);
+void			check_move(t_rcs *rcs);
+t_rcs			*draw_sprite(t_rcs *rcs, t_data *data, int x);
+void			save_image(t_data *data, t_rcs *rcs);
 
 #endif

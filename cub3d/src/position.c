@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:47:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 15:10:38 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 18:01:50 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	key_press(int keycode, t_data *data)
 {
 	t_key	*key;
 
-	key = data->map->key;
+	key = data->rcs->key;
 	if (keycode == ESC)
 		clean_exit(data);
 	else if (keycode == FORWARD)
@@ -38,7 +38,7 @@ int	key_release(int	keycode, t_key	*key)
 {
 	if (keycode == FORWARD)
 		key->forward = false;
-	else if(keycode == BACKWARD)
+	else if (keycode == BACKWARD)
 		key->backward = false;
 	else if (keycode == RIGHT)
 		key->right = false;
@@ -51,72 +51,74 @@ int	key_release(int	keycode, t_key	*key)
 	return (0);
 }
 
-t_map	*get_dir(t_map *map, char c)
+t_rcs	*get_dir(t_rcs *rcs, char c)
 {
-	map->dir_x = 0;
-	map->dir_y = 0;
-	map->pla_x = 0;
-	map->pla_y = 0;
+	rcs->dir_x = 0;
+	rcs->dir_y = 0;
+	rcs->pla_x = 0;
+	rcs->pla_y = 0;
 	if (c == 'N')
 	{
-		map->dir_y = 1;
-		map->pla_x = (double)POV / 100;
+		rcs->dir_y = 1;
+		rcs->pla_x = (double)POV / 100;
 	}
 	if (c == 'S')
 	{
-		map->dir_y = -1;
-		map->pla_x = (double)-POV / 100;
+		rcs->dir_y = -1;
+		rcs->pla_x = (double) - POV / 100;
 	}
 	if (c == 'E')
 	{
-		map->dir_x = 1;
-		map->pla_y = (double)-POV / 100;
+		rcs->dir_x = 1;
+		rcs->pla_y = (double) - POV / 100;
 	}
 	if (c == 'W')
 	{
-		map->dir_x = -1;
-		map->pla_y = (double)POV / 100;
+		rcs->dir_x = -1;
+		rcs->pla_y = (double)POV / 100;
 	}
-	return (map);
+	return (rcs);
 }
 
-t_map	*init_key(t_map *map)
+t_rcs	*init_key(t_rcs *rcs)
 {
 	t_key	*key;
 
-	if(!(key = malloc (sizeof(t_key))))
+	key = malloc (sizeof(t_key));
+	if (!key)
 		return (0);
-	map->key = key;
+	rcs->key = key;
 	key->forward = false;
 	key->backward = false;
 	key->right = false;
 	key->left = false;
 	key->rot_right = false;
 	key->rot_left = false;
-	return (map);
+	return (rcs);
 }
 
-t_map	*get_pos(t_map *map)
+t_rcs	*get_pos(t_rcs *rcs)
 {
 	int		i;
 
 	i = 0;
-	map = init_key(map);
-	map->pos_x = 0;
-	map->pos_y = 0;
-	while (map->map[++i]);
+	rcs = init_key(rcs);
+	rcs->pos_x = 0;
+	rcs->pos_y = 0;
+	while (rcs->map[++i])
+		;
 	i--;
-	while (!(ft_strchr("EWSN", map->map[i])))
+	while (!(ft_strchr("EWSN", rcs->map[i])))
 	{
-		if (map->map[i] == '\n')
-			map->pos_y++;
+		if (rcs->map[i] == '\n')
+			rcs->pos_y++;
 		i--;
 	}
-	map = get_dir(map, map->map[i]);
-	while (map->map[i - 1] != '\n' && i > 1)
+	rcs = get_dir(rcs, rcs->map[i]);
+	while (rcs->map[i - 1] != '\n' && i > 1)
 	{
-		map->pos_x++;
+		rcs->pos_x++;
 		i--;
 	}
-	return (map);
+	return (rcs);
 }

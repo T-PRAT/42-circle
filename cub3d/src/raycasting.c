@@ -6,111 +6,107 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 00:28:07 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 15:39:12 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:44:33 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-t_map *ray_steps(t_map *map)
+t_rcs	*ray_steps(t_rcs *rcs)
 {
-	while (check_wall(map->map_x, map->map_y, map))
+	while (is_wall(rcs->map_x, rcs->map_y, rcs))
 	{
-		if (map->side_x < map->side_y)
+		if (rcs->side_x < rcs->side_y)
 		{
-			map->side_x += map->delta_x;
-			map->map_x += map->step_x;
-			map->side = 0;
+			rcs->side_x += rcs->delta_x;
+			rcs->map_x += rcs->step_x;
+			rcs->side = 0;
 		}
 		else
 		{
-			map->side_y += map->delta_y;
-			map->map_y += map->step_y;
-			map->side = 1;
+			rcs->side_y += rcs->delta_y;
+			rcs->map_y += rcs->step_y;
+			rcs->side = 1;
 		}
-		if (check_wall(map->map_x, map->map_y, map) == 2)
+		if (is_wall(rcs->map_x, rcs->map_y, rcs) == 2)
 		{
-			map->spr->spr_pos_x = map->map_x;
-			map->spr->spr_pos_y = map->map_y;
-			//write(1 , "a", 1);
+			rcs->spr->spr_pos_x = rcs->map_x;
+			rcs->spr->spr_pos_y = rcs->map_y;
 		}
 	}
-	return (map);
+	return (rcs);
 }
 
-t_map *ray_steps_init(t_map *map)
+t_rcs	*ray_steps_init(t_rcs *rcs)
 {
-	if (map->ray_x < 0)
+	if (rcs->ray_x < 0)
 	{
-		map->step_x = -1;
-		map->side_x = (map->pos_x - (double)map->map_x) * map->delta_x;
+		rcs->step_x = -1;
+		rcs->side_x = (rcs->pos_x - (double)rcs->map_x) * rcs->delta_x;
 	}
 	else
 	{
-		map->step_x = 1;
-		map->side_x = ((double)map->map_x + 1 - map->pos_x) * map->delta_x;
+		rcs->step_x = 1;
+		rcs->side_x = ((double)rcs->map_x + 1 - rcs->pos_x) * rcs->delta_x;
 	}
-	if (map->ray_y < 0)
+	if (rcs->ray_y < 0)
 	{
-		map->step_y = -1;
-		map->side_y = (map->pos_y - (double)map->map_y) * map->delta_y;
+		rcs->step_y = -1;
+		rcs->side_y = (rcs->pos_y - (double)rcs->map_y) * rcs->delta_y;
 	}
 	else
 	{
-		map->step_y = 1;
-		map->side_y = ((double)map->map_y + 1 - map->pos_y) * map->delta_y;
+		rcs->step_y = 1;
+		rcs->side_y = ((double)rcs->map_y + 1 - rcs->pos_y) * rcs->delta_y;
 	}
-	//printf ("sidex:%f|||sidey:%f\n", map->side_x, map->side_y);
-	return (ray_steps(map));
+	return (ray_steps(rcs));
 }
 
-void	start_raycast(t_map *map, t_data *data)
+void	start_raycast(t_rcs *rcs, t_data *data)
 {
-	int x;
+	int	x;
 
 	x = 0;
-	while (x < map->res_w)
+	while (x < rcs->res_w)
 	{
-		map->spr->spr_pos_x = -1;
-		map->cam_x = 2 * x / (double)(map->res_w) - 1;
-		map->ray_x = map->dir_x + map->pla_x * map->cam_x;
-		map->ray_y = map->dir_y + map->pla_y * map->cam_x;
-		map->map_x = (int)map->pos_x;
-		map->map_y = (int)map->pos_y;
-		if (map->ray_y == 0)
-			map->delta_x = 0;
+		rcs->spr->spr_pos_x = -1;
+		rcs->cam_x = 2 * x / (double)(rcs->res_w) - 1;
+		rcs->ray_x = rcs->dir_x + rcs->pla_x * rcs->cam_x;
+		rcs->ray_y = rcs->dir_y + rcs->pla_y * rcs->cam_x;
+		rcs->map_x = (int)rcs->pos_x;
+		rcs->map_y = (int)rcs->pos_y;
+		if (rcs->ray_y == 0)
+			rcs->delta_x = 0;
 		else
 		{
-			if (map->ray_x == 0)
-				map->delta_x = 1;
+			if (rcs->ray_x == 0)
+				rcs->delta_x = 1;
 			else
-				map->delta_x = fabs(1 / map->ray_x);
+				rcs->delta_x = fabs(1 / rcs->ray_x);
 		}
-		if (map->ray_x == 0)
-			map->delta_y = 0;
+		if (rcs->ray_x == 0)
+			rcs->delta_y = 0;
 		else
 		{
-			if (map->ray_y == 0)
-				map->delta_y = 1;
+			if (rcs->ray_y == 0)
+				rcs->delta_y = 1;
 			else
-				map->delta_y = fabs(1 / map->ray_y);
+				rcs->delta_y = fabs(1 / rcs->ray_y);
 		}
-		map = ray_steps_init(map);
-		draw_line(map, data, x);
-		//printf("res_w:%fcam_x:%f\n", (double)map->res_w, map->cam_x);
-		//printf("ray_x:%f||ray_y:%f\n", map->ray_x, map->ray_y);
+		rcs = ray_steps_init(rcs);
+		draw_line(rcs, data, x);
 		x++;
 	}
 }
 
 int	raycasting(t_data *data)
 {
-	data->map->spr->spr_pos_x = -1;
-	data->map->spr->spr_pos_y = -1;
-	start_raycast(data->map, data);
-	if (data->map->save == true)
+	data->rcs->spr->spr_pos_x = -1;
+	data->rcs->spr->spr_pos_y = -1;
+	start_raycast(data->rcs, data);
+	if (data->rcs->save == true)
 		return (1);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
-	check_move(data->map);
+	check_move(data->rcs);
 	return (1);
 }

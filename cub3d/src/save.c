@@ -6,18 +6,18 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:58:57 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:01:45 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 18:03:38 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void print_header(int fd, t_map *map, t_data *data)
+void	print_header(int fd, t_rcs *rcs, t_data *data)
 {
-	int tmp;
+	int	tmp;
 
 	write(fd, "BM", 2);
-	tmp = 14 + 40 + 4 * map->res_h * map->res_w;
+	tmp = 14 + 40 + 4 * rcs->res_h * rcs->res_w;
 	write(fd, &tmp, 4);
 	tmp = 0;
 	write(fd, &tmp, 2);
@@ -26,8 +26,8 @@ void print_header(int fd, t_map *map, t_data *data)
 	write(fd, &tmp, 4);
 	tmp = 40;
 	write(fd, &tmp, 4);
-	write(fd, &map->res_w, 4);
-	write(fd, &map->res_h, 4);
+	write(fd, &rcs->res_w, 4);
+	write(fd, &rcs->res_h, 4);
 	tmp = 1;
 	write(fd, &tmp, 2);
 	write(fd, &data->bpp, 2);
@@ -40,23 +40,25 @@ void print_header(int fd, t_map *map, t_data *data)
 	write(fd, &tmp, 4);
 }
 
-void save_image(t_data *data, t_map *map)
+void	save_image(t_data *data, t_rcs *rcs)
 {
-	int fd;
-	int x;
-	int y;
+	int	fd;
+	int	x;
+	int	y;
 
-	y = map->res_h;
+	y = rcs->res_h;
 	raycasting(data);
-	if (!(fd = open("cub3d.bmp", O_CREAT | O_RDWR)))
+	fd = open("cub3d.bmp", O_CREAT | O_RDWR);
+	if (!fd)
 		ft_error("Erreur lors de la création du .bmp\n");
-	print_header(fd, map, data);
+	print_header(fd, rcs, data);
 	while (y >= 0)
 	{
 		x = 0;
-		while (x < map->res_w)
+		while (x < rcs->res_w)
 		{
-			write(fd, &data->img_adr[y * data->line_s + x * (data->bpp / 8)], 4);
+			write(fd,
+				&data->img_adr[y * data->line_s + x * (data->bpp / 8)], 4);
 			x++;
 		}
 		y--;

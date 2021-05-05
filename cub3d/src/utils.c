@@ -6,32 +6,33 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:43:32 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:06:49 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:42:05 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	check_wall(int x, int y, t_map *map)
+int	is_wall(int x, int y, t_rcs *rcs)
 {
 	int	i;
 	int	c;
 
 	i = 0;
 	c = 0;
-	while (map->map[i++]);
+	while (rcs->map[i++])
+		;
 	i--;
 	while (c < y && i)
 	{
-		if (map->map[i] == '\n')
+		if (rcs->map[i] == '\n')
 			c++;
 		i--;
 	}
-	while (map->map[i - 1] != '\n' && i >= 0)
+	while (rcs->map[i - 1] != '\n' && i >= 0)
 		i--;
-	if (map->map[i + x] == '2')
+	if (rcs->map[i + x] == '2')
 		return (2);
-	if (map->map[i + x] != '1')
+	if (rcs->map[i + x] != '1')
 		return (1);
 	return (0);
 }
@@ -46,10 +47,10 @@ void	insert_pixel(t_data *data, int	x, int y, int color)
 	char	*dst;
 
 	dst = data->img_adr + (y * data->line_s + x * (data->bpp / 8));
-	*(unsigned int*) dst = color;
+	*(unsigned int *)dst = color;
 }
 
-int		get_pixel(t_tex *text, int x, int y)
+int	get_pixel(t_tex *text, int x, int y)
 {
 	int	color;
 	int	*dest;

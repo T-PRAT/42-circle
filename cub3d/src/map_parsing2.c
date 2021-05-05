@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:51:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/03/19 14:33:57 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/05 17:37:10 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int	get_color(char *str)
 
 	i = 0;
 	r = ft_atoi(str);
-	while (str[i++] != ',');
+	while (str[i++] != ',')
+		;
 	g = ft_atoi(str + i);
-	while (str[i++] != ',');
+	while (str[i++] != ',')
+		;
 	b = ft_atoi(str + i);
 	return (0 << 24 | r << 16 | g << 8 | b);
 }
@@ -66,7 +68,8 @@ int	check_map(char *map)
 			return (0);
 	}
 	i++;
-	if (!(i = check_body(map, i)))
+	i = check_body(map, i);
+	if (!i)
 		return (0);
 	i -= 2;
 	while (map[i] != '\n')
