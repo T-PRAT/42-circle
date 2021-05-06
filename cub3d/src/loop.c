@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 18:32:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:59:38 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 15:26:35 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ int	loop(t_rcs *rcs)
 		return (0);
 	if(!(rcs->perp_ds = malloc (sizeof(double) * (rcs->res_w + 1))))
 		return (0);
-	if(!(rcs->spr = malloc (sizeof(t_spr))))
-		return (0);
+	if(!(rcs->spr = malloc (sizeof(t_spr *))))
+			ft_error("malloc struc du spite impossible");
+	rcs->spr = NULL;
 	data->rcs = rcs;
     data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, rcs->res_w, rcs->res_h, "CUB3D");

@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 16:21:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:30:23 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 08:22:05 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_rcs	*get_line_info(t_rcs *rcs, char *line)
 	return (rcs);
 }
 
-t_rcs	*get_rcs(t_rcs *rcs, char *line, int fd)
+t_rcs	*get_map(t_rcs *rcs, char *line, int fd)
 {
 	int		c;
 	char	*tmp;
@@ -111,7 +111,7 @@ t_rcs	*parse_map(t_rcs *rcs, char *map_path)
 			rcs = get_line_info(rcs, line);
 		else if (line[0] == '1')
 		{
-			rcs = get_rcs(rcs, line, fd);
+			rcs = get_map(rcs, line, fd);
 			if (!rcs)
 				return (0);
 			c = 0;

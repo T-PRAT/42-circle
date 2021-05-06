@@ -4,15 +4,15 @@ SO ./rcs/windowred.xpm
 WE ./rcs/windowyellow.xpm
 EA ./rcs/windowgreen.xpm
 
-S ./rcs/cylindre.xpm
+S ./rcs/ball.xpm
 F 25,42,41
 C 110,140,180
 
 11111111111
 10000000001
 10101101001
-10100001001
-11111001111
+10100000001
+11001200111
 10000000001
 10000N00001
 10000000011

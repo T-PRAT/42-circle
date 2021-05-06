@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:51:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:37:10 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 08:26:36 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ char	*clean_map(char *map)
 		i++;
 	}
 	clean_map = malloc(sizeof(char) * c);
+	if (!clean_map)
+		return (0);
 	while (i >= 0)
 	{
 		if (ft_strchr("012NSEW\n", map[i]))

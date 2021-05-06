@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/05 17:45:37 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 15:34:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,21 @@ typedef struct s_key
 
 typedef struct s_spr
 {
-	int		spr_pos_x;
-	int		spr_pos_y;
-	int		spr_x;
-	int		spr_y;
-	double	perp_d;
+	int 			order;
+	int				spr_pos_x;
+	int				spr_pos_y;
+	double			perp_d;
+	int				spr_h;
+	int				spr_w;
+	int				spr_t;
+	int 			start_x;
+	int				end_x;
+	int 			start_y;
+	int				end_y;
+	double			trans_x;
+	double			trans_y;
+	struct s_spr	*next;
+
 }				t_spr;
 
 typedef struct s_rcs
@@ -74,7 +84,7 @@ typedef struct s_rcs
 	int		color_f;
 	int		color_c;
 	t_key	*key;
-	t_spr	*spr;
+	t_spr	**spr;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
@@ -130,7 +140,7 @@ int				key_press(int keycode, t_data *data);
 int				key_release(int keycode, t_key *key);
 int				clean_exit(t_data	*data);
 void			check_move(t_rcs *rcs);
-t_rcs			*draw_sprite(t_rcs *rcs, t_data *data, int x);
+void			select_sprite(t_rcs *rcs, t_data *data);
 void			save_image(t_data *data, t_rcs *rcs);
 
 #endif

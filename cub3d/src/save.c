@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:58:57 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 18:03:38 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 08:21:03 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void	save_image(t_data *data, t_rcs *rcs)
 		y--;
 	}
 	close(fd);
-	system("chmod 666 cub3d.bmp");
 	clean_exit(data);
 }

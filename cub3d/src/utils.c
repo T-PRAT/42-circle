@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 14:43:32 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 17:42:05 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 10:19:21 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_wall(int x, int y, t_rcs *rcs)
 			c++;
 		i--;
 	}
-	while (rcs->map[i - 1] != '\n' && i >= 0)
+	while (rcs->map[i - 1] != '\n' && i > 0)
 		i--;
 	if (rcs->map[i + x] == '2')
 		return (2);
