@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/06 15:34:26 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 15:34:51 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ typedef struct s_rcs
 	int		color_f;
 	int		color_c;
 	t_key	*key;
-	t_spr	**spr;
+	t_spr	*spr;
 	double	dir_x;
 	double	dir_y;
 	double	pos_x;
