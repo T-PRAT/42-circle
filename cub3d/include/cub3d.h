@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/06 15:34:51 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 18:03:50 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ int				clean_exit(t_data	*data);
 void			check_move(t_rcs *rcs);
 void			select_sprite(t_rcs *rcs, t_data *data);
 void			save_image(t_data *data, t_rcs *rcs);
+void			new_sprite_list(t_rcs *rcs);
 
 #endif

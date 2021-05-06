@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:20:47 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 18:06:19 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/06 17:08:26 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main(int ac, char **av)
 		ft_putstr_fd("Error\n", 2);
 	else
 	{
-		printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%d\ncorlor_c:%d\nmap:\n>>>%s<<<\n", rcs->res_w, rcs->res_h, rcs->texts[0].path, rcs->texts[1].path, rcs->texts[2].path, rcs->texts[3].path, rcs->texts[4].path, rcs->color_f, rcs->color_c, rcs->map);
+		//printf("width:%d\nheight:%d\ntext_N:%s\ntext_S:%s\ntext_W:%s\ntext_E:%s\nsprite:%s\ncolor_f:%d\ncorlor_c:%d\nmap:\n>>>%s<<<\n", rcs->res_w, rcs->res_h, rcs->texts[0].path, rcs->texts[1].path, rcs->texts[2].path, rcs->texts[3].path, rcs->texts[4].path, rcs->color_f, rcs->color_c, rcs->map);
 		if (!(loop(rcs)))
 			return (0);
 	}

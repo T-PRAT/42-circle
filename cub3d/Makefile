@@ -1,7 +1,6 @@
 NAME = Cub3D
 
 FLAGS = -Wall -Wextra -Werror
-#-fsanitize=address
 
 CC = gcc
 
