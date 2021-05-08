@@ -1,9 +1,4 @@
-texture
-move:ajouter rota + collision
 sprite
---save
-orga struct
-recheck parsing
-quitter clean avec la croix
-norme
+norme (libft)??
+leaks + quitter proprement partout
 makefile (copiler minilibx et verifier le reste)

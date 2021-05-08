@@ -1,0 +1,15 @@
+R 400 400
+NO ./rcs/windowblue.xpm
+SO ./rcs/windowred.xpm
+WE ./rcs/windowyellow.xpm
+EA ./rcs/windowgreen.xpm
+
+S ./rcs/ball.xpm
+F 25,42,41
+C 110,140,180
+
+11111
+10201
+10011
+10N01
+11111

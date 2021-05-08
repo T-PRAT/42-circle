@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:51:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/06 08:26:36 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 08:51:15y tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	get_color(char *str)
 {
-	int	color;
 	int	r;
 	int	g;
 	int	b;
@@ -40,7 +39,7 @@ int 	check_body(char *map, int i)
 	{
 		if (map[i] != '1')
 			return (0);
-		while (map[i] != '\n' && map[i])
+		while (map[i] != '\n' && map[i + 1])
 		{
 			if (ft_strchr("NSEW", map[i]))
 				P++;
@@ -80,33 +79,46 @@ int	check_map(char *map)
 	return (1);
 }
 
-char	*clean_map(char *map)
+void	clean_map2(t_rcs *rcs, int i, int c)
+{
+	char	*clean_map;
+
+	clean_map = malloc(sizeof(char) * c);
+	if (!clean_map)
+		ft_error("map invalide");
+	c--;
+	clean_map[c] = '\0';
+	c--;
+	i -= 2;
+	while (i >= 0)
+	{
+		if (ft_strchr("012NSEW\n", rcs->map[i]))
+			clean_map[c--] = rcs->map[i];
+		i--;
+	}
+	free(rcs->map);
+	if (!(check_map(clean_map)))
+	{
+		free (clean_map);
+		ft_error("map invalide");
+	}
+	rcs->map = clean_map;
+}
+
+void	clean_map(t_rcs *rcs)
 {
 	int		i;
 	int		c;
-	char	*clean_map;
 
 	i = 0;
 	c = 0;
-	while (map[i])
+	while (rcs->map[i])
 	{
-		if (!(ft_strchr("012NSEW \n", map[i])))
-			return (0);
-		if (ft_strchr("012NSEW\n", map[i]))
+		if (!(ft_strchr("012NSEW \n", rcs->map[i])))
+			ft_error("map invalide");
+		if (ft_strchr("012NSEW\n", rcs->map[i]))
 			c++;
 		i++;
 	}
-	clean_map = malloc(sizeof(char) * c);
-	if (!clean_map)
-		return (0);
-	while (i >= 0)
-	{
-		if (ft_strchr("012NSEW\n", map[i]))
-			clean_map[c--] = map[i];
-		i--;
-	}
-	free(map);
-	if (!(check_map(clean_map)))
-		return (0);
-	return (clean_map);
+	clean_map2(rcs, i, c);
 }

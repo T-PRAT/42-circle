@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 00:40:41 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:56:23 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:26:39 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 unsigned int	u_nbr_len(unsigned int n)
 {
-	unsigned int len;
+	unsigned int	len;
 
 	len = 0;
 	while (n > 0)
@@ -25,13 +25,14 @@ unsigned int	u_nbr_len(unsigned int n)
 	return (len);
 }
 
-char			*ft_utoa2(char *res, unsigned int n)
+char	*ft_utoa2(char *res, unsigned int n)
 {
 	unsigned int		len;
 
 	len = 0;
 	len += u_nbr_len(n);
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (0);
 	res[len] = 0;
 	while (n > 0)
@@ -43,7 +44,7 @@ char			*ft_utoa2(char *res, unsigned int n)
 	return (res);
 }
 
-char			*ft_utoa(unsigned int n)
+char	*ft_utoa(unsigned int n)
 {
 	char	*res;
 
@@ -52,7 +53,8 @@ char			*ft_utoa(unsigned int n)
 		res = ft_strdup("0");
 	else
 	{
-		if (!(res = ft_utoa2(res, n)))
+		res = ft_utoa2(res, n);
+		if (!res)
 			return (0);
 	}
 	return (res);

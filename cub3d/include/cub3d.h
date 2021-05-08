@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/06 18:03:50 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:37:54 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-# define POV 60
-# define MS 0.05
-# define RS 0.03
+# define POV 80
+# define MS 0.07
+# define RS 0.05
 # define ESC 53
 # define FORWARD 13
 # define BACKWARD 1
@@ -57,16 +57,16 @@ typedef struct s_key
 
 typedef struct s_spr
 {
-	int 			order;
+	int				order;
 	int				spr_pos_x;
 	int				spr_pos_y;
 	double			perp_d;
 	int				spr_h;
 	int				spr_w;
 	int				spr_t;
-	int 			start_x;
+	int				start_x;
 	int				end_x;
-	int 			start_y;
+	int				start_y;
 	int				end_y;
 	double			trans_x;
 	double			trans_y;
@@ -108,6 +108,8 @@ typedef struct s_rcs
 	int		wall_h;
 	int		text_x;
 	int		text_y;
+	int		start;
+	int		end;
 	double	*perp_ds;
 }				t_rcs;
 
@@ -124,11 +126,11 @@ typedef struct s_data
 }				t_data;
 
 t_rcs			*parse_map(t_rcs *rcs, char *map_path);
-char			*clean_map(char *rcs);
+void			clean_map(t_rcs *rcs);
 int				get_color(char *str);
 int				loop(t_rcs *rcs);
 void			*create_image(t_data *data, t_rcs *rcs);
-t_rcs			*get_pos(t_rcs *rcs);
+void			get_pos(t_rcs *rcs);
 int				raycasting(t_data *data);
 int				is_wall(int x, int y, t_rcs *rcs);
 void			draw_line(t_rcs *rcs, t_data *data, int x);
@@ -142,6 +144,7 @@ int				clean_exit(t_data	*data);
 void			check_move(t_rcs *rcs);
 void			select_sprite(t_rcs *rcs, t_data *data);
 void			save_image(t_data *data, t_rcs *rcs);
-void			new_sprite_list(t_rcs *rcs);
+t_rcs			*new_sprite_list(t_rcs *rcs);
+int				check_sprite(t_rcs *rcs);
 
 #endif

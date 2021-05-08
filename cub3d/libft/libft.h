@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:05:47 by tprat             #+#    #+#             */
-/*   Updated: 2020/09/14 19:08:42 by tprat            ###   ########.fr       */
+/*   Updated: 2021/05/07 17:41:49 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+# define BUFFER_SIZE 512
+
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}					t_list;
+}				t_list;
 
 int					ft_atoi(const char *str);
 void				ft_bzero(void *ptr, size_t n);
@@ -59,8 +61,8 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *str);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strnstr\
-(const char *str, const char *to_find, size_t size);
+char				*ft_strnstr(const char *str, \
+const char *to_find, size_t size);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -73,9 +75,3 @@ char				*ft_strbufjoin(char **line, char *buf);
 int					ft_buflen(const char *str);
 
 #endif
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 512
-
-#endif
-

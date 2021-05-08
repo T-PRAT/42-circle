@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:47:52 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/05 18:01:50 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 09:25:47 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	key_release(int	keycode, t_key	*key)
 	return (0);
 }
 
-t_rcs	*get_dir(t_rcs *rcs, char c)
+void	get_dir(t_rcs *rcs, char c)
 {
 	rcs->dir_x = 0;
 	rcs->dir_y = 0;
@@ -77,7 +77,6 @@ t_rcs	*get_dir(t_rcs *rcs, char c)
 		rcs->dir_x = -1;
 		rcs->pla_y = (double)POV / 100;
 	}
-	return (rcs);
 }
 
 t_rcs	*init_key(t_rcs *rcs)
@@ -97,7 +96,7 @@ t_rcs	*init_key(t_rcs *rcs)
 	return (rcs);
 }
 
-t_rcs	*get_pos(t_rcs *rcs)
+void	get_pos(t_rcs *rcs)
 {
 	int		i;
 
@@ -114,11 +113,10 @@ t_rcs	*get_pos(t_rcs *rcs)
 			rcs->pos_y++;
 		i--;
 	}
-	rcs = get_dir(rcs, rcs->map[i]);
+	get_dir(rcs, rcs->map[i]);
 	while (rcs->map[i - 1] != '\n' && i > 1)
 	{
-		rcs->pos_x++;
+		rcs->pos_x += 1.0;
 		i--;
 	}
-	return (rcs);
 }

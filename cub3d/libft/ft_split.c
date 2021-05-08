@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:58:39 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:54:24 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:22:17 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_word(char const *s, char c)
+int	count_word(char const *s, char c)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -33,9 +33,9 @@ int		count_word(char const *s, char c)
 	return (count);
 }
 
-int		word_size(int index, char const *s, char c)
+int	word_size(int index, char const *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[index + i] != c && s[index + i])
@@ -43,9 +43,9 @@ int		word_size(int index, char const *s, char c)
 	return (i);
 }
 
-int		fill_word(char *str, int index, char const *s, char c)
+int	fill_word(char *str, int index, char const *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[index] != c && s[index])
@@ -67,16 +67,16 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	index = 0;
-	if ((!s))
-		return (0);
 	wrd_nbr = count_word(s, c);
-	if (!(strs = malloc(sizeof(char *) * (wrd_nbr + 1))))
+	strs = malloc(sizeof(char *) * (wrd_nbr + 1));
+	if (!strs)
 		return (0);
 	while (i < wrd_nbr)
 	{
 		while (s[index] == c && s[index])
 			index++;
-		if (!(strs[i] = malloc(sizeof(char) * (word_size(index, s, c) + 1))))
+		strs[i] = malloc(sizeof(char) * (word_size(index, s, c) + 1));
+		if (!strs[i])
 			return (0);
 		index = fill_word(strs[i], index, s, c);
 		if (index == 0)

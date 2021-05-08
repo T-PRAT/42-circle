@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 17:54:42 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/11 22:42:20 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:22:52 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strdup(const char *src)
 		return (0);
 	while (src[i])
 		i++;
-	if (!(dest = malloc((i + 1) * sizeof(char))))
+	dest = malloc((i + 1) * sizeof(char));
+	if (!dest)
 		return (0);
 	i = 0;
 	while (src[i])

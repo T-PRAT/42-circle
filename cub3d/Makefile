@@ -4,10 +4,10 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-LIB = libft/libft.a mlx/libmlx.a
-#LIB = libft/libft.a mlx-linux/libmlx.a
+LIB = libft/libft.a
+#LIB = libft/libft.a
 
-MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.a
+MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.dylib
 #MLXFLAGS = -lX11 -lXext
 
 HEADER = include/cub3d.h
@@ -21,14 +21,20 @@ src/raycasting.c \
 src/raycasting2.c \
 src/utils.c \
 src/sprite.c \
-src/save.c
+src/save.c \
+src/move.c
 
 OBJS = $(SRCS:.c=.o)
 
+%.o: %.c $(HEADER)
+	$(CC) $(FLAGS) -Imlx -c $< -o $@
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER)
+$(NAME): $(OBJS)
 	$(MAKE) -C libft
+	$(MAKE) -C mlx
+	cp mlx/libmlx.dylib ./
 	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
 
 norme:
@@ -41,9 +47,11 @@ norme:
 clean:
 	rm -f $(OBJS)
 	make clean -C libft
+	make clean -C mlx
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f libmlx.dylib
 	make fclean -C libft
 
 re: fclean all

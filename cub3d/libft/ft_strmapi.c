@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:00:59 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:55:26 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:23:47 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (0);
 	while (s[i])
 		i++;
-	if (!(s2 = malloc(sizeof(char) * (i + 1))))
+	s2 = malloc(sizeof(char) * (i + 1));
+	if (!s2)
 		return (0);
 	i = 0;
 	while (s[i])

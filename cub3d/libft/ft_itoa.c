@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:27:36 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 23:54:26 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:17:33 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		nbr_len(int n)
+int	nbr_len(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (n > 0)
@@ -36,7 +36,8 @@ char	*ft_itoa2(char *res, int n)
 		n *= -1;
 	}
 	len += nbr_len(n);
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	res = malloc(sizeof(char) * (len + 1));
+	if (!res)
 		return (0);
 	res[len] = 0;
 	while (n > 0)
@@ -61,7 +62,8 @@ char	*ft_itoa(int n)
 		res = ft_strdup("0");
 	else
 	{
-		if (!(res = ft_itoa2(res, n)))
+		res = ft_itoa2(res, n);
+		if (!res)
 			return (0);
 	}
 	return (res);

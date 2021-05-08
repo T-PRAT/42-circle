@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 11:29:57 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:55:51 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:24:59 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		check_char(char c, char const *set)
+int	check_char(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -26,9 +26,9 @@ int		check_char(char c, char const *set)
 	return (1);
 }
 
-int		str_end(char const *s1, char const *set)
+int	str_end(char const *s1, char const *set)
 {
-	int c;
+	int	c;
 
 	c = 0;
 	while (s1[c])
@@ -55,7 +55,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	if (s1[i] == 0)
 		i = -1;
-	if (!(str = malloc(sizeof(char) * (1 + str_end(s1, set) - i))))
+	str = malloc(sizeof(char) * (1 + str_end(s1, set) - i));
+	if (!str)
 		return (0);
 	while (i < str_end(s1, set) && i >= 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 17:50:57 by tprat             #+#    #+#             */
-/*   Updated: 2020/03/12 01:52:30 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/07 17:18:00 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *))
 {
-	t_list *new;
-	t_list *first;
+	t_list	*new;
+	t_list	*first;
 
 	first = ft_lstnew(f(lst->content));
 	lst = lst->next;

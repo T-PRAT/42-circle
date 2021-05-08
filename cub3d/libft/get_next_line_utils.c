@@ -6,15 +6,15 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:11:12 by tprat             #+#    #+#             */
-/*   Updated: 2020/09/14 18:26:02 by tprat            ###   ########.fr       */
+/*   Updated: 2021/05/07 17:27:38 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_buflen(const char *str)
+int	ft_buflen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < BUFFER_SIZE)
@@ -34,7 +34,8 @@ char	*ft_strbufjoin(char **line, char *buf)
 
 	i = 0;
 	j = 0;
-	if (!(str = malloc(sizeof(char) * (ft_strlen(*line) + ft_buflen(buf) + 1))))
+	str = malloc(sizeof(char) * (ft_strlen(*line) + ft_buflen(buf) + 1));
+	if (!str)
 		return (0);
 	while ((*line)[i])
 	{
@@ -62,7 +63,8 @@ char	*ft_strdupgnl(const char *src)
 	i = 0;
 	while (src[i])
 		i++;
-	if (!(dest = malloc((i + 1) * sizeof(char))))
+	dest = malloc((i + 1) * sizeof(char));
+	if (!dest)
 		return (0);
 	i = 0;
 	while (src[i])
