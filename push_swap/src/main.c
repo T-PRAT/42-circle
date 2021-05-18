@@ -6,13 +6,43 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 19:32:39 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/13 20:37:10 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/05/17 17:16:41by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	fill_tab(int argc, char **argv)
+void	ft_error(t_stack *stack)
+{
+	if (stack->a)
+		free(stack->a);
+	if (stack->b)
+		free(stack->b);
+	free(stack);
+	ft_putstr_fd("Error\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+void	check_tab(t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= stack->len_a)
+	{
+		j = 0;
+		while (j <= stack->len_a)
+		{
+			if (i != j && stack->a[i] == stack->a[j])
+				ft_error(stack);
+			j++;
+		}
+		i++;
+	}
+}
+
+t_stack	*fill_tab(int argc, char **argv)
 {
 	t_stack *stack;
 
@@ -20,26 +50,37 @@ int	fill_tab(int argc, char **argv)
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (0);
-	stack->a = malloc(sizeof(int) * (argc) + 1);
-	stack->b = malloc(sizeof(int) * (argc) + 1);
+	stack->a = malloc(sizeof(int) * (argc));
+	stack->b = malloc(sizeof(int) * (argc));
 	if (!stack->a || !stack->b)
 		return (0);
-	stack->a[argc] = 0;
-	stack->b[argc] = 0;
-	argc--;
+	stack->max_l = argc;
+	stack->len_a = argc;
+	stack->len_b = 0;
 	while (argc >= 0)
 	{
-		stack->a[argc] = ft_atoi(argv[argc -2]);
+		//printf("%d\n", argc);
+		stack->a[argc] = ft_atoi(argv[argc + 1]);
 		argc--;
 	}
-	return (1);
+	return (stack);
 }
 
 int	main(int argc, char **argv)
 {
+	t_stack *stack;
+
+	//printf("%s\n", argv[1]);
 	if (argc < 3)
 		return (0);
 	else
-		fill_tab(argc, argv);
+	{
+		stack = fill_tab(argc, argv);
+		check_tab(stack);
+		for (int i = 0; stack->a[i] != 0; i++)
+		{
+			printf("s:%d\n", stack->a[i]);
+		}
+	}
 	return (0);
 }
