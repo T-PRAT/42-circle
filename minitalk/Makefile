@@ -1,4 +1,4 @@
-NAME = push_swap
+NAME = server
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -6,9 +6,9 @@ CC = gcc
 
 LIB = libft/libft.a
 
-HEADER = include/push_swap.h
+HEADER = include/server.h
 
-SRCS = src/main.c
+SRCS = src/server.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -19,7 +19,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C libft
-	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME}
+	$(CC) -o ${NAME} -I$(HEADER) $(OBJS) $(LIB)
 
 norme:
 	norminette libft

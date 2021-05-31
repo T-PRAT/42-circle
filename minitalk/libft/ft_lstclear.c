@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 19:36:06 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/31 15:26:09 by tprat            ###   ########lyon.fr   */
+/*   Created: 2020/03/12 01:51:49 by tprat             #+#    #+#             */
+/*   Updated: 2021/05/07 17:17:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <stdlib.h>
-# include "../libft/libft.h"
-
-# include <stdio.h>
-typedef struct	s_stack
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int	*a;
-	int	*b;
-	int	len_a;
-	int	len_b;
-	int	max_l;
-}				t_stack;
+	t_list	*current;
 
-
-#endif
+	current = *lst;
+	while (current)
+	{
+		del(current->content);
+		free(current->content);
+		current = current->next;
+	}
+}

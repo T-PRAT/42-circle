@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 19:36:06 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/31 15:26:09 by tprat            ###   ########lyon.fr   */
+/*   Created: 2021/05/31 17:40:16 by tprat             #+#    #+#             */
+/*   Updated: 2021/05/31 18:15:07 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "../include/server.h"
 
-#include <stdlib.h>
-# include "../libft/libft.h"
-
-# include <stdio.h>
-typedef struct	s_stack
+int	main(int ac, char **av)
 {
-	int	*a;
-	int	*b;
-	int	len_a;
-	int	len_b;
-	int	max_l;
-}				t_stack;
-
-
-#endif
+	if (ac != 3)
+	{
+		ft_putstr_fd("nombre d'arguments incorrect\n")
+		return (1);
+	}
+	return (0);
+}

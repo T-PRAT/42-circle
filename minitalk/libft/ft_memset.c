@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: tprat <tprat@student.le-101.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 19:36:06 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/31 15:26:09 by tprat            ###   ########lyon.fr   */
+/*   Created: 2019/10/08 10:38:06 by tprat             #+#    #+#             */
+/*   Updated: 2020/03/12 01:53:46 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <stdlib.h>
-# include "../libft/libft.h"
-
-# include <stdio.h>
-typedef struct	s_stack
+void	*ft_memset(void *ptr, int c, size_t len)
 {
-	int	*a;
-	int	*b;
-	int	len_a;
-	int	len_b;
-	int	max_l;
-}				t_stack;
+	size_t	i;
+	char	*str;
 
-
-#endif
+	str = ptr;
+	i = 0;
+	while (i < len)
+	{
+		str[i] = c;
+		i++;
+	}
+	return (ptr);
+}

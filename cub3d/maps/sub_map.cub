@@ -1,8 +1,8 @@
 R 1280 1024
-NO ./rcs/windowblue.xpm
-SO ./rcs/windowred.xpm
-WE ./rcs/windowyellow.xpm
-EA ./rcs/windowgreen.xpm
+NO ./rcs/greywall1.xpm
+SO ./rcs/greywall2.xpm
+WE ./rcs/greywall3.xpm
+EA ./rcs/greywall3.xpm
 
 S ./rcs/ball.xpm
 F 25,42,41
