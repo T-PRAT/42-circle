@@ -6,29 +6,37 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:27:56 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/01 14:51:22 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/02 17:03:43 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/server.h"
 
-void	print_mess(int	signal)
+void	handler(int	signum)
 {
-	if (signal == SIGUSR1)
-		ft_putstr_fd("sigsur1 was sent\n", 1);
-	if (signal == SIGUSR2)
-		ft_putstr_fd("sigsur2 was sent\n", 1);
+	if (signum == SIGUSR1)
+		write(1, "1", 1);
+	if (signum == SIGUSR2)
+		write(1, "2", 1);
 }
 
 int	main(void)
 {
-	pid_t	pid;
+	pid_t				pid;
+	struct sigaction	act;
 
 	pid = getpid();
+	ft_putstr_fd("PID:", 1);
 	ft_putnbr_fd(pid, 1);
-	signal(SIGUSR1, print_mess);
-	signal(SIGUSR2, print_mess);
+	ft_putstr_fd("\n", 1);
+	act.sa_handler = &handler;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags = 0;
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
+	//signal(SIGUSR1, print_mess);
+	//signal(SIGUSR2, print_mess);
 	while (1)
-		;
+		pause();
 	return (0);
 }
