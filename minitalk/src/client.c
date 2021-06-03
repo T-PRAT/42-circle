@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:40:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/02 20:11:07 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/03 14:57:55 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,47 @@ int	is_num(char *str)
 	return (1);
 }
 
-int	send_str(int ser_pid, char *str)
+void	char_to_bits(char c, int *tab)
 {
-	int		i;
-	int		tmp;
-	char	c[8];
+	tab[7] = c % 2;
+	c /= 2;
+	tab[6] = c % 2;
+	c /= 2;
+	tab[5] = c % 2;
+	c /= 2;
+	tab[4] = c % 2;
+	c /= 2;
+	tab[3] = c % 2;
+	c /= 2;
+	tab[2] = c % 2;
+	c /= 2;
+	tab[1] = c % 2;
+	c /= 2;
+	tab[0] = c % 2;
+}
+
+void	send_str(pid_t ser_pid, char *str)
+{
+	int	i;
+	int	j;
+	int	tab[8];
 
 	i = 0;
 	while (str[i])
 	{
-		tmp = str[i];
-		while (tmp > 0)
+		j = 0;
+		char_to_bits(str[i], tab);
+		while (j < 8)
 		{
-			tmp = tmp / 2;
+			ft_putnbr_fd(tab[j], 1);
+			if (tab[j] == 0)
+				kill(ser_pid, SIGUSR1);
+			else if (tab[j] == 1)
+				kill(ser_pid, SIGUSR2);
+			usleep(1);
+			j++;
 		}
-
-
+		i++;
 	}
 }
 
@@ -59,18 +84,7 @@ int	main(int ac, char **av)
 		ft_error("PID incorrect\n");
 	else
 	{
-		send_str(av[1], av[2]);
-		kill(ft_atoi(av[1]), SIGUSR1);
-		usleep(1);
-		kill(ft_atoi(av[1]), SIGUSR2);
-		usleep(1);
-		kill(ft_atoi(av[1]), SIGUSR2);
-		usleep(1);
-		kill(ft_atoi(av[1]), SIGUSR1);
-		usleep(1);
-		kill(ft_atoi(av[1]), SIGUSR1);
-		usleep(1);
-		kill(ft_atoi(av[1]), SIGUSR2);
+		send_str(ft_atoi(av[1]), av[2]);
 	}
 	return (0);
 }
