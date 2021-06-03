@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:27:56 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/03 14:30:18 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/03 18:39:32 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	handler(int	signum)
 {
+	static int	tab[8];
+	static int	c;
+
 	if (signum == SIGUSR1)
 		write(1, "0", 1);
 	if (signum == SIGUSR2)
