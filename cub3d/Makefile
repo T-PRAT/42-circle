@@ -1,14 +1,15 @@
 NAME = Cub3D
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 CC = gcc
 
 LIB = libft/libft.a
 #LIB = libft/libft.a
 
-MLXFLAGS = -framework OpenGL -framework AppKit mlx/libmlx.dylib
-#MLXFLAGS = -lX11 -lXext
+#MLXFLAGS = -framework OpenGL -framework AppKit
+MLXFLAGS = -lX11 -lXext mlx/libmlx.a
+
 
 HEADER = include/cub3d.h
 
@@ -34,7 +35,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(MAKE) -C libft
 	$(MAKE) -C mlx
-	cp mlx/libmlx.dylib ./
 	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME} $(MLXFLAGS)
 
 norme:

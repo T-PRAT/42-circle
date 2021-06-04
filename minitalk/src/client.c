@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:40:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/03 14:57:55 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/04 14:19:55 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	send_str(pid_t ser_pid, char *str)
 				kill(ser_pid, SIGUSR1);
 			else if (tab[j] == 1)
 				kill(ser_pid, SIGUSR2);
-			usleep(1);
+			usleep(100);
 			j++;
 		}
 		i++;
