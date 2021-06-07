@@ -6,11 +6,17 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:27:56 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/04 14:33:27 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 16:02:11 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/server.h"
+
+void	ft_error(char *str)
+{
+	ft_putstr_fd(str, 2);
+	exit(EXIT_FAILURE);
+}
 
 void	print_binary(char *bin)
 {
@@ -26,7 +32,6 @@ void	print_binary(char *bin)
 	c += (bin[6] - 48) * 2;
 	c += (bin[7] - 48) * 1;
 	ft_putchar_fd(c, 1);
-
 }
 
 void	handler(int	signum)
@@ -37,29 +42,24 @@ void	handler(int	signum)
 	if (!bin)
 		bin = malloc(sizeof(char) * 8);
 	if (signum == SIGUSR1)
-	{
-		ft_putnbr_fd(0,1);
 		bin[i] = '0';
-	}
 	else if (signum == SIGUSR2)
-	{
-		ft_putnbr_fd(1,1);
 		bin[i] = '1';
-	}
 	i++;
 	if (i >= 8 && bin)
 	{
 		print_binary(bin);
 		i = 0;
 		free(bin);
+		bin = 0;
 	}
-
 }
 
 int	main(void)
 {
 	pid_t				pid;
 	struct sigaction	act;
+	int					ret;
 
 	pid = getpid();
 	ft_putstr_fd("PID:", 1);
@@ -68,8 +68,10 @@ int	main(void)
 	act.sa_handler = &handler;
 	sigemptyset(&act.sa_mask);
 	act.sa_flags = 0;
-	sigaction(SIGUSR1, &act, NULL);
-	sigaction(SIGUSR2, &act, NULL);
+	ret = sigaction(SIGUSR1, &act, NULL);
+	ret = sigaction(SIGUSR2, &act, NULL);
+	if (ret < 0)
+		ft_error("sigaction failed\n");
 	while (1)
 		pause();
 	return (0);

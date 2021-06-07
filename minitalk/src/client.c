@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:40:16 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/04 14:19:55 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 15:41:36 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,11 @@ void	send_str(pid_t ser_pid, char *str)
 		char_to_bits(str[i], tab);
 		while (j < 8)
 		{
-			ft_putnbr_fd(tab[j], 1);
 			if (tab[j] == 0)
 				kill(ser_pid, SIGUSR1);
 			else if (tab[j] == 1)
 				kill(ser_pid, SIGUSR2);
-			usleep(100);
+			usleep(80);
 			j++;
 		}
 		i++;
