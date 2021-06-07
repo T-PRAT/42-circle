@@ -1,4 +1,0 @@
-sprite
-norme (libft)??
-leaks + quitter proprement partout
-makefile (copiler minilibx et verifier le reste)
