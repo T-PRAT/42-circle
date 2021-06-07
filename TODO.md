@@ -6,7 +6,7 @@
 ## Container
 - chaque image a le meme nom que le service qui tourne
 - chaque service tourne dans un container dédié
-- toune soit sous linux Alpine soit debian buster
+- tourne soit sous linux Alpine soit debian buster
 - chacun leur dockerfile
 ### Les diff containers
 - NGINX avec TLSv1.2 ou 1.3

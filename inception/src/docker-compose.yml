@@ -1,0 +1,5 @@
+service:
+	nginx:
+		build src/nginx/Dockerfile
+	wordpress:
+	mariadb:
