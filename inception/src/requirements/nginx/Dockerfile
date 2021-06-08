@@ -1,2 +1,0 @@
-#image
-FROM debian:buster

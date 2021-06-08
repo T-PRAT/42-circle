@@ -1,0 +1,10 @@
+service:
+	nginx:
+		build: src/nginx/Dockerfile
+		restart: always;
+	wordpress:
+		build: src/wordpress/Dockerfile
+		restart: always;
+	mariadb:
+		build: src/wordpress/Dockerfile
+		restart: always;
