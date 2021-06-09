@@ -23,3 +23,11 @@
 		-> environnement (liste des différentes variable d'environnement)
 		-> depends_on (définit des dépendence, service demarre si lui est démarrer)
 		-> ports (pour exposer un port)
+		->...
+
+
+# PHILOSOPHER
+
+## Disposition
+- Ils sont rangé de 1 a "number_of_phil.." en cercle
+- Une fourchette entre chaque philo donc une fourchette par philo
