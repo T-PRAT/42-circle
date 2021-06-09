@@ -44,9 +44,9 @@ void	check_tab(t_stack *stack)
 
 t_stack	*fill_tab(int argc, char **argv)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
-	argc -= 2;
+	argc--;
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (0);
@@ -57,9 +57,9 @@ t_stack	*fill_tab(int argc, char **argv)
 	stack->max_l = argc;
 	stack->len_a = argc;
 	stack->len_b = 0;
+	argc--;
 	while (argc >= 0)
 	{
-		//printf("%d\n", argc);
 		stack->a[argc] = ft_atoi(argv[argc + 1]);
 		argc--;
 	}
@@ -68,7 +68,7 @@ t_stack	*fill_tab(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	//printf("%s\n", argv[1]);
 	if (argc < 3)
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	{
 		stack = fill_tab(argc, argv);
 		check_tab(stack);
-		for (int i = 0; stack->a[i] != 0; i++)
+		for (int i = 0; i < stack->len_a; i++)
 		{
 			printf("s:%d\n", stack->a[i]);
 		}
