@@ -30,7 +30,6 @@ $(S_NAME): $(S_OBJS)
 	$(CC) -o ${S_NAME} -I$(S_HEADER) $(S_OBJS) $(LIB)
 
 $(C_NAME): $(C_OBJS)
-	$(MAKE) -C libft
 	$(CC) -o ${C_NAME} -I$(C_HEADER) $(C_OBJS) $(LIB)
 
 clean:
