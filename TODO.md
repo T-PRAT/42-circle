@@ -30,4 +30,6 @@
 
 ## Disposition
 - Ils sont rangé de 1 a "number_of_phil.." en cercle
-- Une fourchette entre chaque philo donc une fourchette par philo
+- Une fourchette entre chaque philo donc une fourchette par philo et donc la moitié peux manger en meme temps
+- Il mange puis dorment puis pense puis si pas de fourchette t_die descend
+

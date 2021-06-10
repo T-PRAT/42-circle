@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:59:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/09 16:33:00 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:58:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,14 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void	ft_error(char *str)
+void	ft_error(char *str, t_params *params)
 {
+	if (params)
+	{
+		if (params->ptid)
+			free(params->ptid);
+		free(params);
+	}
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }

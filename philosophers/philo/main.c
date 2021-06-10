@@ -6,24 +6,25 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:42:19 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/09 16:40:48 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 11:19:59by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	get_params(char **av, int ac, t_params *params)
+t_params	*get_params(char **av, int ac, t_params *params)
 {
 	int	i;
 
 	i = 1;
 	params = malloc(sizeof(t_params));
 	if (!params)
-		ft_error("malloc failed\n");
+		ft_error("malloc failed\n", params);
+	params->ptid = NULL;
 	while (i < ac)
 	{
 		if (!is_num(av[i]))
-			ft_error("an arg is not a number\n");
+			ft_error("an arg is not a number\n", params);
 		i++;
 	}
 	params->n_eat = -1;
@@ -33,6 +34,7 @@ void	get_params(char **av, int ac, t_params *params)
 	params->t_sleep = ft_atoi(av[4]);
 	if (ac == 6)
 		params->n_eat = ft_atoi(av[5]);
+	return (params);
 }
 
 int	main(int ac, char **av)
@@ -41,10 +43,10 @@ int	main(int ac, char **av)
 
 	params = NULL;
 	if (ac != 5 && ac != 6)
-		ft_error("incorrect number of arguments\n");
+		ft_error("incorrect number of arguments\n", params);
 	else
 	{
-		get_params(av, ac, params);
+		params = get_params(av, ac, params);
 		start_philos(params);
 	}
 }
