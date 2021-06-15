@@ -78,9 +78,15 @@ int	main(int argc, char **argv)
 		stack = fill_tab(argc, argv);
 		check_tab(stack);
 		for (int i = 0; i < stack->len_a; i++)
-		{
-			printf("s:%d\n", stack->a[i]);
-		}
+			printf("a:%d\n", stack->a[i]);
+		for (int i = 0; i < stack->len_b; i++)
+			printf("b:%d\n", stack->b[i]);
+		printf("_______________\n");
+		rotate_a(stack);
+		for (int i = 0; i < stack->len_a; i++)
+			printf("a:%d\n", stack->a[i]);
+		for (int i = 0; i < stack->len_b; i++)
+			printf("b:%d\n", stack->b[i]);
 	}
 	return (0);
 }

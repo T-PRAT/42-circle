@@ -8,7 +8,10 @@ LIB = libft/libft.a
 
 HEADER = include/push_swap.h
 
-SRCS = src/main.c
+SRCS = src/main.c \
+src/swap_and_push.c \
+src/rotate.c \
+src/rrotate.c
 
 OBJS = $(SRCS:.c=.o)
 
