@@ -11,7 +11,9 @@ HEADER = include/push_swap.h
 SRCS = src/main.c \
 src/swap_and_push.c \
 src/rotate.c \
-src/rrotate.c
+src/rrotate.c \
+src/sort_utils.c \
+src/sort.c
 
 OBJS = $(SRCS:.c=.o)
 

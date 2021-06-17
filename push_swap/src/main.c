@@ -18,6 +18,8 @@ void	ft_error(t_stack *stack)
 		free(stack->a);
 	if (stack->b)
 		free(stack->b);
+	if (stack->sorted)
+		free(stack->sorted);
 	free(stack);
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
@@ -52,7 +54,8 @@ t_stack	*fill_tab(int argc, char **argv)
 		return (0);
 	stack->a = malloc(sizeof(int) * (argc));
 	stack->b = malloc(sizeof(int) * (argc));
-	if (!stack->a || !stack->b)
+	stack->sorted = malloc(sizeof(int) * (argc));
+	if (!stack->a || !stack->b || !stack->sorted)
 		return (0);
 	stack->max_l = argc;
 	stack->len_a = argc;
@@ -61,8 +64,10 @@ t_stack	*fill_tab(int argc, char **argv)
 	while (argc >= 0)
 	{
 		stack->a[argc] = ft_atoi(argv[argc + 1]);
+		stack->sorted[argc] = ft_atoi(argv[argc + 1]);
 		argc--;
 	}
+	sorted_tab(stack);
 	return (stack);
 }
 
@@ -81,12 +86,17 @@ int	main(int argc, char **argv)
 			printf("a:%d\n", stack->a[i]);
 		for (int i = 0; i < stack->len_b; i++)
 			printf("b:%d\n", stack->b[i]);
-		printf("_______________\n");
-		rotate_a(stack);
+		printf("--------------------\n");
+		select_sort(stack);
 		for (int i = 0; i < stack->len_a; i++)
 			printf("a:%d\n", stack->a[i]);
 		for (int i = 0; i < stack->len_b; i++)
 			printf("b:%d\n", stack->b[i]);
+		if (stack->a)
+			free(stack->a);
+		if (stack->b)
+			free(stack->b);
+		free(stack);
 	}
 	return (0);
 }
