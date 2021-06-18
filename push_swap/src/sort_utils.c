@@ -27,8 +27,8 @@ void	nbr_to_push(int min, int max, t_stack *stack)
 	printf("i:%d||j:%d\n", i, (stack->len_a - 1) - j);
 	if (i <= ((stack->len_a - 1) - j))
 	{
-		while (--i >= 0);
-			//rotate_a(stack);
+		while (--i >= 0)
+			rotate_a(stack);
 	}
 	else
 	{
