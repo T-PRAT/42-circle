@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/10 13:17:13 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/16 11:25:14 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	start_philos(t_params *params)
 	params->ptid = malloc(sizeof(pthread_t) * params->n_philo);
 	if (!params->ptid)
 		ft_error("malloc failed\n", params);
+	pthread_mutex_init()
 	while (ret == 0 && i < params->n_philo)
 	{
 		ret = pthread_create(&params->ptid[i], NULL, &routine, params);

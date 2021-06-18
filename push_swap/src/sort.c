@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:42:56 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/17 18:51:41 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/18 14:11:09 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,26 @@ void	sort_five(t_stack *stack)
 
 void	sort_medium(t_stack *stack)
 {
-	int	med;
+	int	i;
+	int	j;
 
-	med = stack->sorted[stack->max_l / 2];
-	printf("med:%d\n", med);
-	while (!(nbr_in_range(stack->sorted[0], med, stack->a, stack->len_a)))
+	i = 0;
+	while (i < 4)
 	{
-		if (stack->a[0] < med)
+		j = stack->max_l / 4;
+		while (j > 0)
+		{
+			nbr_to_push(stack->sorted[stack->max_l / 4 * i], \
+			stack->sorted[stack->max_l / 4 * (i + 1)], stack);
 			push_b(stack);
-		else
-			rotate_a(stack);
+			j--;
+		}
+		i++;
 	}
 }
 
 void	select_sort(t_stack *stack)
 {
-	write(1, "a", 1);
 	if (stack->len_a == 2)
 	{
 		if (stack->a[0] > stack->a[1])
