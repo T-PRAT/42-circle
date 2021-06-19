@@ -12,6 +12,19 @@
 
 #include "../include/push_swap.h"
 
+void	sort_push(t_stack *stack)
+{
+
+}
+
+int	no_neg(int nbr)
+{
+	if (nbr < 0)
+		return (0);
+	else
+		return (nbr);
+}
+
 void	nbr_to_push(int min, int max, t_stack *stack)
 {
 	int	i;
@@ -20,20 +33,26 @@ void	nbr_to_push(int min, int max, t_stack *stack)
 	i = 0;
 	printf("min:%d||max:%d\n", min, max);
 	j = stack->len_a - 1;
-	while ((stack->a[i] < min || stack->a[i] >= max) && i < stack->len_a - 1)
+	while (!(stack->a[i] >= min && stack->a[i] <= max) && i < stack->len_a - 1)
 		i++;
-	while ((stack->a[j] < min || stack->a[j] >= max) && j <= 0)
+	while (!(stack->a[j] >= min && stack->a[j] <= max) && j > 0)
 		j--;
 	printf("i:%d||j:%d\n", i, (stack->len_a - 1) - j);
 	if (i <= ((stack->len_a - 1) - j))
 	{
-		while (--i >= 0)
+		while (i > 0)
+		{
 			rotate_a(stack);
+			i--;
+		}
 	}
 	else
 	{
-		while (++j < (stack->len_a - 1))
+		while (j <= (stack->len_a - 1))
+		{
 			rrotate_a(stack);
+			j++;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 12:42:56 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/18 18:46:12 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/19 17:47:25 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ void	sort_medium(t_stack *stack)
 	i = 0;
 	while (i < 4)
 	{
-		printf("i:%d\n", i);
 		j = stack->max_l / 4;
 		while (j > 0)
 		{
-			nbr_to_push(stack->sorted[(stack->max_l - 1) / 4 * i], \
-			stack->sorted[(stack->max_l - 1) / 4 * (i + 1)], stack);
+			nbr_to_push(stack->sorted[no_neg((stack->max_l / 4) * i - 1)], \
+			stack->sorted[(stack->max_l / 4) * (i + 1) - 1], stack);
+			printf("TOOOOOOOOOOOOOOOOOOOOOOOOP:%d\n", stack->a[0]);
 			push_b(stack);
 			j--;
 		}
 		i++;
 	}
+	while (stack->len_a)
+		push_b(stack);
+	sort_push(stack);
 }
 
 void	select_sort(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 19:36:06 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/18 13:32:17 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/19 17:47:51 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void	rrotate_all(t_stack *stack);
 void	select_sort(t_stack *stack);
 int		nbr_in_range(int min, int max, int *stack, int stack_size);
 void	nbr_to_push(int min, int max, t_stack *stack);
+int		no_neg(int nbr);
+void	sort_push(t_stack *stack);
 
 #endif
