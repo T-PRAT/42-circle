@@ -12,9 +12,46 @@
 
 #include "../include/push_swap.h"
 
+void	move_top(int nbr, t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = stack->len_b - 1;
+	while (stack->b[i] != nbr && i < stack->len_b - 1)
+		i++;
+	while (stack->b[j] != nbr && j > 0)
+		j--;
+	if (i <= ((stack->len_b - 1) - j))
+	{
+		while (i > 0)
+		{
+			rotate_b(stack);
+			i--;
+		}
+	}
+	else
+	{
+		while (j <= (stack->len_b - 1))
+		{
+			rrotate_b(stack);
+			j++;
+		}
+	}
+}
+
 void	sort_push(t_stack *stack)
 {
+	int	i;
 
+	i = stack->len_b - 1;
+	while (i >= 0)
+	{
+		move_top(stack->sorted[i], stack);
+		push_a(stack);
+		i--;
+	}
 }
 
 int	no_neg(int nbr)
@@ -31,13 +68,11 @@ void	nbr_to_push(int min, int max, t_stack *stack)
 	int	j;
 
 	i = 0;
-	printf("min:%d||max:%d\n", min, max);
 	j = stack->len_a - 1;
 	while (!(stack->a[i] >= min && stack->a[i] <= max) && i < stack->len_a - 1)
 		i++;
 	while (!(stack->a[j] >= min && stack->a[j] <= max) && j > 0)
 		j--;
-	printf("i:%d||j:%d\n", i, (stack->len_a - 1) - j);
 	if (i <= ((stack->len_a - 1) - j))
 	{
 		while (i > 0)
@@ -54,18 +89,6 @@ void	nbr_to_push(int min, int max, t_stack *stack)
 			j++;
 		}
 	}
-}
-
-int	nbr_in_range(int min, int max, int *stack, int stack_size)
-{
-	stack_size--;
-	while (stack_size > 0)
-	{
-		if (stack[stack_size] < min || stack[stack_size] > max)
-			return (1);
-		stack_size--;
-	}
-	return (0);
 }
 
 void	sorted_tab(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:05:47 by tprat             #+#    #+#             */
-/*   Updated: 2021/05/07 17:41:49 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/21 18:43:58 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-int					ft_atoi(const char *str);
+long				ft_atoi(const char *str);
 void				ft_bzero(void *ptr, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalnum(int c);

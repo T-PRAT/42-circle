@@ -9,6 +9,7 @@ LIB = libft/libft.a
 HEADER = include/push_swap.h
 
 SRCS = src/main.c \
+src/parsing.c \
 src/swap_and_push.c \
 src/rotate.c \
 src/rrotate.c \
