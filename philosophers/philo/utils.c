@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:59:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/10 11:58:44 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 15:33:22 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	ft_error(char *str, t_params *params)
 {
 	if (params)
 	{
-		if (params->ptid)
-			free(params->ptid);
+		if (params->philo)
+			free(params->philo);
+		if (params->fork)
+			free(params->fork);
 		free(params);
 	}
 	ft_putstr_fd(str, 2);

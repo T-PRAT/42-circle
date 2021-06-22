@@ -20,7 +20,8 @@ t_params	*get_params(char **av, int ac, t_params *params)
 	params = malloc(sizeof(t_params));
 	if (!params)
 		ft_error("malloc failed\n", params);
-	params->ptid = NULL;
+	params->philo = NULL;
+	params->fork = NULL;
 	while (i < ac)
 	{
 		if (!is_num(av[i]))

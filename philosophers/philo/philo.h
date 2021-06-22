@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:44:55 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/10 13:04:03 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 16:14:17 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,29 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <string.h>
+
+typedef struct s_philo
+{
+	int				num;
+	pthread_t		ptid;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				n_eat;
+	struct s_params	*params;
+}				t_philo;
 
 typedef struct s_params
 {
-	int			n_philo;
-	int			t_die;
-	int			t_eat;
-	int			t_sleep;
-	int			n_eat;
-	pthread_t	*ptid;
+	int				n_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				n_eat;
+	char			*fork;
+	t_philo			*philo;
+	pthread_mutex_t	mutex;
 }			t_params;
 
 void	ft_putstr_fd(char *s, int fd);
