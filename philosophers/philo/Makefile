@@ -4,11 +4,11 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-HEADER = philo.h
+HEADER = src/philo.h
 
-SRCS = main.c \
-utils.c \
-philo.c
+SRCS = src/main.c \
+src/utils.c \
+src/philo.c
 
 OBJS = $(SRCS:.c=.o)
 
