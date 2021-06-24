@@ -6,11 +6,25 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:59:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/22 15:33:22 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 15:47:05 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	get_timestamp(void)
+{
+	struct timeval	curr_time;
+	static int		timebase;
+
+	if (timebase == 0)
+	{
+		gettimeofday(&curr_time, NULL);
+		timebase = curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000;
+	}
+	gettimeofday(&curr_time, NULL);
+	return (curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000 - timebase);
+}
 
 void	ft_putstr_fd(char *s, int fd)
 {

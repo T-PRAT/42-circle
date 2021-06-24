@@ -6,37 +6,37 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/23 20:25:44 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 16:15:01 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	second_fork(int	num, int n_philo)
-{
-	if (num == 0)
-		return (n_philo - 1);
-	else
-		return (num - 1);
-}
 
 void	*routine(void *arg)
 {
 	t_philo			*philo;
 
 	philo = arg;
-	pthread_mutex_lock(&philo->params->fork[philo->num]);
-	pthread_mutex_lock(&philo->params->fork[second_fork(philo->num, \
-	philo->params->n_philo)]);
-	usleep(philo->t_eat);
-	gettimeofday(&philo->params->curr_time, NULL);
-	printf("%ld:%d\n", philo->params->curr_time.tv_sec, \
-	philo->params->curr_time.tv_usec);
-	printf("philo %d is eating\n", philo->num);
-	pthread_mutex_unlock(&philo->params->fork[philo->num]);
-	pthread_mutex_unlock(&philo->params->fork[second_fork(philo->num, \
-	philo->params->n_philo)]);
-	usleep(philo->t_sleep);
+	while (philo->t_die > 0 && philo->n_eat)
+	{
+		printf("%d philo %d is thinking\n", get_timestamp(), philo->num);
+		pthread_mutex_lock(&philo->params->fork[philo->num]);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		pthread_mutex_lock(&philo->params->fork[(philo->num + 1) % \
+		philo->params->n_philo]);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d is eating\n", get_timestamp(), philo->num);
+		usleep(philo->t_eat);
+		if (philo->n_eat != -1)
+			philo->n_eat--;
+		pthread_mutex_unlock(&philo->params->fork[philo->num]);
+		pthread_mutex_unlock(&philo->params->fork[(philo->num + 1) % \
+		philo->params->n_philo]);
+		usleep(philo->t_sleep);
+		printf("%d philo %d is sleeping\n", get_timestamp(), philo->num);
+	}
+	if (philo->n_eat != 0)
+		printf("%d philo %d died\n", get_timestamp(), philo->num);
 	return (0);
 }
 
@@ -51,8 +51,6 @@ void	init_philo(t_params *params)
 	params->fork = malloc(sizeof(pthread_mutex_t) * params->n_philo);
 	if (!params->fork)
 		ft_error("malloc failed\n", params);
-	params->curr_time.tv_sec = 0;
-	params->curr_time.tv_usec = 0;
 	while (i < params->n_philo)
 	{
 		params->philo[i].num = i;
@@ -71,7 +69,6 @@ void	start_philos(t_params *params)
 	int				ret;
 
 	ret = 0;
-
 	init_philo(params);
 	i = -1;
 	while (++i < params->n_philo)

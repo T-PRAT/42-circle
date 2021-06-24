@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:44:55 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/23 20:24:13 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 15:47:17 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_params
 	int				t_eat;
 	int				t_sleep;
 	int				n_eat;
-	struct timeval	curr_time;
 	t_philo			*philo;
 	pthread_mutex_t	*fork;
 }			t_params;
@@ -47,5 +46,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_error(char *str, t_params *params);
 int		ft_atoi(const char *str);
 int		is_num(char *str);
+int		get_timestamp(void);
 void	start_philos(t_params *params);
 #endif

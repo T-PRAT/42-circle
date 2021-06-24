@@ -49,5 +49,10 @@ int	main(int ac, char **av)
 	{
 		params = get_params(av, ac, params);
 		start_philos(params);
+		if (params->philo)
+			free(params->philo);
+		if (params->fork)
+			free(params->fork);
+		free(params);
 	}
 }
