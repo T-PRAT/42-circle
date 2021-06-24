@@ -1,6 +1,6 @@
 NAME = philo
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -pthread
 
 CC = gcc
 
@@ -18,7 +18,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) -o ${NAME}
+	$(CC) $(FLAGS) $(OBJS) -o ${NAME}
 
 norme:
 	@echo

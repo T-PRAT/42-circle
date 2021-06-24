@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	else
 	{
 		params = get_params(av, ac, params);
-		start_philos(params);
+		start_philo(params);
 		if (params->philo)
 			free(params->philo);
 		if (params->fork)

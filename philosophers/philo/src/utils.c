@@ -6,13 +6,13 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:59:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/24 15:47:05 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 20:40:53 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_timestamp(void)
+int	get_timestamp(int size)
 {
 	struct timeval	curr_time;
 	static int		timebase;
@@ -20,10 +20,10 @@ int	get_timestamp(void)
 	if (timebase == 0)
 	{
 		gettimeofday(&curr_time, NULL);
-		timebase = curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000;
+		timebase = curr_time.tv_sec * size + curr_time.tv_usec / size;
 	}
 	gettimeofday(&curr_time, NULL);
-	return (curr_time.tv_sec * 1000 + curr_time.tv_usec / 1000 - timebase);
+	return (curr_time.tv_sec * size + curr_time.tv_usec / size - timebase);
 }
 
 void	ft_putstr_fd(char *s, int fd)
