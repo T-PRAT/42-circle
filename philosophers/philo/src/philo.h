@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:44:55 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/24 20:41:12 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/29 17:04:40 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ typedef struct s_philo
 {
 	int				num;
 	pthread_t		ptid;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
 	int				n_eat;
 	int				l_eat;
 	struct s_params	*params;
@@ -47,6 +44,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_error(char *str, t_params *params);
 int		ft_atoi(const char *str);
 int		is_num(char *str);
-int		get_timestamp(int size);
+int		get_timestamp(void);
 void	start_philo(t_params *params);
 #endif

@@ -19,17 +19,19 @@ t_params	*get_params(char **av, int ac, t_params *params)
 	i = 1;
 	params = malloc(sizeof(t_params));
 	if (!params)
-		ft_error("malloc failed\n", params);
+		ft_error("error : malloc failed\n", params);
 	params->philo = NULL;
 	params->fork = NULL;
 	while (i < ac)
 	{
 		if (!is_num(av[i]))
-			ft_error("an arg is not a number\n", params);
+			ft_error("error : an arg is not a number\n", params);
 		i++;
 	}
 	params->n_eat = -1;
 	params->n_philo = ft_atoi(av[1]);
+	if (params->n_philo < 2)
+		ft_error("error : must be at least 2 philosophers\n", params);
 	params->t_die = ft_atoi(av[2]);
 	params->t_eat = ft_atoi(av[3]);
 	params->t_sleep = ft_atoi(av[4]);
@@ -44,7 +46,7 @@ int	main(int ac, char **av)
 
 	params = NULL;
 	if (ac != 5 && ac != 6)
-		ft_error("incorrect number of arguments\n", params);
+		ft_error("error : incorrect number of arguments\n", params);
 	else
 	{
 		params = get_params(av, ac, params);

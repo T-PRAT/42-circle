@@ -16,9 +16,12 @@ OBJS = $(SRCS:.c=.o)
 	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
+	@echo "Make done"
+	@echo "------------------------"
+	@echo "Usage : \n./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]"
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(OBJS) -o ${NAME}
+	@$(CC) $(FLAGS) $(OBJS) -o ${NAME}
 
 norme:
 	@echo
