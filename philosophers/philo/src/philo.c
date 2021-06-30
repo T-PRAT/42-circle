@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/30 13:42:57 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/06/30 15:09:03 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ void	*routine(void *arg)
 		pthread_mutex_unlock(&philo->params->fork[philo->num - 1]);
 		pthread_mutex_unlock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		usleep(philo->params->t_sleep * 1000);
 		if (philo->params->t_die != -1)
 			printf("%d philo %d is sleeping\n", get_timestamp(), philo->num);
+		usleep(philo->params->t_sleep * 1000);
 	}
 	return (0);
 }
@@ -103,6 +103,7 @@ void	init_philo(t_params *params)
 	{
 		params->philo[i].num = i + 1;
 		params->philo[i].n_eat = params->n_eat;
+		params->philo->l_eat = get_timestamp();
 		params->philo[i].params = params;
 		i++;
 	}

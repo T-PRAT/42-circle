@@ -25,5 +25,9 @@
 		-> ports (pour exposer un port)
 		->...
 
+
 # MINISHELL
 
+## Role des fonctions
+- readline : lit une ligne du prompt et renvoie la l'adresse de la ligne malloquer
+-  rl_ : fonctions qui modifie le contenue de la ligne renvoyer par readline

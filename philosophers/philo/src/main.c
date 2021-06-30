@@ -30,8 +30,8 @@ t_params	*get_params(char **av, int ac, t_params *params)
 	}
 	params->n_eat = -1;
 	params->n_philo = ft_atoi(av[1]);
-	if (params->n_philo < 2)
-		ft_error("error : must be at least 2 philosophers\n", params);
+	if (params->n_philo < 1)
+		ft_error("error : must be at least 1 philosophers\n", params);
 	params->t_die = ft_atoi(av[2]);
 	params->t_eat = ft_atoi(av[3]);
 	params->t_sleep = ft_atoi(av[4]);
