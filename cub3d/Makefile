@@ -4,11 +4,10 @@ FLAGS = -Wall -Wextra
 
 CC = gcc
 
-LIB = libft/libft.a
-#LIB = libft/libft.a
+LIB = libft/libft.a minilibx-linux/libmlx.a
 
 #MLXFLAGS = -framework OpenGL -framework AppKit
-MLXFLAGS = -lX11 -lXext mlx/libmlx.a
+MLXFLAGS = -lX11 -lXext mlx/libmlx.a -lm
 
 
 HEADER = include/cub3d.h

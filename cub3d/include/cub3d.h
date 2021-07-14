@@ -6,14 +6,14 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:00:29 by user42            #+#    #+#             */
-/*   Updated: 2021/05/07 17:37:54 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/07/04 20:22:35 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../mlx/mlx.h"
+# include "../minilibx-linux/mlx.h"
 # include <math.h>
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -26,13 +26,13 @@
 # define POV 80
 # define MS 0.07
 # define RS 0.05
-# define ESC 53
-# define FORWARD 13
-# define BACKWARD 1
-# define RIGHT 2
-# define LEFT 0
-# define ROT_RIGHT 124
-# define ROT_LEFT 123
+# define ESC 33
+# define FORWARD 119
+# define BACKWARD 115
+# define RIGHT 100
+# define LEFT 97
+# define ROT_RIGHT 65363
+# define ROT_LEFT 65361
 
 typedef struct s_tex
 {
