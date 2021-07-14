@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/30 15:09:03 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/07/14 19:26:14 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,24 @@ void	take_fork(t_philo *philo)
 	else if (philo->num % 2)
 	{
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num , philo->num - 1);
+		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, (philo->num) % \
+		philo->params->n_philo);
+		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, (philo->num) % \
+		philo->params->n_philo);
+		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, philo->num - 1);
+		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 }
 
@@ -124,7 +130,7 @@ void	start_philo(t_params *params)
 	{
 		ret = pthread_create(&params->philo[i].ptid, NULL, &routine, \
 		&params->philo[i]);
-		usleep(100);
+		//usleep(100);
 	}
 	monitor(params);
 	i = -1;
