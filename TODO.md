@@ -43,3 +43,6 @@
 - Test with 4 310 200 100, a philosopher should die!
 - Test with 2 philosophers and check the different times (a death delayed by more than 10 ms is unacceptable).
 - Test with your values to check all the rules. Check if a philosopher dies at the right time if they don't steal forks, etc.
+https://github.com/abdlalisalmi/Philosophers-42_Projects
+
+regarder si le philo est en train de manger pour dire qu il meurt
