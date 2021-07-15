@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:44:55 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/29 17:04:40 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/07/15 14:01:14 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_philo
 	pthread_t		ptid;
 	int				n_eat;
 	int				l_eat;
+	int				s_eat;
+	pthread_mutex_t	eat;
 	struct s_params	*params;
 }				t_philo;
 

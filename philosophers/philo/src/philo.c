@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/07/15 03:58:18 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/07/15 15:26:19 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	monitor(t_params *params)
 		i = 0;
 		while (i < params->n_philo)
 		{
-			if (get_timestamp() - params->philo[i].l_eat > params->t_die)
+			//printf("t:%d||l_eat:%d\n", get_timestamp(), params->philo[i].l_eat);
+			if (get_timestamp() - params->philo[i].l_eat > params->t_die && \
+			params->philo[i].s_eat != 1)
 			{
 				params->t_die = -1;
 				printf("%d philo %d died\n", get_timestamp(), \
@@ -47,24 +49,18 @@ void	take_fork(t_philo *philo)
 	else if (philo->num % 2)
 	{
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num , philo->num - 1);
-		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, (philo->num) % \
-		philo->params->n_philo);
-		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, (philo->num) % \
-		philo->params->n_philo);
-		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a %d fork\n", get_timestamp(), philo->num, philo->num - 1);
-		//printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 }
 
@@ -77,16 +73,20 @@ void	*routine(void *arg)
 	{
 		if (philo->params->t_die != -1)
 			printf("%d philo %d is thinking\n", get_timestamp(), philo->num);
+		pthread_mutex_lock(&philo->eat);
 		take_fork(philo);
 		if (philo->params->t_die != -1)
 			printf("%d philo %d is eating\n", get_timestamp(), philo->num);
 		philo->l_eat = get_timestamp();
+		philo->s_eat = 1;
 		usleep(philo->params->t_eat * 1000);
+		philo->s_eat = 0;
 		if (philo->n_eat != -1)
 			philo->n_eat--;
 		pthread_mutex_unlock(&philo->params->fork[philo->num - 1]);
 		pthread_mutex_unlock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
+		pthread_mutex_unlock(&philo->eat);
 		if (philo->params->t_die != -1)
 			printf("%d philo %d is sleeping\n", get_timestamp(), philo->num);
 		usleep(philo->params->t_sleep * 1000);
@@ -107,7 +107,9 @@ void	init_philo(t_params *params)
 		ft_error("error : malloc failed\n", params);
 	while (i < params->n_philo)
 	{
+		pthread_mutex_init(&params->philo[i].eat, NULL);
 		params->philo[i].num = i + 1;
+		params->philo[i].s_eat = 0;
 		params->philo[i].n_eat = params->n_eat;
 		params->philo->l_eat = get_timestamp();
 		params->philo[i].params = params;
@@ -130,7 +132,7 @@ void	start_philo(t_params *params)
 	{
 		ret = pthread_create(&params->philo[i].ptid, NULL, &routine, \
 		&params->philo[i]);
-		//usleep(100);
+		usleep(100);
 	}
 	monitor(params);
 	i = -1;
