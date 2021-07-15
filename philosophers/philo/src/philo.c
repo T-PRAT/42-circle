@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/07/15 15:26:19 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/07/15 19:52:54 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	monitor(t_params *params)
 		i = 0;
 		while (i < params->n_philo)
 		{
-			//printf("t:%d||l_eat:%d\n", get_timestamp(), params->philo[i].l_eat);
+			//printf("t:%d||l_eat:%d||s_eat:%d\n", get_timestamp(), params->philo[i].l_eat, params->philo[i].s_eat);
 			if (get_timestamp() - params->philo[i].l_eat > params->t_die && \
 			params->philo[i].s_eat != 1)
 			{
@@ -77,9 +77,9 @@ void	*routine(void *arg)
 		take_fork(philo);
 		if (philo->params->t_die != -1)
 			printf("%d philo %d is eating\n", get_timestamp(), philo->num);
-		philo->l_eat = get_timestamp();
 		philo->s_eat = 1;
 		usleep(philo->params->t_eat * 1000);
+		philo->l_eat = get_timestamp();
 		philo->s_eat = 0;
 		if (philo->n_eat != -1)
 			philo->n_eat--;
