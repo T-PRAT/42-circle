@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:43:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/07/15 19:52:54 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/08/10 17:52:57 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,24 @@ void	monitor(t_params *params)
 {
 	int	i;
 	int	c;
+	int	delta;
 
 	c = 0;
 	while (42)
 	{
-		i = 0;
-		while (i < params->n_philo)
+		i = -1;
+		while (++i < params->n_philo)
 		{
-			//printf("t:%d||l_eat:%d||s_eat:%d\n", get_timestamp(), params->philo[i].l_eat, params->philo[i].s_eat);
-			if (get_timestamp() - params->philo[i].l_eat > params->t_die && \
-			params->philo[i].s_eat != 1)
+			pthread_mutex_lock(&params->philo->eat);
+			delta = get_timestamp() - params->philo[i].l_eat;
+			pthread_mutex_unlock(&params->philo->eat);
+			if (delta > params->t_die && params->philo[i].s_eat != 1)
 			{
-				params->t_die = -1;
-				printf("%d philo %d died\n", get_timestamp(), \
-				params->philo[i].num);
+				end_simulation(params, i);
 				return ;
 			}
 			if (params->philo[i].n_eat == 0)
 				c++;
-			i++;
 		}
 		if (c == params->n_philo)
 			return ;
@@ -46,21 +45,51 @@ void	take_fork(t_philo *philo)
 {
 	if (philo->params->t_die == -1)
 		return ;
+	/*if (!(philo->num % 2))
+		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
+		philo->params->n_philo]);
+	else
+		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
+	printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
+	if (philo->params->n_philo == 1)
+	{
+		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
+		philo->params->n_philo]);
+		return ;
+	}
+	if (!(philo->num % 2))
+	{
+		if (pthread_mutex_lock(&philo->params->fork[philo->num - 1]))
+		{
+			pthread_mutex_lock(&philo->params->fork[(philo->num) % \
+			philo->params->n_philo]);
+			take_fork(philo);
+		}
+	}
+	else
+	{
+		if (pthread_mutex_lock(&philo->params->fork[(philo->num) % \
+		philo->params->n_philo]))
+		{
+			pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
+			take_fork(philo);
+		}
+	}*/
 	else if (philo->num % 2)
 	{
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 	else
 	{
 		pthread_mutex_lock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->params->fork[philo->num - 1]);
-		printf("%d philo %d has taken a fork\n", get_timestamp(), philo->num);
+		printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
 	}
 }
 
@@ -72,23 +101,23 @@ void	*routine(void *arg)
 	while (philo->params->t_die > 0 && philo->n_eat != 0)
 	{
 		if (philo->params->t_die != -1)
-			printf("%d philo %d is thinking\n", get_timestamp(), philo->num);
+			printf("%d %d is thinking\n", get_timestamp(), philo->num);
 		pthread_mutex_lock(&philo->eat);
 		take_fork(philo);
 		if (philo->params->t_die != -1)
-			printf("%d philo %d is eating\n", get_timestamp(), philo->num);
+			printf("%d %d is eating\n", get_timestamp(), philo->num);
+		philo->l_eat = get_timestamp();
+		pthread_mutex_unlock(&philo->eat);
 		philo->s_eat = 1;
 		usleep(philo->params->t_eat * 1000);
-		philo->l_eat = get_timestamp();
 		philo->s_eat = 0;
 		if (philo->n_eat != -1)
 			philo->n_eat--;
 		pthread_mutex_unlock(&philo->params->fork[philo->num - 1]);
 		pthread_mutex_unlock(&philo->params->fork[(philo->num) % \
 		philo->params->n_philo]);
-		pthread_mutex_unlock(&philo->eat);
 		if (philo->params->t_die != -1)
-			printf("%d philo %d is sleeping\n", get_timestamp(), philo->num);
+			printf("%d %d is sleeping\n", get_timestamp(), philo->num);
 		usleep(philo->params->t_sleep * 1000);
 	}
 	return (0);
@@ -127,12 +156,20 @@ void	start_philo(t_params *params)
 	i = -1;
 	while (++i < params->n_philo)
 		pthread_mutex_init(&params->fork[i], NULL);
-	i = -1;
-	while (ret == 0 && ++i < params->n_philo)
+	i = 0;
+	while (ret == 0 && i < params->n_philo)
 	{
 		ret = pthread_create(&params->philo[i].ptid, NULL, &routine, \
 		&params->philo[i]);
-		usleep(100);
+		i += 2;
+	}
+	usleep(params->t_eat * 1000);
+	i = 1;
+	while (ret == 0 && i < params->n_philo)
+	{
+		ret = pthread_create(&params->philo[i].ptid, NULL, &routine, \
+		&params->philo[i]);
+		i += 2;
 	}
 	monitor(params);
 	i = -1;

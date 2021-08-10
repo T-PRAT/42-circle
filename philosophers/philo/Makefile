@@ -8,7 +8,8 @@ HEADER = src/philo.h
 
 SRCS = src/main.c \
 src/utils.c \
-src/philo.c
+src/philo.c \
+src/philo2.c
 
 OBJS = $(SRCS:.c=.o)
 
