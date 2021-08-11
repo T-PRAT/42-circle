@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:59:22 by tprat             #+#    #+#             */
-/*   Updated: 2021/06/29 19:43:09 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 14:44:44 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	ft_error(char *str, t_params *params)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str, t_params *params)
 {
-	int	i;
-	int	res;
-	int	sign;
+	int		i;
+	long	res;
+	int		sign;
 
 	i = 0;
 	res = 0;
@@ -75,6 +75,9 @@ int	ft_atoi(const char *str)
 		res = res * 10 + (str[i] - 48);
 		i++;
 	}
+	res = res * sign;
+	if (res > INT32_MAX)
+		ft_error("error : an arg is not an integer\n", params);
 	return (res * sign);
 }
 

@@ -6,13 +6,13 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 15:13:06 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/10 15:16:50 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 15:47:07 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	end_simulation(t_params *params, int i)
+void	end_simulation(t_params *params)
 {
 	int	j;
 
@@ -23,6 +23,14 @@ void	end_simulation(t_params *params, int i)
 		pthread_detach(params->philo[j].ptid);
 		j++;
 	}
-	printf("%d %d died\n", get_timestamp(), \
-	params->philo[i].num);
+	return ;
+}
+
+void	ft_usleep(int time_in_ms)
+{
+	int	start_time;
+
+	start_time = get_timestamp();
+	while ((get_timestamp() - start_time) < time_in_ms)
+		usleep(time_in_ms / 10);
 }

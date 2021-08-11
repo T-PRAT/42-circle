@@ -1,6 +1,6 @@
 NAME = philo
 
-FLAGS = -Wall -Wextra -Werror -pthread
+FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 

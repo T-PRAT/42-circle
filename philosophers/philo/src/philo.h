@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 14:44:55 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/10 17:08:49 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 15:43:56 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ typedef struct s_params
 
 void	ft_putstr_fd(char *s, int fd);
 void	ft_error(char *str, t_params *params);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str, t_params *params);
 int		is_num(char *str);
 int		get_timestamp(void);
 void	start_philo(t_params *params);
-void	end_simulation(t_params *params, int i);
+void	end_simulation(t_params *params);
+void	ft_usleep(int time_in_ms);
 #endif
