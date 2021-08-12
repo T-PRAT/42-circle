@@ -4,9 +4,9 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
-LIB = libft/libft.a
+LIBFT = libft/libft.a
 
-HEADER = include/minishell.h
+HEADER = include/
 
 SRCS = src/main.c \
 
@@ -17,10 +17,11 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo
-	$(MAKE) -C libft
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME}
+
+$(LIBFT):
+	make -C ./libft
 
 norme:
 	norminette libft

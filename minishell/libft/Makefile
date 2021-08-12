@@ -60,11 +60,12 @@ CC= cc
 RM= rm -f
 
 %o : %c ${HEAD}
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):${OBJS}
-	ar rc ${NAME} ${OBJS}
-	ranlib ${NAME}
+	@ar rc ${NAME} ${OBJS}
+	@ranlib ${NAME}
+	@echo "Libft compiled"
 
 all:${NAME}
 
