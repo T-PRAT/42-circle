@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: rkowalsk <rkowalsk@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/24 15:48:38 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/24 19:16:17 by tprat            ###   ########lyon.fr   */
+/*   Created: 2019/10/11 17:51:37 by rkowalsk          #+#    #+#             */
+/*   Updated: 2020/02/17 15:55:49 by rkowalsk         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include "../libft/libft.h"
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-void	parse_line(char *line);
-
-#endif
+	if (s != NULL)
+	{
+		i = 0;
+		while (s[i])
+			i++;
+		write(fd, s, i);
+	}
+}

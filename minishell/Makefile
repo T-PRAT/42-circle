@@ -6,9 +6,12 @@ CC = gcc
 
 LIBFT = libft/libft.a
 
-HEADER = include/
+HEADER = -I./include/ -I/Users/$(USER)/.brew/opt/readline/include
+
+LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 
 SRCS = src/main.c \
+src/parsing.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -18,7 +21,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) -I$(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME}
+	$(CC) $(HEADER) $(FLAGS) $(OBJS) $(LIB) -o ${NAME}
 
 $(LIBFT):
 	make -C ./libft

@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/24 15:46:40 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/24 20:25:41 by tprat            ###   ########lyon.fr   */
+/*   Created: 2021/08/24 19:15:30 by tprat             #+#    #+#             */
+/*   Updated: 2021/08/24 19:19:42 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	main(int ac, char **av, char **env)
+void	parse_line(char *line)
 {
-	int		i;
-	char	*line;
-
-	i = -1;
-	/*printf("ac:%d\n", ac);
-	while (av[++i])
-		printf("av[%d]:%s\n", i, av[i]);
-	i = -1;
-	while (env[++i])
-		printf("env[%d]:%s\n", i, env[i]);*/
-	printf("path:%s\n", getenv("PATH"));
-	line = readline("➜ ");
-	while (line)
-	{
-		parse_line(line);
-		line = readline("➜ ");
-	}
+	printf("line:%s\n", line);
 }
