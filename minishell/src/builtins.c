@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/24 15:46:40 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/25 16:21:55 by tprat            ###   ########lyon.fr   */
+/*   Created: 2021/08/25 13:53:38 by tprat             #+#    #+#             */
+/*   Updated: 2021/08/25 15:34:23 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_echo(char *str, char opt)
 {
-	char	*line;
-	t_ms	*ms;
+	ft_putstr_fd(str, 1);
+	if (opt != 'n')
+		ft_putchar_fd('\n', 1);
+}
 
-	ms = malloc(sizeof(t_ms));
-	//erreur
-	ms->env = env;
-	ms->path = ft_split(getenv("PATH"), ':');
-	printf("path:%s\n", getenv("PATH"));
-	line = readline("➜ ");
-	while (line)
-	{
-		ft_pwd(ms->env);
-		parse_line(line);
-		line = readline("➜ ");
-	}
+void	ft_cd(char *path)
+{
+	chdir(path);
+}
+
+void	ft_pwd(char **env)
+{
+	printf("%s\n", getenv("PWD"));
 }

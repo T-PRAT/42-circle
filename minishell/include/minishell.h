@@ -6,7 +6,7 @@
 /*   By: tprat <tprat@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 15:48:38 by tprat             #+#    #+#             */
-/*   Updated: 2021/08/24 19:16:17 by tprat            ###   ########lyon.fr   */
+/*   Updated: 2021/08/25 16:03:56 by tprat            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
+typedef struct s_ms
+{
+	char	**env;
+	char	**path;
+}				t_ms;
+
 void	parse_line(char *line);
+void	ft_echo(char *str, char opt);
+void	ft_cd(char *path);
+void	ft_pwd(char **env);
 
 #endif
