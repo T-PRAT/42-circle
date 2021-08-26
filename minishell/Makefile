@@ -12,6 +12,7 @@ LIB = -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 
 SRCS = src/main.c \
 src/parsing.c \
+src/utils.c \
 src/builtins.c
 
 OBJS = $(SRCS:.c=.o)
